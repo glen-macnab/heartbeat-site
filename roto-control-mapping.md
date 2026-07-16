@@ -12,10 +12,19 @@ Page 1 is CC 1–16, page 2 is 17–32, page 3 is 33–48, page 4 is 49–64. CC
 for a future second setup. HeartBeat's learn table keys on channel + number, so overlaps
 with conventional CC meanings (1 = mod wheel, 7 = volume) are harmless on a dedicated channel.
 
-A ready-to-import ROTO-Setup file for this mapping lives at
-[`docs/roto-heartbeat-setup.json`](roto-heartbeat-setup.json) (import via ROTO-Setup →
-File → Import). The full design rationale and research notes are in the project artifact;
-this file is the working reference.
+Two ready-to-import files ship with this mapping:
+
+- [`docs/roto-heartbeat-bindings.json`](roto-heartbeat-bindings.json) — all 64 HeartBeat
+  bindings. Import in the app: Settings → MIDI Learn Bindings → ••• → Import Bindings.
+  Imports merge (incoming wins on collisions) and land in the current project.
+- [`docs/roto-heartbeat-setup.json`](roto-heartbeat-setup.json) — the ROTO-Setup side
+  (labels, haptics, LED behavior). Import via ROTO-Setup → File → Import. Targets setup
+  slot 64 (`index: 63`); format reverse-engineered from the official MIDI-HELPER template
+  and verified structurally identical. The `colorScheme` palette indices (0–82) are
+  undocumented, so the chosen colors are guesses — retint controls in ROTO-Setup to taste.
+
+The full design rationale and research notes are in the project artifact; this file is the
+working reference.
 
 ## Why selection-relative
 

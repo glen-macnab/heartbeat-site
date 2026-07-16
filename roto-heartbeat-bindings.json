@@ -1,0 +1,587 @@
+{
+  "format": "heartbeat-midi-bindings",
+  "version": 1,
+  "mappings": [
+    {
+      "kind": "cc",
+      "channel": 13,
+      "number": 1,
+      "target": {
+        "kind": "knob",
+        "index": 0
+      }
+    },
+    {
+      "kind": "cc",
+      "channel": 13,
+      "number": 2,
+      "target": {
+        "kind": "knob",
+        "index": 1
+      }
+    },
+    {
+      "kind": "cc",
+      "channel": 13,
+      "number": 3,
+      "target": {
+        "kind": "knob",
+        "index": 2
+      }
+    },
+    {
+      "kind": "cc",
+      "channel": 13,
+      "number": 4,
+      "target": {
+        "kind": "knob",
+        "index": 3
+      }
+    },
+    {
+      "kind": "cc",
+      "channel": 13,
+      "number": 5,
+      "target": {
+        "kind": "knob",
+        "index": 4
+      }
+    },
+    {
+      "kind": "cc",
+      "channel": 13,
+      "number": 6,
+      "target": {
+        "kind": "knob",
+        "index": 5
+      }
+    },
+    {
+      "kind": "cc",
+      "channel": 13,
+      "number": 7,
+      "target": {
+        "kind": "knob",
+        "index": 6
+      }
+    },
+    {
+      "kind": "cc",
+      "channel": 13,
+      "number": 8,
+      "target": {
+        "kind": "knob",
+        "index": 7
+      }
+    },
+    {
+      "kind": "cc",
+      "channel": 13,
+      "number": 9,
+      "target": {
+        "kind": "playStop"
+      }
+    },
+    {
+      "kind": "cc",
+      "channel": 13,
+      "number": 10,
+      "target": {
+        "kind": "record"
+      }
+    },
+    {
+      "kind": "cc",
+      "channel": 13,
+      "number": 11,
+      "target": {
+        "kind": "fill"
+      }
+    },
+    {
+      "kind": "cc",
+      "channel": 13,
+      "number": 12,
+      "target": {
+        "kind": "tapTempo"
+      }
+    },
+    {
+      "kind": "cc",
+      "channel": 13,
+      "number": 13,
+      "target": {
+        "kind": "knobSnapshot"
+      }
+    },
+    {
+      "kind": "cc",
+      "channel": 13,
+      "number": 14,
+      "target": {
+        "kind": "controlAll"
+      },
+      "momentary": false
+    },
+    {
+      "kind": "cc",
+      "channel": 13,
+      "number": 15,
+      "target": {
+        "kind": "undo"
+      }
+    },
+    {
+      "kind": "cc",
+      "channel": 13,
+      "number": 16,
+      "target": {
+        "kind": "pageNext"
+      }
+    },
+    {
+      "kind": "cc",
+      "channel": 13,
+      "number": 17,
+      "target": {
+        "kind": "mixerFader",
+        "index": 0
+      }
+    },
+    {
+      "kind": "cc",
+      "channel": 13,
+      "number": 18,
+      "target": {
+        "kind": "mixerFader",
+        "index": 1
+      }
+    },
+    {
+      "kind": "cc",
+      "channel": 13,
+      "number": 19,
+      "target": {
+        "kind": "mixerFader",
+        "index": 2
+      }
+    },
+    {
+      "kind": "cc",
+      "channel": 13,
+      "number": 20,
+      "target": {
+        "kind": "mixerFader",
+        "index": 3
+      }
+    },
+    {
+      "kind": "cc",
+      "channel": 13,
+      "number": 21,
+      "target": {
+        "kind": "mixerFader",
+        "index": 4
+      }
+    },
+    {
+      "kind": "cc",
+      "channel": 13,
+      "number": 22,
+      "target": {
+        "kind": "mixerFader",
+        "index": 5
+      }
+    },
+    {
+      "kind": "cc",
+      "channel": 13,
+      "number": 23,
+      "target": {
+        "kind": "mixerFader",
+        "index": 6
+      }
+    },
+    {
+      "kind": "cc",
+      "channel": 13,
+      "number": 24,
+      "target": {
+        "kind": "mixerFader",
+        "index": 7
+      }
+    },
+    {
+      "kind": "cc",
+      "channel": 13,
+      "number": 33,
+      "target": {
+        "kind": "mixerFader",
+        "index": 8
+      }
+    },
+    {
+      "kind": "cc",
+      "channel": 13,
+      "number": 34,
+      "target": {
+        "kind": "mixerFader",
+        "index": 9
+      }
+    },
+    {
+      "kind": "cc",
+      "channel": 13,
+      "number": 35,
+      "target": {
+        "kind": "mixerFader",
+        "index": 10
+      }
+    },
+    {
+      "kind": "cc",
+      "channel": 13,
+      "number": 36,
+      "target": {
+        "kind": "mixerFader",
+        "index": 11
+      }
+    },
+    {
+      "kind": "cc",
+      "channel": 13,
+      "number": 37,
+      "target": {
+        "kind": "mixerFader",
+        "index": 12
+      }
+    },
+    {
+      "kind": "cc",
+      "channel": 13,
+      "number": 38,
+      "target": {
+        "kind": "mixerFader",
+        "index": 13
+      }
+    },
+    {
+      "kind": "cc",
+      "channel": 13,
+      "number": 39,
+      "target": {
+        "kind": "mixerFader",
+        "index": 14
+      }
+    },
+    {
+      "kind": "cc",
+      "channel": 13,
+      "number": 40,
+      "target": {
+        "kind": "mixerFader",
+        "index": 15
+      }
+    },
+    {
+      "kind": "cc",
+      "channel": 13,
+      "number": 25,
+      "target": {
+        "kind": "trackMute",
+        "index": 0
+      },
+      "momentary": false
+    },
+    {
+      "kind": "cc",
+      "channel": 13,
+      "number": 26,
+      "target": {
+        "kind": "trackMute",
+        "index": 1
+      },
+      "momentary": false
+    },
+    {
+      "kind": "cc",
+      "channel": 13,
+      "number": 27,
+      "target": {
+        "kind": "trackMute",
+        "index": 2
+      },
+      "momentary": false
+    },
+    {
+      "kind": "cc",
+      "channel": 13,
+      "number": 28,
+      "target": {
+        "kind": "trackMute",
+        "index": 3
+      },
+      "momentary": false
+    },
+    {
+      "kind": "cc",
+      "channel": 13,
+      "number": 29,
+      "target": {
+        "kind": "trackMute",
+        "index": 4
+      },
+      "momentary": false
+    },
+    {
+      "kind": "cc",
+      "channel": 13,
+      "number": 30,
+      "target": {
+        "kind": "trackMute",
+        "index": 5
+      },
+      "momentary": false
+    },
+    {
+      "kind": "cc",
+      "channel": 13,
+      "number": 31,
+      "target": {
+        "kind": "trackMute",
+        "index": 6
+      },
+      "momentary": false
+    },
+    {
+      "kind": "cc",
+      "channel": 13,
+      "number": 32,
+      "target": {
+        "kind": "trackMute",
+        "index": 7
+      },
+      "momentary": false
+    },
+    {
+      "kind": "cc",
+      "channel": 13,
+      "number": 41,
+      "target": {
+        "kind": "trackMute",
+        "index": 8
+      },
+      "momentary": false
+    },
+    {
+      "kind": "cc",
+      "channel": 13,
+      "number": 42,
+      "target": {
+        "kind": "trackMute",
+        "index": 9
+      },
+      "momentary": false
+    },
+    {
+      "kind": "cc",
+      "channel": 13,
+      "number": 43,
+      "target": {
+        "kind": "trackMute",
+        "index": 10
+      },
+      "momentary": false
+    },
+    {
+      "kind": "cc",
+      "channel": 13,
+      "number": 44,
+      "target": {
+        "kind": "trackMute",
+        "index": 11
+      },
+      "momentary": false
+    },
+    {
+      "kind": "cc",
+      "channel": 13,
+      "number": 45,
+      "target": {
+        "kind": "trackMute",
+        "index": 12
+      },
+      "momentary": false
+    },
+    {
+      "kind": "cc",
+      "channel": 13,
+      "number": 46,
+      "target": {
+        "kind": "trackMute",
+        "index": 13
+      },
+      "momentary": false
+    },
+    {
+      "kind": "cc",
+      "channel": 13,
+      "number": 47,
+      "target": {
+        "kind": "trackMute",
+        "index": 14
+      },
+      "momentary": false
+    },
+    {
+      "kind": "cc",
+      "channel": 13,
+      "number": 48,
+      "target": {
+        "kind": "trackMute",
+        "index": 15
+      },
+      "momentary": false
+    },
+    {
+      "kind": "cc",
+      "channel": 13,
+      "number": 49,
+      "target": {
+        "kind": "globalFX",
+        "index": 0
+      }
+    },
+    {
+      "kind": "cc",
+      "channel": 13,
+      "number": 50,
+      "target": {
+        "kind": "globalFX",
+        "index": 1
+      }
+    },
+    {
+      "kind": "cc",
+      "channel": 13,
+      "number": 51,
+      "target": {
+        "kind": "globalFX",
+        "index": 3
+      }
+    },
+    {
+      "kind": "cc",
+      "channel": 13,
+      "number": 52,
+      "target": {
+        "kind": "delayReturn"
+      }
+    },
+    {
+      "kind": "cc",
+      "channel": 13,
+      "number": 53,
+      "target": {
+        "kind": "globalFX",
+        "index": 4
+      }
+    },
+    {
+      "kind": "cc",
+      "channel": 13,
+      "number": 54,
+      "target": {
+        "kind": "reverbReturn"
+      }
+    },
+    {
+      "kind": "cc",
+      "channel": 13,
+      "number": 55,
+      "target": {
+        "kind": "sceneFader"
+      }
+    },
+    {
+      "kind": "cc",
+      "channel": 13,
+      "number": 56,
+      "target": {
+        "kind": "masterVolume"
+      }
+    },
+    {
+      "kind": "cc",
+      "channel": 13,
+      "number": 57,
+      "target": {
+        "kind": "scene",
+        "index": 0
+      }
+    },
+    {
+      "kind": "cc",
+      "channel": 13,
+      "number": 58,
+      "target": {
+        "kind": "scene",
+        "index": 1
+      }
+    },
+    {
+      "kind": "cc",
+      "channel": 13,
+      "number": 59,
+      "target": {
+        "kind": "scene",
+        "index": 2
+      }
+    },
+    {
+      "kind": "cc",
+      "channel": 13,
+      "number": 60,
+      "target": {
+        "kind": "scene",
+        "index": 3
+      }
+    },
+    {
+      "kind": "cc",
+      "channel": 13,
+      "number": 61,
+      "target": {
+        "kind": "scene",
+        "index": 4
+      }
+    },
+    {
+      "kind": "cc",
+      "channel": 13,
+      "number": 62,
+      "target": {
+        "kind": "scene",
+        "index": 5
+      }
+    },
+    {
+      "kind": "cc",
+      "channel": 13,
+      "number": 63,
+      "target": {
+        "kind": "scene",
+        "index": 6
+      }
+    },
+    {
+      "kind": "cc",
+      "channel": 13,
+      "number": 64,
+      "target": {
+        "kind": "scene",
+        "index": 7
+      }
+    }
+  ]
+}
