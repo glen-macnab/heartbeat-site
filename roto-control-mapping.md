@@ -20,8 +20,12 @@ Two ready-to-import files ship with this mapping:
 - [`docs/roto-heartbeat-setup.json`](roto-heartbeat-setup.json) — the ROTO-Setup side
   (labels, haptics, LED behavior). Import via ROTO-Setup → File → Import. Targets setup
   slot 64 (`index: 63`); format reverse-engineered from the official MIDI-HELPER template
-  and verified structurally identical. The `colorScheme` palette indices (0–82) are
-  undocumented, so the chosen colors are guesses — retint controls in ROTO-Setup to taste.
+  and verified structurally identical. The `colorScheme` palette indices (0–82) map to
+  the ROTO-Setup color sheet in display order (row-major, 14 per row). The VOL 1–16 knobs
+  and MUTE 1–16 buttons carry HeartBeat's default track colors (red, orange, amber,
+  yellow, lime, green, mint, teal, cyan, sky, blue, violet, orchid, magenta, rose, pink —
+  sheet indices 14, 15, 1, 17, 4, 19, 6, 20, 21, 22, 23, 24, 11, 26, 12, 0); other
+  controls' colors are unverified guesses — retint in ROTO-Setup to taste.
 
 The full design rationale and research notes are in the project artifact; this file is the
 working reference.
