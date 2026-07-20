@@ -96,97 +96,97 @@ If tracks 9–16 go unused, page 3 is the natural candidate to repurpose (master
 | Buttons 1–8 | `SCENE 1–8` | 57–64 | `.scene(0–7)` | PUSH, one LED color per scene (LED lights when the slot holds a scene) |
 
 Left to the touchscreen (set-and-forget): reverb damp/predelay/width,
-compressor detail, sidechain routing. (Ping-pong lives on CREATE page 4.)
+compressor detail, sidechain routing, delay ping-pong.
 
 ---
 
 # Setup 2 — HB CREATE (music creation, channel 15)
 
 Where the HEARTBEAT setup is built for jamming a finished kit (mix, mutes, scenes, global
-FX), **HB CREATE** is for building the music: full sound design on the selected track,
-track/pattern navigation, and the sequencer's editing tools. All controls on **MIDI
+FX), **HB CREATE** is for building the music. It leans on all three learn modes: page 1
+is a **visible-page** deck (mode 1 — 8 knobs that always control whatever the param area
+shows), page 2 shapes the **selected track** (mode 2), and pages 3–4 carry **pinned
+macros** (mode 3 — one knob per track, selection-independent). All controls on **MIDI
 channel 15**, same CC rule. Files:
 
-- [`docs/create-bindings/roto-heartbeat-create-bindings.json`](create-bindings/roto-heartbeat-create-bindings.json) —
+- [`docs/create-bindings-2/roto-heartbeat-create-bindings.json`](create-bindings-2/roto-heartbeat-create-bindings.json) —
   the 64 HeartBeat bindings (channel 15). Import alongside the performance bindings; no
   target overlaps, both stay live.
-- [`docs/create-bindings/roto-heartbeat-create-setup.json`](create-bindings/roto-heartbeat-create-setup.json) — the
+- [`docs/create-bindings-2/roto-heartbeat-create-setup.json`](create-bindings-2/roto-heartbeat-create-setup.json) — the
   ROTO-Setup side. Targets setup slot 63 (`index: 62`), name `HB CREATE`.
 
-The knob pages mirror HeartBeat's own param pages one-to-one (`.samplerParam` ids, which
-are machine-agnostic), and the app follows the hardware: **turning any mapped knob selects
-the page that hosts it on screen** — turn a FLTR knob and the FLTR page comes forward,
-turn a defaults knob and the TRG defaults panel opens. Machines relabel a few knobs
-(sampler TUNE = synth DETUNE etc.); the printed labels use the sampler's names.
+One EDIT page replaces v1's three mirrored param pages: its 8 knobs are `.pageSlot`
+bindings, so they control **whatever the param area is showing** — flip pages from the
+PG buttons (or the phone) and the same 8 knobs become that page. The app still follows
+the hardware the other way too: turning a mode-2 knob pulls its page forward on screen.
 
-## Page 1 — SRC (selected track)
-
-| Control | Label | CC | Target | ROTO config |
-|---|---|---|---|---|
-| Knob 1 | `TUNE` | 1 | `.samplerParam(0)` | center detent |
-| Knob 2 | `FINE` | 2 | `.samplerParam(1)` | center detent |
-| Knob 3 | `MODE` | 3 | `.samplerParam(2)` | stepped ×4 `FWD REV FWD-LOOP REV-LOOP` |
-| Knob 4 | `SLOT` | 4 | `.samplerParam(3)` | smooth |
-| Knob 5 | `START` | 5 | `.samplerParam(4)` | smooth |
-| Knob 6 | `LENGTH` | 6 | `.samplerParam(5)` | smooth |
-| Knob 7 | `LOOP` | 7 | `.samplerParam(6)` | smooth |
-| Knob 8 | `LEVEL` | 8 | `.samplerParam(7)` | smooth |
-| Buttons 1–8 | `TRACK 1`…`TRACK 8` | 9–16 | `.trackSelect(0–7)` | PUSH, track colors, LED = selected |
-
-## Page 2 — FLTR (selected track)
+## Page 1 — EDIT (follows the visible page)
 
 | Control | Label | CC | Target | ROTO config |
 |---|---|---|---|---|
-| Knob 1 | `TYPE` | 17 | `.samplerParam(8)` | stepped ×6 `OFF LP2 LP4 BP HP NOTCH` |
-| Knob 2 | `CUTOFF` | 18 | `.samplerParam(9)` | smooth |
-| Knob 3 | `RESO` | 19 | `.samplerParam(10)` | smooth |
-| Knob 4 | `ENV` | 20 | `.samplerParam(11)` | center detent (bipolar depth) |
-| Knobs 5–8 | `ATK DEC SUS REL` | 21–24 | `.samplerParam(12–15)` | smooth |
-| Buttons 1–8 | `TRACK 9`…`TRACK 16` | 25–32 | `.trackSelect(8–15)` | PUSH, track colors, LED = selected |
+| Knobs 1–8 | `KNOB 1`…`KNOB 8` | 1–8 | `.pageSlot(0–7)` | smooth — the visible page's controls, reading order |
+| Button 1 | `TRG` | 9 | `.stepPage` | PUSH — toggle the step editor / defaults panel |
+| Buttons 2–5 | `PG 1`…`PG 4` | 10–13 | `.paramPage(0–3)` | PUSH — select param page (SRC/FLTR/AMP/FX, or MIDI CC pages 1–4) |
+| Button 6 | `COPY` | 14 | `.copyStep` | PUSH — copy the held/latched step |
+| Button 7 | `PASTE` | 15 | `.pasteStep` | PUSH — paste onto the held/latched step |
+| Button 8 | `2X LEN` | 16 | `.doubleLength` | PUSH — double the loop, duplicating content |
 
-## Page 3 — AMP (selected track)
+What the 8 slots mean per visible page:
+
+- **Sampler/synth param page**: its 2×4 grid (knob 1 = top-left … knob 8 = bottom-right).
+- **MIDI machine page**: knobs 1–4 = `CHANNEL BANK SUB PROG`, knobs 5–8 = the visible CC page.
+- **TRG page, step latched**: `NOTE VEL GATE NUDGE PROB COND RETRIG` (knob 8 idle). PROB
+  sweeps 1–100 %, COND steps through the condition list, RETRIG through off/2/3/4/6/8 hits.
+- **TRG page, nothing latched**: knobs 1–3 = the track's default `NOTE VEL GATE`.
+- With a step latched and a knob page forward, slots write **locks** — exactly what
+  touching the visible knob would do.
+
+Feedback re-seats all eight motors on every page flip, track switch, and step latch.
+
+## Page 2 — TRACK (selected track) + TRACK 1–8
 
 | Control | Label | CC | Target | ROTO config |
 |---|---|---|---|---|
-| Knob 1 | `VOL` | 33 | `.samplerParam(22)` | indent at 100 (unity) |
-| Knob 2 | `VELO` | 34 | `.samplerParam(23)` | smooth |
-| Knob 3 | `PAN` | 35 | `.samplerParam(21)` | center detent |
-| Knob 4 | `DRIVE` | 36 | `.samplerParam(26)` | smooth |
-| Knobs 5–8 | `ATK DEC SUS REL` | 37–40 | `.samplerParam(16, 18, 19, 20)` | smooth |
-| Buttons 1–8 | `PTN 1`…`PTN 8` | 41–48 | `.patternSlot(0–7)` | PUSH, LED = active pattern |
+| Knob 1 | `NOTE` | 17 | `.trackDefault(0)` | smooth — track default note |
+| Knob 2 | `VEL` | 18 | `.trackDefault(1)` | smooth — track default velocity |
+| Knob 3 | `GATE` | 19 | `.trackDefault(2)` | smooth — exponential, ⅛ step → 128 steps |
+| Knob 4 | `LOOP LEN` | 20 | `.trackLength` | smooth — sweeps the length choices (1…128) |
+| Knob 5 | `DLY SND` | 21 | `.samplerParam(27)` | smooth |
+| Knob 6 | `REV SND` | 22 | `.samplerParam(28)` | smooth |
+| Knob 7 | `CRUSH` | 23 | `.samplerParam(24)` | smooth |
+| Knob 8 | `CHORUS` | 24 | `.samplerParam(30)` | smooth |
+| Buttons 1–8 | `TRACK 1`…`TRACK 8` | 25–32 | `.trackSelect(0–7)` | PUSH, track colors, LED = selected |
 
-## Page 4 — SEQ + FX (selected track)
+## Page 3 — MACROS A (pinned, tracks 1–8) + TRACK 9–16
 
 | Control | Label | CC | Target | ROTO config |
 |---|---|---|---|---|
-| Knob 1 | `NOTE` | 49 | `.trackDefault(0)` | smooth — track default note |
-| Knob 2 | `VEL` | 50 | `.trackDefault(1)` | smooth — track default velocity |
-| Knob 3 | `GATE` | 51 | `.trackDefault(2)` | smooth — exponential, ⅛ step → 128 steps |
-| Knob 4 | `LOOP LEN` | 52 | `.trackLength` | smooth — sweeps the length choices (1…128) |
-| Knob 5 | `DLY SND` | 53 | `.samplerParam(27)` | smooth |
-| Knob 6 | `REV SND` | 54 | `.samplerParam(28)` | smooth |
-| Knob 7 | `CRUSH` | 55 | `.samplerParam(24)` | smooth |
-| Knob 8 | `CHORUS` | 56 | `.samplerParam(30)` | smooth |
-| Button 1 | `TRG` | 57 | `.stepPage` | PUSH — toggle the step editor / defaults panel |
-| Button 2 | `2X LEN` | 58 | `.doubleLength` | PUSH — double the loop, duplicating content |
-| Button 3 | `COPY` | 59 | `.copyStep` | PUSH — copy the held/latched step |
-| Button 4 | `PASTE` | 60 | `.pasteStep` | PUSH — paste onto the held/latched step |
-| Button 5 | `MUTES` | 61 | `.muteMode` | PUSH — track strip becomes the mute board |
-| Button 6 | `KEYS` | 62 | `.keysMode` | PUSH — track strip becomes the keyboard |
-| Button 7 | `SCENES` | 63 | `.sceneMode` | PUSH — track strip becomes the scene pads |
-| Button 8 | `PPONG` | 64 | `.globalFX(2)` | PUSH — delay ping-pong toggle |
+| Knobs 1–8 | `T1 MACRO`…`T8 MACRO` | 33–40 | `.pinnedKnob(track 0–7, slot 0)` | smooth, track colors |
+| Buttons 1–8 | `TRACK 9`…`TRACK 16` | 41–48 | `.trackSelect(8–15)` | PUSH, track colors, LED = selected |
+
+## Page 4 — MACROS B (pinned, tracks 9–16) + PTN 1–8
+
+| Control | Label | CC | Target | ROTO config |
+|---|---|---|---|---|
+| Knobs 1–8 | `T9 MACRO`…`T16 MACRO` | 49–56 | `.pinnedKnob(track 8–15, slot 0)` | smooth, track colors |
+| Buttons 1–8 | `PTN 1`…`PTN 8` | 57–64 | `.patternSlot(0–7)` | PUSH, LED = active pattern |
 
 Notes:
 
-- **Track select is the CREATE setup's steering wheel**: pick a track on page 1/2, and
-  every sound knob (pages 1–4) and the on-screen param area retarget to it. Feedback
-  re-seats all motors to the new track's values.
+- **The macro knobs never retarget**: `T‹n› MACRO` is track *n*'s knob slot 1 — CUTOFF by
+  default on internal machines, CC knob 1 on MIDI tracks (re-point it per track in the
+  app and the macro follows). Sixteen tracks' primary sound knob, two pages, no selection
+  changes, no Control All spread, no record capture.
+- **Track select is still the steering wheel** for pages 1–2: pick a track and the EDIT
+  deck, the shaping knobs, and the on-screen param area all retarget. Feedback re-seats
+  the motors to the new track's values.
 - Defaults + `LOOP LEN` recompile the pattern on a trailing edge (150 ms after the sweep
   settles), so motorized sweeps don't flood the compiler.
-- `TRG`, `MUTES`, `KEYS`, `SCENES` flip Perform-screen state the engine doesn't mirror, so
-  their LEDs won't track app-side taps — treat them as one-shot pushes.
-- MIDI-machine tracks: pages 1–3 knobs are internal-machine params and do nothing; page 4
-  defaults, `LOOP LEN`, and all buttons work on every track type.
+- `TRG` and `PG 1–4` flip Perform-screen state the engine doesn't mirror, so their LEDs
+  won't track app-side taps — treat them as one-shot pushes.
+- Dropped from v1: `MUTES/KEYS/SCENES` latches (mutes live on the HEARTBEAT setup's
+  buttons) and `PPONG` (touchscreen). Importing the new bindings file cleanly replaces
+  the v1 bindings — it reuses every channel-15 CC, and incoming bindings win.
 
 ## Motorized feedback (implemented)
 
