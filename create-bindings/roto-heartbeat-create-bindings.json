@@ -1,0 +1,574 @@
+{
+ "format": "heartbeat-midi-bindings",
+ "version": 1,
+ "mappings": [
+  {
+   "kind": "cc",
+   "channel": 14,
+   "number": 1,
+   "target": {
+    "kind": "samplerParam",
+    "index": 0
+   }
+  },
+  {
+   "kind": "cc",
+   "channel": 14,
+   "number": 2,
+   "target": {
+    "kind": "samplerParam",
+    "index": 1
+   }
+  },
+  {
+   "kind": "cc",
+   "channel": 14,
+   "number": 3,
+   "target": {
+    "kind": "samplerParam",
+    "index": 2
+   }
+  },
+  {
+   "kind": "cc",
+   "channel": 14,
+   "number": 4,
+   "target": {
+    "kind": "samplerParam",
+    "index": 3
+   }
+  },
+  {
+   "kind": "cc",
+   "channel": 14,
+   "number": 5,
+   "target": {
+    "kind": "samplerParam",
+    "index": 4
+   }
+  },
+  {
+   "kind": "cc",
+   "channel": 14,
+   "number": 6,
+   "target": {
+    "kind": "samplerParam",
+    "index": 5
+   }
+  },
+  {
+   "kind": "cc",
+   "channel": 14,
+   "number": 7,
+   "target": {
+    "kind": "samplerParam",
+    "index": 6
+   }
+  },
+  {
+   "kind": "cc",
+   "channel": 14,
+   "number": 8,
+   "target": {
+    "kind": "samplerParam",
+    "index": 7
+   }
+  },
+  {
+   "kind": "cc",
+   "channel": 14,
+   "number": 17,
+   "target": {
+    "kind": "samplerParam",
+    "index": 8
+   }
+  },
+  {
+   "kind": "cc",
+   "channel": 14,
+   "number": 18,
+   "target": {
+    "kind": "samplerParam",
+    "index": 9
+   }
+  },
+  {
+   "kind": "cc",
+   "channel": 14,
+   "number": 19,
+   "target": {
+    "kind": "samplerParam",
+    "index": 10
+   }
+  },
+  {
+   "kind": "cc",
+   "channel": 14,
+   "number": 20,
+   "target": {
+    "kind": "samplerParam",
+    "index": 11
+   }
+  },
+  {
+   "kind": "cc",
+   "channel": 14,
+   "number": 21,
+   "target": {
+    "kind": "samplerParam",
+    "index": 12
+   }
+  },
+  {
+   "kind": "cc",
+   "channel": 14,
+   "number": 22,
+   "target": {
+    "kind": "samplerParam",
+    "index": 13
+   }
+  },
+  {
+   "kind": "cc",
+   "channel": 14,
+   "number": 23,
+   "target": {
+    "kind": "samplerParam",
+    "index": 14
+   }
+  },
+  {
+   "kind": "cc",
+   "channel": 14,
+   "number": 24,
+   "target": {
+    "kind": "samplerParam",
+    "index": 15
+   }
+  },
+  {
+   "kind": "cc",
+   "channel": 14,
+   "number": 33,
+   "target": {
+    "kind": "samplerParam",
+    "index": 22
+   }
+  },
+  {
+   "kind": "cc",
+   "channel": 14,
+   "number": 34,
+   "target": {
+    "kind": "samplerParam",
+    "index": 23
+   }
+  },
+  {
+   "kind": "cc",
+   "channel": 14,
+   "number": 35,
+   "target": {
+    "kind": "samplerParam",
+    "index": 21
+   }
+  },
+  {
+   "kind": "cc",
+   "channel": 14,
+   "number": 36,
+   "target": {
+    "kind": "samplerParam",
+    "index": 26
+   }
+  },
+  {
+   "kind": "cc",
+   "channel": 14,
+   "number": 37,
+   "target": {
+    "kind": "samplerParam",
+    "index": 16
+   }
+  },
+  {
+   "kind": "cc",
+   "channel": 14,
+   "number": 38,
+   "target": {
+    "kind": "samplerParam",
+    "index": 18
+   }
+  },
+  {
+   "kind": "cc",
+   "channel": 14,
+   "number": 39,
+   "target": {
+    "kind": "samplerParam",
+    "index": 19
+   }
+  },
+  {
+   "kind": "cc",
+   "channel": 14,
+   "number": 40,
+   "target": {
+    "kind": "samplerParam",
+    "index": 20
+   }
+  },
+  {
+   "kind": "cc",
+   "channel": 14,
+   "number": 49,
+   "target": {
+    "kind": "trackDefault",
+    "index": 0
+   }
+  },
+  {
+   "kind": "cc",
+   "channel": 14,
+   "number": 50,
+   "target": {
+    "kind": "trackDefault",
+    "index": 1
+   }
+  },
+  {
+   "kind": "cc",
+   "channel": 14,
+   "number": 51,
+   "target": {
+    "kind": "trackDefault",
+    "index": 2
+   }
+  },
+  {
+   "kind": "cc",
+   "channel": 14,
+   "number": 52,
+   "target": {
+    "kind": "trackLength"
+   }
+  },
+  {
+   "kind": "cc",
+   "channel": 14,
+   "number": 53,
+   "target": {
+    "kind": "samplerParam",
+    "index": 27
+   }
+  },
+  {
+   "kind": "cc",
+   "channel": 14,
+   "number": 54,
+   "target": {
+    "kind": "samplerParam",
+    "index": 28
+   }
+  },
+  {
+   "kind": "cc",
+   "channel": 14,
+   "number": 55,
+   "target": {
+    "kind": "samplerParam",
+    "index": 24
+   }
+  },
+  {
+   "kind": "cc",
+   "channel": 14,
+   "number": 56,
+   "target": {
+    "kind": "samplerParam",
+    "index": 30
+   }
+  },
+  {
+   "kind": "cc",
+   "channel": 14,
+   "number": 9,
+   "target": {
+    "kind": "trackSelect",
+    "index": 0
+   }
+  },
+  {
+   "kind": "cc",
+   "channel": 14,
+   "number": 10,
+   "target": {
+    "kind": "trackSelect",
+    "index": 1
+   }
+  },
+  {
+   "kind": "cc",
+   "channel": 14,
+   "number": 11,
+   "target": {
+    "kind": "trackSelect",
+    "index": 2
+   }
+  },
+  {
+   "kind": "cc",
+   "channel": 14,
+   "number": 12,
+   "target": {
+    "kind": "trackSelect",
+    "index": 3
+   }
+  },
+  {
+   "kind": "cc",
+   "channel": 14,
+   "number": 13,
+   "target": {
+    "kind": "trackSelect",
+    "index": 4
+   }
+  },
+  {
+   "kind": "cc",
+   "channel": 14,
+   "number": 14,
+   "target": {
+    "kind": "trackSelect",
+    "index": 5
+   }
+  },
+  {
+   "kind": "cc",
+   "channel": 14,
+   "number": 15,
+   "target": {
+    "kind": "trackSelect",
+    "index": 6
+   }
+  },
+  {
+   "kind": "cc",
+   "channel": 14,
+   "number": 16,
+   "target": {
+    "kind": "trackSelect",
+    "index": 7
+   }
+  },
+  {
+   "kind": "cc",
+   "channel": 14,
+   "number": 25,
+   "target": {
+    "kind": "trackSelect",
+    "index": 8
+   }
+  },
+  {
+   "kind": "cc",
+   "channel": 14,
+   "number": 26,
+   "target": {
+    "kind": "trackSelect",
+    "index": 9
+   }
+  },
+  {
+   "kind": "cc",
+   "channel": 14,
+   "number": 27,
+   "target": {
+    "kind": "trackSelect",
+    "index": 10
+   }
+  },
+  {
+   "kind": "cc",
+   "channel": 14,
+   "number": 28,
+   "target": {
+    "kind": "trackSelect",
+    "index": 11
+   }
+  },
+  {
+   "kind": "cc",
+   "channel": 14,
+   "number": 29,
+   "target": {
+    "kind": "trackSelect",
+    "index": 12
+   }
+  },
+  {
+   "kind": "cc",
+   "channel": 14,
+   "number": 30,
+   "target": {
+    "kind": "trackSelect",
+    "index": 13
+   }
+  },
+  {
+   "kind": "cc",
+   "channel": 14,
+   "number": 31,
+   "target": {
+    "kind": "trackSelect",
+    "index": 14
+   }
+  },
+  {
+   "kind": "cc",
+   "channel": 14,
+   "number": 32,
+   "target": {
+    "kind": "trackSelect",
+    "index": 15
+   }
+  },
+  {
+   "kind": "cc",
+   "channel": 14,
+   "number": 41,
+   "target": {
+    "kind": "patternSlot",
+    "index": 0
+   }
+  },
+  {
+   "kind": "cc",
+   "channel": 14,
+   "number": 42,
+   "target": {
+    "kind": "patternSlot",
+    "index": 1
+   }
+  },
+  {
+   "kind": "cc",
+   "channel": 14,
+   "number": 43,
+   "target": {
+    "kind": "patternSlot",
+    "index": 2
+   }
+  },
+  {
+   "kind": "cc",
+   "channel": 14,
+   "number": 44,
+   "target": {
+    "kind": "patternSlot",
+    "index": 3
+   }
+  },
+  {
+   "kind": "cc",
+   "channel": 14,
+   "number": 45,
+   "target": {
+    "kind": "patternSlot",
+    "index": 4
+   }
+  },
+  {
+   "kind": "cc",
+   "channel": 14,
+   "number": 46,
+   "target": {
+    "kind": "patternSlot",
+    "index": 5
+   }
+  },
+  {
+   "kind": "cc",
+   "channel": 14,
+   "number": 47,
+   "target": {
+    "kind": "patternSlot",
+    "index": 6
+   }
+  },
+  {
+   "kind": "cc",
+   "channel": 14,
+   "number": 48,
+   "target": {
+    "kind": "patternSlot",
+    "index": 7
+   }
+  },
+  {
+   "kind": "cc",
+   "channel": 14,
+   "number": 57,
+   "target": {
+    "kind": "stepPage"
+   }
+  },
+  {
+   "kind": "cc",
+   "channel": 14,
+   "number": 58,
+   "target": {
+    "kind": "doubleLength"
+   }
+  },
+  {
+   "kind": "cc",
+   "channel": 14,
+   "number": 59,
+   "target": {
+    "kind": "copyStep"
+   }
+  },
+  {
+   "kind": "cc",
+   "channel": 14,
+   "number": 60,
+   "target": {
+    "kind": "pasteStep"
+   }
+  },
+  {
+   "kind": "cc",
+   "channel": 14,
+   "number": 61,
+   "target": {
+    "kind": "muteMode"
+   }
+  },
+  {
+   "kind": "cc",
+   "channel": 14,
+   "number": 62,
+   "target": {
+    "kind": "keysMode"
+   }
+  },
+  {
+   "kind": "cc",
+   "channel": 14,
+   "number": 63,
+   "target": {
+    "kind": "sceneMode"
+   }
+  },
+  {
+   "kind": "cc",
+   "channel": 14,
+   "number": 64,
+   "target": {
+    "kind": "globalFX",
+    "index": 2
+   }
+  }
+ ]
+}
