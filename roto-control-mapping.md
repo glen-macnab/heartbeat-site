@@ -134,10 +134,15 @@ the hardware the other way too: turning a mode-2 knob pulls its page forward on 
 What the 8 slots mean per visible page:
 
 - **Sampler/synth param page**: its 2×4 grid (knob 1 = top-left … knob 8 = bottom-right).
-- **MIDI machine page**: knobs 1–4 = `CHANNEL BANK SUB PROG`, knobs 5–8 = the visible CC page.
-- **TRG page, step latched**: `NOTE VEL GATE NUDGE PROB COND RETRIG` (knob 8 idle). PROB
+- **MIDI machine SRC page**: knobs 1–4 = `CHANNEL BANK SUB PROG`, knobs 5–8 =
+  `BEND MOD AT BREATH`; CC pages 1–3 = the visible 2×4 grid.
+- **LFO page** (last page on every machine): knobs 1–4 = LFO-1's `WAVE RATE MULT DEPTH`,
+  knobs 5–8 = LFO-2's. (The `PG` buttons only reach the first four pages — flip to the
+  LFO page on the phone, or bind `.paramPage(4)`/`.trackLFO(0–7)` directly.)
+- **TRG page, step latched**: `NOTE VEL GATE PROB NUDGE COND RETRIG RAMP`. PROB
   sweeps 1–100 %, COND steps through the condition list, RETRIG through off/2/3/4/6/8 hits.
-- **TRG page, nothing latched**: knobs 1–3 = the track's default `NOTE VEL GATE`.
+- **TRG page, nothing latched**: all 8 knobs edit the track defaults — the same
+  `NOTE VEL GATE PROB NUDGE COND RETRIG RAMP` layout.
 - With a step latched and a knob page forward, slots write **locks** — exactly what
   touching the visible knob would do.
 
