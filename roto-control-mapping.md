@@ -58,8 +58,8 @@ pickup mode, no parameter jumps.
 | Button 2 | `REC` | 10 | `.record` | PUSH, LED red |
 | Button 3 | `FILL` | 11 | `.fill` | PUSH — **hold to fill**, LED amber |
 | Button 4 | `TAP` | 12 | `.tapTempo` | PUSH |
-| Button 5 | `SNAP` | 13 | `.knobSnapshot` | PUSH — **hold, tweak, release to restore**, LED teal |
-| Button 6 | `CTRL ALL` | 14 | `.controlAll` | TOGGLE, LED violet |
+| Button 5 | `DJ REPEAT` | 13 | `.djFX(5)` | PUSH — **hold to beat-repeat the master**, LED teal |
+| Button 6 | `DJ TAPE` | 14 | `.djFX(6)` | PUSH — **hold to tape-brake, release to snap back**, LED violet |
 | Button 7 | `UNDO` | 15 | `.undo` | PUSH (LED lights while undo is available) |
 | Button 8 | `STEP PAGE` | 16 | `.pageNext` | PUSH |
 
@@ -125,8 +125,11 @@ the hardware the other way too: turning a mode-2 knob pulls its page forward on 
 | Control | Label | CC | Target | ROTO config |
 |---|---|---|---|---|
 | Knobs 1–8 | `KNOB 1`…`KNOB 8` | 1–8 | `.pageSlot(0–7)` | smooth — the visible page's controls, reading order |
-| Button 1 | `TRG` | 9 | `.stepPage` | PUSH — toggle the step editor / defaults panel |
-| Buttons 2–5 | `PG 1`…`PG 4` | 10–13 | `.paramPage(0–3)` | PUSH — select param page (SRC/FLTR/AMP/FX, or MIDI CC pages 1–4) |
+| Button 1 | `PAGE <` | 9 | `.paramPagePrev` | PUSH — param carousel one page left (TRG at the far left) |
+| Button 2 | `PAGE >` | 10 | `.paramPageNext` | PUSH — param carousel one page right |
+| Button 3 | `Q REC` | 11 | `.quantizeRecord` | TOGGLE — record quantization, LED tracks state |
+| Button 4 | `UNDO` | 12 | `.undo` | PUSH (LED lights while undo is available) |
+| Button 5 | `PLAY` | 13 | `.playStop` | PUSH, LED white |
 | Button 6 | `COPY` | 14 | `.copyStep` | PUSH — copy the held/latched step |
 | Button 7 | `PASTE` | 15 | `.pasteStep` | PUSH — paste onto the held/latched step |
 | Button 8 | `2X LEN` | 16 | `.doubleLength` | PUSH — double the loop, duplicating content |
@@ -187,8 +190,10 @@ Notes:
   the motors to the new track's values.
 - Defaults + `LOOP LEN` recompile the pattern on a trailing edge (150 ms after the sweep
   settles), so motorized sweeps don't flood the compiler.
-- `TRG` and `PG 1–4` flip Perform-screen state the engine doesn't mirror, so their LEDs
-  won't track app-side taps — treat them as one-shot pushes.
+- `PAGE </>` flip Perform-screen state the engine doesn't mirror, so their LEDs won't
+  track app-side taps — treat them as one-shot pushes. (2026-07-24: they replaced the
+  removed `.stepPage`/`.paramPage(i)` targets — TRG is now just the carousel's leftmost
+  page; `Q REC`/`UNDO`/`PLAY` fill the freed buttons.)
 - Dropped from v1: `MUTES/KEYS/SCENES` latches (mutes live on the HEARTBEAT setup's
   buttons) and `PPONG` (touchscreen). Importing the new bindings file cleanly replaces
   the v1 bindings — it reuses every channel-15 CC, and incoming bindings win.

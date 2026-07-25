@@ -111,7 +111,8 @@
       "channel": 13,
       "number": 13,
       "target": {
-        "kind": "knobSnapshot"
+        "kind": "djFX",
+        "index": 5
       }
     },
     {
@@ -119,9 +120,9 @@
       "channel": 13,
       "number": 14,
       "target": {
-        "kind": "controlAll"
-      },
-      "momentary": false
+        "kind": "djFX",
+        "index": 6
+      }
     },
     {
       "kind": "cc",
