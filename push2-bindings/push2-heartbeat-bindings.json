@@ -1,0 +1,777 @@
+{
+  "format": "heartbeat-midi-bindings",
+  "version": 1,
+  "mappings": [
+    {
+      "kind": "cc",
+      "channel": 0,
+      "number": 71,
+      "target": {
+        "kind": "pageSlot",
+        "index": 0
+      },
+      "relative": true
+    },
+    {
+      "kind": "cc",
+      "channel": 0,
+      "number": 72,
+      "target": {
+        "kind": "pageSlot",
+        "index": 1
+      },
+      "relative": true
+    },
+    {
+      "kind": "cc",
+      "channel": 0,
+      "number": 73,
+      "target": {
+        "kind": "pageSlot",
+        "index": 2
+      },
+      "relative": true
+    },
+    {
+      "kind": "cc",
+      "channel": 0,
+      "number": 74,
+      "target": {
+        "kind": "pageSlot",
+        "index": 3
+      },
+      "relative": true
+    },
+    {
+      "kind": "cc",
+      "channel": 0,
+      "number": 75,
+      "target": {
+        "kind": "pageSlot",
+        "index": 4
+      },
+      "relative": true
+    },
+    {
+      "kind": "cc",
+      "channel": 0,
+      "number": 76,
+      "target": {
+        "kind": "pageSlot",
+        "index": 5
+      },
+      "relative": true
+    },
+    {
+      "kind": "cc",
+      "channel": 0,
+      "number": 77,
+      "target": {
+        "kind": "pageSlot",
+        "index": 6
+      },
+      "relative": true
+    },
+    {
+      "kind": "cc",
+      "channel": 0,
+      "number": 78,
+      "target": {
+        "kind": "pageSlot",
+        "index": 7
+      },
+      "relative": true
+    },
+    {
+      "kind": "cc",
+      "channel": 0,
+      "number": 79,
+      "target": {
+        "kind": "masterVolume"
+      },
+      "relative": true
+    },
+    {
+      "kind": "cc",
+      "channel": 0,
+      "number": 85,
+      "target": {
+        "kind": "playStop"
+      }
+    },
+    {
+      "kind": "cc",
+      "channel": 0,
+      "number": 86,
+      "target": {
+        "kind": "record"
+      }
+    },
+    {
+      "kind": "cc",
+      "channel": 0,
+      "number": 3,
+      "target": {
+        "kind": "tapTempo"
+      }
+    },
+    {
+      "kind": "cc",
+      "channel": 0,
+      "number": 119,
+      "target": {
+        "kind": "undo"
+      }
+    },
+    {
+      "kind": "cc",
+      "channel": 0,
+      "number": 116,
+      "target": {
+        "kind": "quantizeRecord"
+      }
+    },
+    {
+      "kind": "cc",
+      "channel": 0,
+      "number": 117,
+      "target": {
+        "kind": "doubleLength"
+      }
+    },
+    {
+      "kind": "cc",
+      "channel": 0,
+      "number": 88,
+      "target": {
+        "kind": "copyStep"
+      }
+    },
+    {
+      "kind": "cc",
+      "channel": 0,
+      "number": 87,
+      "target": {
+        "kind": "pasteStep"
+      }
+    },
+    {
+      "kind": "cc",
+      "channel": 0,
+      "number": 56,
+      "target": {
+        "kind": "fill"
+      }
+    },
+    {
+      "kind": "cc",
+      "channel": 0,
+      "number": 60,
+      "target": {
+        "kind": "muteMode"
+      }
+    },
+    {
+      "kind": "cc",
+      "channel": 0,
+      "number": 50,
+      "target": {
+        "kind": "keysMode"
+      }
+    },
+    {
+      "kind": "cc",
+      "channel": 0,
+      "number": 51,
+      "target": {
+        "kind": "sceneMode"
+      }
+    },
+    {
+      "kind": "cc",
+      "channel": 0,
+      "number": 62,
+      "target": {
+        "kind": "paramPagePrev"
+      }
+    },
+    {
+      "kind": "cc",
+      "channel": 0,
+      "number": 63,
+      "target": {
+        "kind": "paramPageNext"
+      }
+    },
+    {
+      "kind": "cc",
+      "channel": 0,
+      "number": 45,
+      "target": {
+        "kind": "pageNext"
+      }
+    },
+    {
+      "kind": "cc",
+      "channel": 0,
+      "number": 102,
+      "target": {
+        "kind": "patternSlot",
+        "index": 0
+      }
+    },
+    {
+      "kind": "cc",
+      "channel": 0,
+      "number": 103,
+      "target": {
+        "kind": "patternSlot",
+        "index": 1
+      }
+    },
+    {
+      "kind": "cc",
+      "channel": 0,
+      "number": 104,
+      "target": {
+        "kind": "patternSlot",
+        "index": 2
+      }
+    },
+    {
+      "kind": "cc",
+      "channel": 0,
+      "number": 105,
+      "target": {
+        "kind": "patternSlot",
+        "index": 3
+      }
+    },
+    {
+      "kind": "cc",
+      "channel": 0,
+      "number": 106,
+      "target": {
+        "kind": "patternSlot",
+        "index": 4
+      }
+    },
+    {
+      "kind": "cc",
+      "channel": 0,
+      "number": 107,
+      "target": {
+        "kind": "patternSlot",
+        "index": 5
+      }
+    },
+    {
+      "kind": "cc",
+      "channel": 0,
+      "number": 108,
+      "target": {
+        "kind": "patternSlot",
+        "index": 6
+      }
+    },
+    {
+      "kind": "cc",
+      "channel": 0,
+      "number": 109,
+      "target": {
+        "kind": "patternSlot",
+        "index": 7
+      }
+    },
+    {
+      "kind": "cc",
+      "channel": 0,
+      "number": 20,
+      "target": {
+        "kind": "scene",
+        "index": 0
+      }
+    },
+    {
+      "kind": "cc",
+      "channel": 0,
+      "number": 21,
+      "target": {
+        "kind": "scene",
+        "index": 1
+      }
+    },
+    {
+      "kind": "cc",
+      "channel": 0,
+      "number": 22,
+      "target": {
+        "kind": "scene",
+        "index": 2
+      }
+    },
+    {
+      "kind": "cc",
+      "channel": 0,
+      "number": 23,
+      "target": {
+        "kind": "scene",
+        "index": 3
+      }
+    },
+    {
+      "kind": "cc",
+      "channel": 0,
+      "number": 24,
+      "target": {
+        "kind": "scene",
+        "index": 4
+      }
+    },
+    {
+      "kind": "cc",
+      "channel": 0,
+      "number": 25,
+      "target": {
+        "kind": "scene",
+        "index": 5
+      }
+    },
+    {
+      "kind": "cc",
+      "channel": 0,
+      "number": 26,
+      "target": {
+        "kind": "scene",
+        "index": 6
+      }
+    },
+    {
+      "kind": "cc",
+      "channel": 0,
+      "number": 27,
+      "target": {
+        "kind": "scene",
+        "index": 7
+      }
+    },
+    {
+      "kind": "cc",
+      "channel": 0,
+      "number": 43,
+      "target": {
+        "kind": "djFX",
+        "index": 5
+      }
+    },
+    {
+      "kind": "cc",
+      "channel": 0,
+      "number": 42,
+      "target": {
+        "kind": "djFX",
+        "index": 6
+      }
+    },
+    {
+      "kind": "note",
+      "channel": 0,
+      "number": 36,
+      "target": {
+        "kind": "trackSelect",
+        "index": 8
+      }
+    },
+    {
+      "kind": "note",
+      "channel": 0,
+      "number": 37,
+      "target": {
+        "kind": "trackSelect",
+        "index": 9
+      }
+    },
+    {
+      "kind": "note",
+      "channel": 0,
+      "number": 38,
+      "target": {
+        "kind": "trackSelect",
+        "index": 10
+      }
+    },
+    {
+      "kind": "note",
+      "channel": 0,
+      "number": 39,
+      "target": {
+        "kind": "trackSelect",
+        "index": 11
+      }
+    },
+    {
+      "kind": "note",
+      "channel": 0,
+      "number": 40,
+      "target": {
+        "kind": "trackSelect",
+        "index": 12
+      }
+    },
+    {
+      "kind": "note",
+      "channel": 0,
+      "number": 41,
+      "target": {
+        "kind": "trackSelect",
+        "index": 13
+      }
+    },
+    {
+      "kind": "note",
+      "channel": 0,
+      "number": 42,
+      "target": {
+        "kind": "trackSelect",
+        "index": 14
+      }
+    },
+    {
+      "kind": "note",
+      "channel": 0,
+      "number": 43,
+      "target": {
+        "kind": "trackSelect",
+        "index": 15
+      }
+    },
+    {
+      "kind": "note",
+      "channel": 0,
+      "number": 44,
+      "target": {
+        "kind": "trackSelect",
+        "index": 0
+      }
+    },
+    {
+      "kind": "note",
+      "channel": 0,
+      "number": 45,
+      "target": {
+        "kind": "trackSelect",
+        "index": 1
+      }
+    },
+    {
+      "kind": "note",
+      "channel": 0,
+      "number": 46,
+      "target": {
+        "kind": "trackSelect",
+        "index": 2
+      }
+    },
+    {
+      "kind": "note",
+      "channel": 0,
+      "number": 47,
+      "target": {
+        "kind": "trackSelect",
+        "index": 3
+      }
+    },
+    {
+      "kind": "note",
+      "channel": 0,
+      "number": 48,
+      "target": {
+        "kind": "trackSelect",
+        "index": 4
+      }
+    },
+    {
+      "kind": "note",
+      "channel": 0,
+      "number": 49,
+      "target": {
+        "kind": "trackSelect",
+        "index": 5
+      }
+    },
+    {
+      "kind": "note",
+      "channel": 0,
+      "number": 50,
+      "target": {
+        "kind": "trackSelect",
+        "index": 6
+      }
+    },
+    {
+      "kind": "note",
+      "channel": 0,
+      "number": 51,
+      "target": {
+        "kind": "trackSelect",
+        "index": 7
+      }
+    },
+    {
+      "kind": "note",
+      "channel": 0,
+      "number": 52,
+      "target": {
+        "kind": "trackMute",
+        "index": 8
+      }
+    },
+    {
+      "kind": "note",
+      "channel": 0,
+      "number": 53,
+      "target": {
+        "kind": "trackMute",
+        "index": 9
+      }
+    },
+    {
+      "kind": "note",
+      "channel": 0,
+      "number": 54,
+      "target": {
+        "kind": "trackMute",
+        "index": 10
+      }
+    },
+    {
+      "kind": "note",
+      "channel": 0,
+      "number": 55,
+      "target": {
+        "kind": "trackMute",
+        "index": 11
+      }
+    },
+    {
+      "kind": "note",
+      "channel": 0,
+      "number": 56,
+      "target": {
+        "kind": "trackMute",
+        "index": 12
+      }
+    },
+    {
+      "kind": "note",
+      "channel": 0,
+      "number": 57,
+      "target": {
+        "kind": "trackMute",
+        "index": 13
+      }
+    },
+    {
+      "kind": "note",
+      "channel": 0,
+      "number": 58,
+      "target": {
+        "kind": "trackMute",
+        "index": 14
+      }
+    },
+    {
+      "kind": "note",
+      "channel": 0,
+      "number": 59,
+      "target": {
+        "kind": "trackMute",
+        "index": 15
+      }
+    },
+    {
+      "kind": "note",
+      "channel": 0,
+      "number": 60,
+      "target": {
+        "kind": "trackMute",
+        "index": 0
+      }
+    },
+    {
+      "kind": "note",
+      "channel": 0,
+      "number": 61,
+      "target": {
+        "kind": "trackMute",
+        "index": 1
+      }
+    },
+    {
+      "kind": "note",
+      "channel": 0,
+      "number": 62,
+      "target": {
+        "kind": "trackMute",
+        "index": 2
+      }
+    },
+    {
+      "kind": "note",
+      "channel": 0,
+      "number": 63,
+      "target": {
+        "kind": "trackMute",
+        "index": 3
+      }
+    },
+    {
+      "kind": "note",
+      "channel": 0,
+      "number": 64,
+      "target": {
+        "kind": "trackMute",
+        "index": 4
+      }
+    },
+    {
+      "kind": "note",
+      "channel": 0,
+      "number": 65,
+      "target": {
+        "kind": "trackMute",
+        "index": 5
+      }
+    },
+    {
+      "kind": "note",
+      "channel": 0,
+      "number": 66,
+      "target": {
+        "kind": "trackMute",
+        "index": 6
+      }
+    },
+    {
+      "kind": "note",
+      "channel": 0,
+      "number": 67,
+      "target": {
+        "kind": "trackMute",
+        "index": 7
+      }
+    },
+    {
+      "kind": "cc",
+      "channel": 0,
+      "number": 41,
+      "target": {
+        "kind": "muteScopeGlobal"
+      }
+    },
+    {
+      "kind": "cc",
+      "channel": 0,
+      "number": 40,
+      "target": {
+        "kind": "muteScopePattern"
+      }
+    },
+    {
+      "kind": "note",
+      "channel": 0,
+      "number": 0,
+      "target": {
+        "kind": "ignore"
+      }
+    },
+    {
+      "kind": "note",
+      "channel": 0,
+      "number": 1,
+      "target": {
+        "kind": "ignore"
+      }
+    },
+    {
+      "kind": "note",
+      "channel": 0,
+      "number": 2,
+      "target": {
+        "kind": "ignore"
+      }
+    },
+    {
+      "kind": "note",
+      "channel": 0,
+      "number": 3,
+      "target": {
+        "kind": "ignore"
+      }
+    },
+    {
+      "kind": "note",
+      "channel": 0,
+      "number": 4,
+      "target": {
+        "kind": "ignore"
+      }
+    },
+    {
+      "kind": "note",
+      "channel": 0,
+      "number": 5,
+      "target": {
+        "kind": "ignore"
+      }
+    },
+    {
+      "kind": "note",
+      "channel": 0,
+      "number": 6,
+      "target": {
+        "kind": "ignore"
+      }
+    },
+    {
+      "kind": "note",
+      "channel": 0,
+      "number": 7,
+      "target": {
+        "kind": "ignore"
+      }
+    },
+    {
+      "kind": "note",
+      "channel": 0,
+      "number": 8,
+      "target": {
+        "kind": "ignore"
+      }
+    },
+    {
+      "kind": "note",
+      "channel": 0,
+      "number": 9,
+      "target": {
+        "kind": "ignore"
+      }
+    },
+    {
+      "kind": "note",
+      "channel": 0,
+      "number": 10,
+      "target": {
+        "kind": "ignore"
+      }
+    },
+    {
+      "kind": "note",
+      "channel": 0,
+      "number": 12,
+      "target": {
+        "kind": "ignore"
+      }
+    }
+  ]
+}
