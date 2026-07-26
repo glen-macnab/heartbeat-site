@@ -102,17 +102,23 @@ No binding needed.
 
 ## Feedback / LEDs
 
-HeartBeat's feedback emitter sends CC values, so **CC-bound buttons light**: Play,
-Record, Q, the mode latches, patterns/scenes (value 127 = lit / 0 = dark; on RGB
-buttons 127 lands in the palette, good enough to read state). Note-bound pads (the
-select/mute rows) get no feedback yet — the emitter is CC-only. Lighting the pad grid
-(selected track color, mute states, even a step sequencer view) would need note-based
-feedback plus the Push RGB palette; doable later, as is driving LED animations
-(channels 1–15 select transition curves).
+Point Settings → Control → Control Surface at the **Push 2 User Port** and HeartBeat
+drives the hardware:
+
+- **On connect** (destination set, or app launch), a Push-named destination gets
+  configured by sysex: switched into **User mode automatically**, polyphonic
+  aftertouch enabled, and HeartBeat's 16 track colors programmed into the Push color
+  palette (entries 64–79 bright, 80–95 dim, 96 = muted red), then reapplied.
+- **CC-bound buttons light** from state: Play, Record, Q, the mode latches,
+  patterns/scenes (value 127 = lit / 0 = dark).
+- **The pad rows light in real track colors**: select rows show every track dim with
+  the selected track bright; mute rows show audible tracks in their color and muted
+  tracks dim red. They follow selection, mutes, and project loads live.
 
 ## Known gaps / future
 
 - Tempo/Swing encoders idle (no continuous BPM/swing targets).
-- Pad LEDs dark (note feedback not implemented).
+- LED animations (channels 1–15 pick pulse/blink curves) unused so far — a pulsing
+  pad on the playing track would be a nice touch.
 - The display can't be driven from iOS at all (USB bulk protocol, no DriverKit on
   iPhone) — same bridge-process caveat as the ROTO serial API.
