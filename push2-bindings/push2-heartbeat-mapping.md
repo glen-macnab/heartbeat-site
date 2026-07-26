@@ -9,13 +9,13 @@ so it stays on the Ableton splash. All the pads, buttons, and encoders work.
 
 1. Push 2 is USB class-compliant MIDI: camera adapter / USB-C hub into the iPhone
    (Push wants its power supply for full LED brightness).
-2. Put Push in **User mode**: press the **User** button (top right). In User mode the
-   hardware talks plain MIDI on the **User Port** ("Ableton Push 2 User Port") and
-   stops reserving controls for Live.
+2. HeartBeat listens **only on its "HeartBeat In" virtual port** — route the
+   **Ableton Push 2 User Port** into HeartBeat In with Synapse. (HeartBeat flips any
+   Push it sees into User mode automatically; no button ritual.)
 3. Import `push2-heartbeat-bindings.json` in HeartBeat: Settings → MIDI Learn
    Bindings → ••• → Import (merge semantics, incoming wins).
-4. For button/knob LED feedback, point Settings → Control → Control Surface at the
-   Push User Port.
+4. For LED feedback, point Settings → Control → Control Surface at the Push User
+   Port (feedback is sent directly to the device — no routing needed on the way out).
 
 Everything is on **channel 1** (0-based 0), which is what the User Port emits.
 
