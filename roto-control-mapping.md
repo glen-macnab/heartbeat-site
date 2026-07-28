@@ -81,22 +81,23 @@ VOL param; MIDI tracks send CC 7 on their own channel.
 If tracks 9–16 go unused, page 3 is the natural candidate to repurpose (master compressor
 `.masterComp(0–4)` + pattern launch `.patternSlot(0–7)`), as a second ROTO setup.
 
-## Page 4 — FX + SCENES
+## Page 4 — MASTER + MORPH (v3, 2026-07-27)
 
 | Control | Label | CC | Target | ROTO config |
 |---|---|---|---|---|
-| Knob 1 | `DLY TIME` | 49 | `.globalFX(0)` | **stepped ×10**, step names `1/32 1/16 1/8T 1/16. 1/8 1/4T 1/8. 1/4 1/4. 1/2` |
-| Knob 2 | `DLY FDBK` | 50 | `.globalFX(1)` | smooth |
-| Knob 3 | `DLY TONE` | 51 | `.globalFX(3)` | smooth |
-| Knob 4 | `DLY RETURN` | 52 | `.delayReturn` | smooth |
-| Knob 5 | `REV SIZE` | 53 | `.globalFX(4)` | smooth |
-| Knob 6 | `REV RETURN` | 54 | `.reverbReturn` | smooth |
-| Knob 7 | `MORPH A>B` | 55 | `.sceneFader` | center detent |
-| Knob 8 | `MASTER` | 56 | `.masterVolume` | indent at 100 (unity) |
-| Buttons 1–8 | `SCENE 1–8` | 57–64 | `.scene(0–7)` | PUSH, one LED color per scene (LED lights when the slot holds a scene) |
+| Knob 1 | `DLY RET` | 49 | `.delayReturn` | smooth |
+| Knob 2 | `REV RET` | 50 | `.reverbReturn` | smooth |
+| Knob 3 | `MORPH` | 51 | `.sceneFader` | smooth (morph A→B crossfade; landing on an end snaps that morph's mutes) |
+| Knob 4 | `MST VOL` | 52 | `.masterVolume` | smooth |
+| Knob 5 | `LIM CEIL` | 53 | `.masterComp(5)` | smooth (0 → −24 dBFS) |
+| Knob 6 | `LIM REL` | 54 | `.masterComp(6)` | smooth (5–305 ms) |
+| Knob 7 | `VEL OFS` | 55 | `.velocityOffset` | **center detent** at 64 (±0; up un-hides ghost trigs — no on-screen control anymore) |
+| Knob 8 | `DJ FILT` | 56 | `.djFX(0)` | **center detent** at 64 (off; down LP sweep, up HP sweep) |
+| Buttons 1–8 | `MORPH 1–8` | 57–64 | `.scene(0–7)` | PUSH, LED lights when the slot holds a morph (per-pattern) |
 
-Left to the touchscreen (set-and-forget): reverb damp/predelay/width,
-compressor detail, sidechain routing, delay ping-pong.
+Displaced to the touchscreen (sound design, not performance): delay
+time/feedback/tone, reverb size/damp/predelay/width, compressor detail,
+sidechain routing, delay ping-pong.
 
 ---
 
@@ -129,7 +130,7 @@ the hardware the other way too: turning a mode-2 knob pulls its page forward on 
 | Button 2 | `PAGE >` | 10 | `.paramPageNext` | PUSH — param carousel one page right |
 | Button 3 | `Q REC` | 11 | `.quantizeRecord` | TOGGLE — record quantization, LED tracks state |
 | Button 4 | `UNDO` | 12 | `.undo` | PUSH (LED lights while undo is available) |
-| Button 5 | `PLAY` | 13 | `.playStop` | PUSH, LED white |
+| Button 5 | `REDO` | 13 | `.redo` | PUSH (pairs with UNDO beside it; PLAY lives on the co-loaded ch14 PERFORM setup) |
 | Button 6 | `COPY` | 14 | `.copyStep` | PUSH — copy the held/latched step |
 | Button 7 | `PASTE` | 15 | `.pasteStep` | PUSH — paste onto the held/latched step |
 | Button 8 | `2X LEN` | 16 | `.doubleLength` | PUSH — double the loop, duplicating content |

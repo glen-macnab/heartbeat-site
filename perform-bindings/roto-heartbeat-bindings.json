@@ -449,8 +449,7 @@
       "channel": 13,
       "number": 49,
       "target": {
-        "kind": "globalFX",
-        "index": 0
+        "kind": "delayReturn"
       }
     },
     {
@@ -458,8 +457,7 @@
       "channel": 13,
       "number": 50,
       "target": {
-        "kind": "globalFX",
-        "index": 1
+        "kind": "reverbReturn"
       }
     },
     {
@@ -467,8 +465,7 @@
       "channel": 13,
       "number": 51,
       "target": {
-        "kind": "globalFX",
-        "index": 3
+        "kind": "sceneFader"
       }
     },
     {
@@ -476,7 +473,7 @@
       "channel": 13,
       "number": 52,
       "target": {
-        "kind": "delayReturn"
+        "kind": "masterVolume"
       }
     },
     {
@@ -484,8 +481,8 @@
       "channel": 13,
       "number": 53,
       "target": {
-        "kind": "globalFX",
-        "index": 4
+        "kind": "masterComp",
+        "index": 5
       }
     },
     {
@@ -493,7 +490,8 @@
       "channel": 13,
       "number": 54,
       "target": {
-        "kind": "reverbReturn"
+        "kind": "masterComp",
+        "index": 6
       }
     },
     {
@@ -501,7 +499,7 @@
       "channel": 13,
       "number": 55,
       "target": {
-        "kind": "sceneFader"
+        "kind": "velocityOffset"
       }
     },
     {
@@ -509,7 +507,8 @@
       "channel": 13,
       "number": 56,
       "target": {
-        "kind": "masterVolume"
+        "kind": "djFX",
+        "index": 0
       }
     },
     {

@@ -112,7 +112,7 @@
       "channel": 14,
       "number": 13,
       "target": {
-        "kind": "playStop"
+        "kind": "redo"
       }
     },
     {
