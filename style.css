@@ -28,7 +28,7 @@
 
   --r: 4px;           /* the app's squared-up corner */
   --r-panel: 6px;
-  --font: ui-rounded, -apple-system, "SF Pro Rounded", system-ui, "Segoe UI", Roboto, sans-serif;
+  --font: -apple-system, "SF Pro Text", system-ui, "Segoe UI", Roboto, sans-serif;
   --mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
 }
 
