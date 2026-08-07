@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Projects &amp; files — HeartBeat Manual</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <a class="wordmark" href="../index.html">Heart<span class="beat">Beat</span></a>
+  <nav>
+    <a href="../index.html">Home</a>
+    <a href="index.html" class="active">Manual</a>
+  </nav>
+</header>
+<div class="trackstripe"></div>
+
+<div class="manual" style="--accent:var(--t15)">
+<aside>
+  <div class="group">Start here</div>
+  <a href="index.html">Overview</a>
+  <div class="group">Core</div>
+  <a href="sequencer.html">Sequencer</a>
+  <a href="machines.html">Machines</a>
+  <a href="piano-roll.html">Piano roll</a>
+  <div class="group">Sound</div>
+  <a href="sampling.html">Sampling</a>
+  <a href="modulation.html">Modulation</a>
+  <a href="fx-mixer.html">FX &amp; mixer</a>
+  <div class="group">Setup</div>
+  <a href="midi-link.html">MIDI &amp; Link</a>
+  <a href="projects.html" class="here">Projects &amp; files</a>
+</aside>
+
+<article>
+<h1>Projects &amp; files</h1>
+<p class="lede">A project is one self-contained folder: the song, its 16
+patterns, every sample and wavetable it uses. Nothing is hidden — it's all
+visible in the Files app.</p>
+
+<h2 id="projects">The Projects screen</h2>
+<ul>
+<li>Projects list most-recent first; the active one wears a green check.
+Tap to load.</li>
+<li><strong>＋</strong> creates a new project (carrying over your current tempo).
+Swipe a row for Delete, Rename or Duplicate — duplicating copies the whole
+folder, samples included, so the copy owns its files.</li>
+<li>Renaming a project renames its folder to match.</li>
+<li>On a first launch the bundled <strong>Factory project</strong> loads — a
+ready-to-play kit built entirely from factory content.</li>
+</ul>
+
+<h2 id="autosave">Autosave and undo</h2>
+<ul>
+<li>Every edit autosaves a couple of seconds after you pause; switching
+projects flushes immediately. There is no save button to forget.</li>
+<li><strong>Undo/redo</strong> covers the whole project — trigs, locks,
+patterns, track setups, pools, slices, FX settings, morphs, the song chain,
+even MIDI bindings — 50 steps deep, with rapid edits coalescing into one.
+Transient things (DJ FX, app settings) sit outside it, and deleting a project
+can't be undone.</li>
+</ul>
+
+<h2 id="presets">Sound presets</h2>
+<p>Presets are rig-level — shared across every project. Save one from any
+track's setup drawer; load one from Browse Presets.</p>
+<ul>
+<li>A preset stores the machine, its complete parameter set, the 8 knob
+slots, both LFOs with their links and depths, the track's default note /
+velocity / gate — and for sampler presets, the audio file itself
+<em>with its slices</em>.</li>
+<li>Preset audio is stashed in a shared library, so loading a preset in
+another project imports its sample into that project's pool — the +Drive
+idea.</li>
+<li>Organize with <strong>#tags</strong> (picked from a checklist — kick, snare,
+bass, lead, pad and friends, plus your own). Search matches names, sample
+names and tags; <code>#term</code> searches tags only.</li>
+</ul>
+
+<h2 id="files">On disk</h2>
+<p>Everything lives under <strong>On My iPhone → HeartBeat</strong> in the
+Files app:</p>
+<div class="tablewrap"><table>
+<tr><th>Folder</th><th>Holds</th></tr>
+<tr><td>Projects/&lt;Name&gt;/</td><td>project.json plus the project's samples, and its Wavetables/ subfolder — one portable unit you can copy out whole.</td></tr>
+<tr><td>Presets/</td><td>One JSON per sound preset, plus the preset audio library (Samples/, Wavetables/).</td></tr>
+<tr><td>Factory/</td><td>The shared factory kit and wavetables — deterministic, self-healing, never copied into projects.</td></tr>
+<tr><td>Bindings/</td><td>Exported MIDI-binding files.</td></tr>
+</table></div>
+<ul>
+<li>Sample references inside a project are folder-relative, so renames and
+copies never break them.</li>
+<li>Imports (samples, wavetables) copy into the project folder — deleting a
+pool slot leaves the file on disk for other projects.</li>
+</ul>
+
+<div class="pagenav">
+  <a href="midi-link.html"><small>Previous</small>MIDI &amp; Link</a>
+  <a class="next" href="index.html"><small>Next</small>Manual overview</a>
+</div>
+
+</article>
+</div>
+
+<footer>
+  HeartBeat · <a href="index.html">Manual</a> · © 2026 Glen Macnab
+</footer>
+
+</body>
+</html>

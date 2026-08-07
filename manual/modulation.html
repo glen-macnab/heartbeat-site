@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Modulation — HeartBeat Manual</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <a class="wordmark" href="../index.html">Heart<span class="beat">Beat</span></a>
+  <nav>
+    <a href="../index.html">Home</a>
+    <a href="index.html" class="active">Manual</a>
+  </nav>
+</header>
+<div class="trackstripe"></div>
+
+<div class="manual" style="--accent:var(--t9)">
+<aside>
+  <div class="group">Start here</div>
+  <a href="index.html">Overview</a>
+  <div class="group">Core</div>
+  <a href="sequencer.html">Sequencer</a>
+  <a href="machines.html">Machines</a>
+  <a href="piano-roll.html">Piano roll</a>
+  <div class="group">Sound</div>
+  <a href="sampling.html">Sampling</a>
+  <a href="modulation.html" class="here">Modulation</a>
+  <a href="fx-mixer.html">FX &amp; mixer</a>
+  <div class="group">Setup</div>
+  <a href="midi-link.html">MIDI &amp; Link</a>
+  <a href="projects.html">Projects &amp; files</a>
+</aside>
+
+<article>
+<h1>Modulation</h1>
+<p class="lede">Three ways to put parameters in motion: two LFOs per track,
+recorded automation lanes on any knob, and morphs — whole-board snapshots you
+can crossfade between.</p>
+
+<h2 id="lfos">LFOs</h2>
+<p>Every track carries <strong>two LFOs</strong>, edited on the LFO page —
+each a row of WAVE · RATE · MULT · DEPTH with a live lane in the visualizer
+above.</p>
+<div class="tablewrap"><table>
+<tr><th>Knob</th><th>Options</th></tr>
+<tr><td>WAVE</td><td>SIN, TRI, SAW, SQR, RND.</td></tr>
+<tr><td>RATE</td><td>Period in steps — the full sweep of 1 to 128, no fixed stops — or free-running 0.05–8 Hz when MULT is on its HZ stop.</td></tr>
+<tr><td>MULT</td><td>×1, ×2, ×4, ×8, ×16, or HZ (untethered from tempo).</td></tr>
+<tr><td>DEPTH</td><td>Bipolar ±64 — negative flips the shape.</td></tr>
+</table></div>
+<ul>
+<li><strong>Trigger modes</strong> (chip on the LFO lane): FREE runs
+continuously; TRIG restarts on every trig; HOLD samples and freezes;
+ONE plays a single cycle; HALF plays half a cycle.</li>
+<li><strong>Assigning</strong>: long-press any knob (or tap its label) to open
+the modulation drawer — Off / LFO 1 / LFO 2 plus a per-knob depth scale.
+A knob riding an LFO wears a small wave badge. Up to <strong>8 modulation
+slots</strong> per track.</li>
+<li>The RANDOM lane draws the true sample-and-hold output, so what you see is
+what it plays.</li>
+</ul>
+
+<h2 id="lanes">Recorded automation (CC lanes)</h2>
+<ul>
+<li>With <span class="key red">REC</span> armed and the transport running, turn
+any knob — the movement records at full tick resolution and replays with the
+pattern. A knob carrying a lane wears a curve badge.</li>
+<li><strong>Recording over a lane replaces it</strong>: while your new sweep is
+in flight, everything the playhead crosses is erased — no interleaved mess
+from layered takes.</li>
+<li>Lanes send economically to hardware (decimated to 1/64-note events with
+repeats dropped). Clear a track's lanes from its track sheet: Clear Recorded
+CC Automation.</li>
+<li>On playback the knob follows the lane on screen; at a latched step the
+knob shows the lane's value at that step, dimmed, to distinguish it from a
+true p-lock.</li>
+</ul>
+
+<h2 id="morphs">Morphs</h2>
+<p>A morph is a snapshot of the whole board's <em>sound</em>: every internal
+machine's full parameter set, every MIDI track's 24 knob values, both LFOs
+per track, and the global mute set. Patterns don't change — morphs are how
+one pattern wears eight different outfits.</p>
+<ul>
+<li><strong>8 slots per pattern</strong>, on the MORPH strip (it replaces the
+step grid, so the pads stay in reach). Tap an empty pad to save; tap a filled
+pad to recall; hold to overwrite. Context menu: Rename…, Save Current Here,
+Set as Morph A / B, Clear.</li>
+<li><strong>The A/B crossfader</strong>: pick a morph for each end and ride the
+fader — parameters interpolate continuously, Octatrack-style. LFO depth and
+rate sweep too; discrete choices (shape, mode) switch at the midpoint; mutes
+snap in when the fader lands on an end.</li>
+<li><strong>Morphs auto-update</strong> (Settings, on by default): while a morph
+is governing the sound, your live edits re-capture into it — turn it off to
+keep morphs frozen until you explicitly save.</li>
+<li><a href="sequencer.html#song">Song rows</a> can recall a morph as they take
+over — pattern P03 with morph "chorus lift", then P03 again with "strip it
+back".</li>
+<li>The morph pads and crossfader are all
+<a href="midi-link.html">MIDI-learnable</a>, so a hardware fader can ride the
+morph live.</li>
+</ul>
+
+<div class="tip"><strong>Tip</strong>
+Layer the three: a slow LFO breathing the filter, a recorded lane pumping a
+send, and the morph fader pulling the whole kit between two moods — all at
+once, all non-destructive.</div>
+
+<div class="pagenav">
+  <a href="sampling.html"><small>Previous</small>Sampling</a>
+  <a class="next" href="fx-mixer.html"><small>Next</small>FX &amp; mixer</a>
+</div>
+
+</article>
+</div>
+
+<footer>
+  HeartBeat · <a href="index.html">Manual</a> · © 2026 Glen Macnab
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Piano roll — HeartBeat Manual</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <a class="wordmark" href="../index.html">Heart<span class="beat">Beat</span></a>
+  <nav>
+    <a href="../index.html">Home</a>
+    <a href="index.html" class="active">Manual</a>
+  </nav>
+</header>
+<div class="trackstripe"></div>
+
+<div class="manual" style="--accent:var(--t4)">
+<aside>
+  <div class="group">Start here</div>
+  <a href="index.html">Overview</a>
+  <div class="group">Core</div>
+  <a href="sequencer.html">Sequencer</a>
+  <a href="machines.html">Machines</a>
+  <a href="piano-roll.html" class="here">Piano roll</a>
+  <div class="group">Sound</div>
+  <a href="sampling.html">Sampling</a>
+  <a href="modulation.html">Modulation</a>
+  <a href="fx-mixer.html">FX &amp; mixer</a>
+  <div class="group">Setup</div>
+  <a href="midi-link.html">MIDI &amp; Link</a>
+  <a href="projects.html">Projects &amp; files</a>
+</aside>
+
+<article>
+<h1>Piano roll</h1>
+<p class="lede">A full-screen note editor over the <em>same trigs</em> the step
+grid edits — nothing is duplicated. A "note" here is one chord voice of a
+trig: the trig owns the step position, and every voice can carry its own gate
+and nudge.</p>
+
+<p>Open it from the roll button in the step grid's clipboard row. The header
+carries the track name, the current snap, its own undo/redo, and DONE; the
+transport row underneath has play, record, <span class="key">Q</span>, the
+headphones toggle, trash, COPY and PASTE.</p>
+
+<h2 id="gestures">Gestures</h2>
+<div class="tablewrap"><table>
+<tr><th>Gesture</th><th>Result</th></tr>
+<tr><td>Tap empty square</td><td>Parks the paste cursor there.</td></tr>
+<tr><td>Tap the same square again</td><td>Adds a note at that snapped position.</td></tr>
+<tr><td>Tap a note</td><td>Selects it and latches its step — the TRG panel, p-locks and hardware mappings all target it. Auditions if headphones are on.</td></tr>
+<tr><td>Tap a selected note</td><td>Deselects it (deleting lives on the trash chip).</td></tr>
+<tr><td>Tap the pitch gutter</td><td>Selects every note on that row — and plays the pitch, notes or not: the gutter doubles as a keyboard.</td></tr>
+<tr><td>Hold 0.3 s on empty space, drag</td><td>Marquee select (cyan dashes); the selection latches and auditions on release.</td></tr>
+<tr><td>Drag a note</td><td>Moves it. Grabbing a member of a selection moves the whole group together.</td></tr>
+<tr><td>Drag a note's right edge</td><td>Stretches the gate, snapped to the grid; a group stretches by the same delta.</td></tr>
+<tr><td>Drag empty space</td><td>Pans. Pinch zooms (anchored under your fingers).</td></tr>
+</table></div>
+
+<h2 id="snap">Snap and the Q button</h2>
+<ul>
+<li>The grid gets finer as you zoom: 1/16 → 1/32 → 1/64 (the header shows the
+current snap).</li>
+<li><span class="key">Q</span> governs drops: lit, moves and adds snap to the
+grid; unlit, notes land <em>exactly</em> where your finger leaves them, the
+offset written as the note's nudge.</li>
+</ul>
+
+<h2 id="overlap">Chords and the no-overlap rule</h2>
+<ul>
+<li>Notes on the same step stack into a chord — up to <strong>6 voices</strong>
+per trig. Each voice can have its own gate and nudge; voice 1's values are the
+step's own.</li>
+<li>Same-pitch notes never overlap: a moved, pasted or stretched note
+<strong>takes its lane</strong> — any same-pitch note whose span it touches is
+deleted. Group members never eat each other.</li>
+<li>Moving a fully-selected trig carries everything it owns — locks, velocity,
+condition, per-voice offsets. Dragging just one voice out of a chord takes
+only that voice; landing on an occupied step joins its chord.</li>
+</ul>
+
+<h2 id="tools">Selection tools</h2>
+<ul>
+<li><strong>Undo / redo</strong> — the roll keeps its own stack (64 snapshots),
+completely separate from the app's. DONE hands you back with the app stack
+untouched.</li>
+<li><strong>COPY / PASTE</strong> — the app-wide step clipboard, so notes
+round-trip with the step grid. Paste lands at the cursor if one is parked,
+otherwise just after the selection; the pasted notes come back selected,
+ready to drag as a group.</li>
+<li><strong>Trash</strong> — deletes the whole selection as one undoable event.</li>
+<li><strong>Headphones</strong> — audition on selection: selected or added notes
+play through the track's own voice at their velocities (never recorded).
+Persisted per device.</li>
+</ul>
+
+<h2 id="range">Range and naming</h2>
+<p>Rows run <strong>C-2 up to C8</strong>, named Ableton-style (middle C = C3).
+C rows are bold, row stripes mark the keyboard, and out-of-scale rows dim when
+the pattern has a scale. The ruler counts bar.beat; everything past the loop
+end is darkened. Amber dots on notes mark trigs carrying p-locks.</p>
+
+<div class="tip"><strong>Tip</strong>
+Because a roll note latches its step, you can tap a note and immediately turn
+any knob to p-lock it — the roll is a selection surface for the whole
+machine, not just pitches.</div>
+
+<div class="pagenav">
+  <a href="machines.html"><small>Previous</small>Machines</a>
+  <a class="next" href="sampling.html"><small>Next</small>Sampling</a>
+</div>
+
+</article>
+</div>
+
+<footer>
+  HeartBeat · <a href="index.html">Manual</a> · © 2026 Glen Macnab
+</footer>
+
+</body>
+</html>

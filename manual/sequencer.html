@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sequencer — HeartBeat Manual</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <a class="wordmark" href="../index.html">Heart<span class="beat">Beat</span></a>
+  <nav>
+    <a href="../index.html">Home</a>
+    <a href="index.html" class="active">Manual</a>
+  </nav>
+</header>
+<div class="trackstripe"></div>
+
+<div class="manual" style="--accent:var(--t0)">
+<aside>
+  <div class="group">Start here</div>
+  <a href="index.html">Overview</a>
+  <div class="group">Core</div>
+  <a href="sequencer.html" class="here">Sequencer</a>
+  <a href="machines.html">Machines</a>
+  <a href="piano-roll.html">Piano roll</a>
+  <div class="group">Sound</div>
+  <a href="sampling.html">Sampling</a>
+  <a href="modulation.html">Modulation</a>
+  <a href="fx-mixer.html">FX &amp; mixer</a>
+  <div class="group">Setup</div>
+  <a href="midi-link.html">MIDI &amp; Link</a>
+  <a href="projects.html">Projects &amp; files</a>
+</aside>
+
+<article>
+<h1>Sequencer</h1>
+<p class="lede">Sixteen tracks, sixteen patterns, and a step grid where every
+step can carry its own pitch, chord, length, timing, probability and a stack
+of parameter locks.</p>
+
+<h2 id="numbers">The shape of a pattern</h2>
+<ul>
+<li><strong>16 tracks</strong>, each hosting one <a href="machines.html">machine</a>.</li>
+<li><strong>16 patterns</strong> per project (P01–P16), each with an optional name.</li>
+<li>Per track, per pattern: a length of <strong>1–128 steps</strong> (16 per page),
+a <strong>speed</strong> from 1/8× to 4×, and its own swing override — so
+polymetric loops are just tracks of different lengths.</li>
+<li>A step is a 16th note, subdivided into <strong>24 ticks</strong> for
+micro-timing; nudge runs −23…+23 ticks, just under a step either way.</li>
+<li>Tempo 30–300 BPM, swing 50–80%, and per-pattern scale with root
+(22 scales from Major to Minor Bebop — or Chromatic for off).</li>
+</ul>
+
+<h2 id="trigs">Trigs</h2>
+<p>Tap a step to place a trig; tap again to clear it (clearing wipes
+everything the step carried, so re-adding starts fresh). Every value a trig
+holds is optional — <strong>unset means "ride the track default", set means a
+per-step lock and reads amber</strong> in the editors.</p>
+
+<div class="tablewrap"><table>
+<tr><th>Field</th><th>Range</th><th>Notes</th></tr>
+<tr><td>NOTE</td><td>C-2 … G8</td><td>Unset = track default note. Up to 6 chord voices per trig.</td></tr>
+<tr><td>VEL</td><td>0–127</td><td>0 shows as <code>GHOST</code> — a silent trig that only speaks when a live velocity offset lifts it.</td></tr>
+<tr><td>GATE</td><td>1/24 step … 128 steps</td><td>Whole steps read bare ("1"), fractions get decimals.</td></tr>
+<tr><td>NUDGE</td><td>−23 … +23 ticks</td><td>Negative nudge before step 1 wraps to the loop tail.</td></tr>
+<tr><td>PROB</td><td>1–100%</td><td>Rolled after the condition passes — both must succeed.</td></tr>
+<tr><td>COND</td><td>see below</td><td>Trig condition.</td></tr>
+<tr><td>RETRIG</td><td>×2…×8</td><td>Ratchet — see below.</td></tr>
+<tr><td>P-locks</td><td>any knob</td><td>Per-step parameter values (CC locks on MIDI tracks).</td></tr>
+</table></div>
+
+<h3 id="conditions">Trig conditions</h3>
+<div class="tablewrap"><table>
+<tr><th>Label</th><th>Fires…</th></tr>
+<tr><td>—</td><td>Always (default).</td></tr>
+<tr><td>FILL / ¬FILL</td><td>Only while <span class="key">FILL</span> is held / released. Holding FILL flips every one of these at once.</td></tr>
+<tr><td>1ST / ¬1ST</td><td>Only the first pass after start or a pattern switch / every pass except it.</td></tr>
+<tr><td>PRE / ¬PRE</td><td>Only if this step fired on the previous pass / only if it didn't.</td></tr>
+<tr><td>NEI / ¬NEI</td><td>Only if the previous track's last conditional step fired / didn't.</td></tr>
+<tr><td>LST / ¬LST</td><td>Only on the final pass before a queued pattern change / every other pass.</td></tr>
+<tr><td>1:2 … 1:8</td><td>Cycle conditions: pass n of every m (1:2, 2:2, 1:4, 2:4, 3:4, 4:4, 1:8).</td></tr>
+</table></div>
+
+<h3 id="retrig">Retrig (ratchet)</h3>
+<p>Per step: 2, 3, 4, 6 or 8 hits at any subdivision from 1/4 to 1/64T, with a
+velocity <strong>RAMP</strong> from 25% to 175% across the burst ("flat" at
+100%). A track-level default retrig can ratchet everything, with individual
+steps opting out via an explicit OFF. On a sampler with Voices &gt; 1 the hits
+overlap and ring; on mono machines each sub-hit chokes the last.</p>
+
+<h2 id="plocks">Parameter locks</h2>
+<p>The rule is simple: <strong>while a step is latched, every knob on every
+page writes to that step</strong> instead of the track. Long-hold a trig to
+latch it (the TRG editor opens), then turn anything — the knob's arc goes
+amber and the step gains an amber corner notch. Unlatch to edit the track's
+base sound again.</p>
+<ul>
+<li><strong>Double-tap a knob</strong> to clear its lock (double-tap also clears
+any value cell back to the track default).</li>
+<li>On MIDI tracks locks are real CC events sent just ahead of the note —
+including setup locks: CHANNEL, BANK, SUB (bank LSB) and PROG, so one step can
+re-channel or fire a patch change.</li>
+<li>The step's note and its locks share one probability/condition roll.</li>
+</ul>
+
+<h2 id="editing">Editing on the grid</h2>
+<ul>
+<li><strong>Long-press</strong> (0.18 s) latches a step for editing. Further
+long-presses <strong>grow the selection</strong> — hold several trigs and every
+edit fans across all of them. A tap moves the latch; tapping any selected step
+drops the whole selection.</li>
+<li><strong>COPY / PASTE</strong> are context-aware: with a step latched they move
+that step (a multi-selection copies with its spacing and lays back out from
+the paste target); with nothing latched they act on the whole track — PASTE
+becomes a menu: Paste Whole Track, Paste Sequence, Paste Device.</li>
+<li>A single copied step <strong>fans</strong> across a live multi-selection.</li>
+<li><strong>UNDO / REDO</strong>: 50 project-level snapshots; rapid edits coalesce.</li>
+<li>The page strip holds the length picker, page dots (long-press a dot to
+<strong>loop just that page</strong> — amber ring), follow-playhead toggle, and
+<span class="key">2×→</span> which doubles the loop and duplicates its content.</li>
+</ul>
+
+<h2 id="defaults">Track defaults</h2>
+<p>With nothing latched, the TRG page shows <strong>TRACK DEFAULTS</strong> —
+the same NOTE / VEL / GATE / PROB / NUDGE / COND / RETRIG / RAMP cells, but
+editing what every unset step inherits. This is where a track's default note
+(the pad pitch), default gate and default probability live.</p>
+
+<h2 id="recording">Recording</h2>
+<p>Arm <span class="key red">REC</span> and play: the on-screen keyboard,
+external MIDI in, and pads in PLAY mode all record. Recording is
+<strong>track-aware</strong> — pad hits land on the pad's own track; keys and
+MIDI-in land on the selected track.</p>
+<ul>
+<li>Hits snap to the nearest step with the remainder written as nudge;
+gates tidy to the nearest half step. Simultaneous notes stack into chords
+(up to 6 voices).</li>
+<li><span class="key">Q</span> toggles <strong>record quantize</strong>: lit,
+recorded hits hard-snap to the step. <strong>Hold Q</strong> for the quantize
+panel: a GLOBAL QUANTIZE slider and the selected track's own amount. Global
+and track quantize are <em>playback</em> quantize — always on, independent of
+the Q light, non-destructively pulling micro-timing toward the grid by the
+larger of the two amounts.</li>
+<li><strong>Knob recording</strong>: turn any knob while recording and it writes
+an automation lane at full tick resolution. Recording over an old sweep
+<strong>replaces</strong> it — no interleaved mess. Clear a track's lanes from
+its track sheet.</li>
+<li><strong>Count-in</strong>: off / 1 / 2 / 4 bars (record only), set in the
+tempo popover along with the metronome and its volume.</li>
+</ul>
+
+<h2 id="transport">Transport bar</h2>
+<div class="tablewrap"><table>
+<tr><th>Control</th><th>Does</th></tr>
+<tr><td>▶ / ■</td><td>Play / stop.</td></tr>
+<tr><td>● REC</td><td>Arms recording (writes only while playing; a red strip tops the bar while hot).</td></tr>
+<tr><td>Q</td><td>Tap: record quantize. Hold: quantize amount sliders.</td></tr>
+<tr><td>FILL</td><td>Momentary — hold to flip every FILL/¬FILL condition; lights amber.</td></tr>
+<tr><td>BPM</td><td>Drag vertically to change; tap for the tempo panel: slider, TAP tempo, swing 50–80%, metronome + volume, count-in.</td></tr>
+<tr><td>Pattern</td><td>Shows the active pattern name and label; pulses white/amber when a switch is queued. Tap for the pattern grid.</td></tr>
+</table></div>
+
+<h2 id="patterns">Patterns</h2>
+<p>The pattern sheet is a 4×4 grid: <strong>tap to queue</strong> a switch at
+the next pattern boundary (the pad wears a pulsing amber ring), <strong>hold to
+jump now</strong> with tracks keeping phase. While stopped a tap just selects.
+Long-press menus offer Restart Now, Play Once Then Return, Name…, Copy Current
+Here, and Clear.</p>
+<ul>
+<li><strong>SAVE / RELOAD</strong>: snapshot the active pattern and revert in one
+tap — the classic performance safety net.</li>
+<li><strong>SCALE</strong> row: pick a root and scale for the pattern; the
+keyboards dim out-of-scale keys, and QUANTIZE TRIGS folds existing notes into
+the scale.</li>
+</ul>
+
+<h2 id="song">Song mode</h2>
+<p>A song chains rows of <em>pattern × repeats</em> (1–32 each, up to 99 rows),
+each row optionally recalling a <a href="modulation.html#morphs">morph</a> as
+it takes over. Toggle SONG MODE and press play: the chain runs from the top,
+looping if LOOP is on, otherwise holding the last pattern. Reorder with drag
+handles; hand-picking a pattern exits song mode.</p>
+
+<h2 id="mutes">Mutes, pads and live modes</h2>
+<p>The pad board is 16 track pads that flash with every note. The latch row
+above switches what they do:</p>
+<div class="tablewrap"><table>
+<tr><th>Mode</th><th>Pads become</th></tr>
+<tr><td>MUTE</td><td>Mute toggles. Two scopes: GLOBAL (survives pattern changes) and PTN (saved with the pattern) — what's silent is the union. Slide across pads to paint mutes.</td></tr>
+<tr><td>PLAY</td><td>Performance pads: touch-down fires the track's default note, touch-up releases — and REC captures hits onto each pad's own track.</td></tr>
+<tr><td>GEN</td><td>The generator band: two euclidean pulse generators per track (combined OR/XOR/AND/SUB) and an arpeggiator (UP, DOWN, U/D, D/U, CONV, DIV, ORDER, RND; 1–6 octaves; gate 25–100%).</td></tr>
+<tr><td>KEYS</td><td>The full live keyboard (below).</td></tr>
+</table></div>
+
+<h3 id="keys">The live keyboard</h3>
+<ul>
+<li>Full 128-note range with a scroll strip above it — the strip is the whole
+range, the lit window is what you see; each track remembers its position.</li>
+<li>True multi-touch: one finger per note, slide across boundaries for
+glissando while other fingers hold a chord.</li>
+<li><strong>Velocity comes from where you touch the key</strong> — soft at the
+top edge, 127 at the bottom.</li>
+<li>Scale-aware: out-of-scale keys dim but stay playable; keys light in the
+track color when pressed, sequenced, or held by external MIDI.</li>
+<li><strong>PITCH</strong> wheel springs back to center (real pitch bend on MIDI
+tracks, ±2 semitones render-side on internal machines). <strong>MOD</strong>
+wheel latches — CC 1 out on MIDI tracks, filter cutoff on internal machines,
+and it records.</li>
+</ul>
+
+<h2 id="track-setup">Track setup</h2>
+<p>The track sheet holds the track's identity: name, device,
+MIDI output and channel (for MIDI tracks), color, audio out (Master, stereo
+pairs or mono outs), sampler Voices (1–8 — the choke control: 1 chokes each
+hit with the next, more lets them ring), the per-track quantize slider, and
+preset browse/save. Below it, the per-pattern section: length, speed, swing
+override, and Clear Recorded CC Automation.</p>
+
+<div class="pagenav">
+  <a href="index.html"><small>Previous</small>Overview</a>
+  <a class="next" href="machines.html"><small>Next</small>Machines</a>
+</div>
+
+</article>
+</div>
+
+<footer>
+  HeartBeat · <a href="index.html">Manual</a> · © 2026 Glen Macnab
+</footer>
+
+</body>
+</html>

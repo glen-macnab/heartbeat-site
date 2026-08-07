@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FX &amp; mixer — HeartBeat Manual</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <a class="wordmark" href="../index.html">Heart<span class="beat">Beat</span></a>
+  <nav>
+    <a href="../index.html">Home</a>
+    <a href="index.html" class="active">Manual</a>
+  </nav>
+</header>
+<div class="trackstripe"></div>
+
+<div class="manual" style="--accent:var(--t11)">
+<aside>
+  <div class="group">Start here</div>
+  <a href="index.html">Overview</a>
+  <div class="group">Core</div>
+  <a href="sequencer.html">Sequencer</a>
+  <a href="machines.html">Machines</a>
+  <a href="piano-roll.html">Piano roll</a>
+  <div class="group">Sound</div>
+  <a href="sampling.html">Sampling</a>
+  <a href="modulation.html">Modulation</a>
+  <a href="fx-mixer.html" class="here">FX &amp; mixer</a>
+  <div class="group">Setup</div>
+  <a href="midi-link.html">MIDI &amp; Link</a>
+  <a href="projects.html">Projects &amp; files</a>
+</aside>
+
+<article>
+<h1>FX &amp; mixer</h1>
+<p class="lede">The top carousel holds the whole mix side of the app:
+GFX · MIX · MFX · EQ · MSTR · RTE. Swipe between pages or map hardware arrows
+to page for you.</p>
+
+<h2 id="signal">The signal path</h2>
+<p>Per-voice FX (<a href="machines.html#fx">the FX knob page</a>) → track buses
+→ <strong>master compressor</strong> (sidechainable, per-track routable) →
+<strong>master fader</strong> → <strong>EQ</strong> → <strong>DJ FX</strong> →
+<strong>limiter</strong> → a safety saturator. The delay and reverb are send
+buses with their own returns.</p>
+
+<h2 id="gfx">GFX — global sends</h2>
+<p>Two project-wide buses fed by every track's DELAY and REVERB send knobs.</p>
+<div class="tablewrap"><table>
+<tr><th>Delay</th><th></th></tr>
+<tr><td>TIME</td><td>Tempo-synced: 1/32, 1/16, 1/8T, 1/16·, 1/8, 1/4T, 1/8· (default), 1/4, 1/4·, 1/2.</td></tr>
+<tr><td>FB</td><td>Feedback.</td></tr>
+<tr><td>PING PONG</td><td>ON bounces echoes hard left/right.</td></tr>
+<tr><td>TONE</td><td>Feedback-path brightness — low values darken each repeat.</td></tr>
+</table></div>
+<div class="tablewrap"><table>
+<tr><th>Reverb</th><th></th></tr>
+<tr><td>SIZE / DAMP</td><td>Plate size and high-frequency damping.</td></tr>
+<tr><td>PRE</td><td>Pre-delay, 0–120 ms.</td></tr>
+<tr><td>WIDTH</td><td>Stereo width of the return, mono to full spread.</td></tr>
+</table></div>
+
+<h2 id="mix">MIX — the mixer</h2>
+<p>Sixteen faders with live meters, tinted per track. Internal tracks route
+through their VOL parameter — so the fader is p-lockable, LFO-able and
+morphable like any sound value; MIDI tracks send CC 7 on their channel. Muted
+tracks dim; tap a fader's label to select its track. Pan lives on each
+track's AMP page.</p>
+
+<h2 id="mfx">MFX — DJ performance FX</h2>
+<p>A performance panel on the master bus. Deliberately transient — nothing
+here saves with the project, so every session starts clean.</p>
+<div class="tablewrap"><table>
+<tr><th>Control</th><th>Does</th></tr>
+<tr><td>FILTER</td><td>DJ-mixer color filter on one knob: left of center sweeps a lowpass down, right sweeps a highpass up. Double-tap to snap back to off. RES sets its resonance.</td></tr>
+<tr><td>ECHO</td><td>Echo throw — feedback rises with the knob toward self-oscillation. Its division chip: 1/8, 1/8•, 1/4, 1/2.</td></tr>
+<tr><td>CRUSH</td><td>One-knob lo-fi: sample-rate and bit-depth sweep together.</td></tr>
+<tr><td>GATE</td><td>Trance gate locked to the beat grid; division chip 1/32–1/4.</td></tr>
+<tr><td>REPEAT</td><td>Hold-pad beat repeat — loops the last beat, 1/2, 1/4 or 1/8 of master audio while held.</td></tr>
+<tr><td>TAPE</td><td>Hold-pad tape stop — the master brakes to a standstill while held, spins back on release.</td></tr>
+</table></div>
+
+<h2 id="eq">EQ — master EQ</h2>
+<p>Three bands over a live response curve: LOW (shelf at 100 Hz, ±12 dB),
+MID (bell, sweepable 200 Hz–5 kHz via FREQ), HIGH (shelf at 8 kHz). Double-tap
+any cell to re-center flat; BYP bypasses without a click.</p>
+
+<h2 id="mstr">MSTR — dynamics and levels</h2>
+<ul>
+<li><strong>Compressor</strong> — THR (−40…0 dB), RATIO (1:1–20:1), ATK
+(1–100 ms), REL (30–600 ms), GAIN (makeup 0–+12 dB), and SIDE: the sidechain
+key, Master (self) or any single track — classic kick-ducking. A red meter
+shows gain reduction.</li>
+<li><strong>Limiter</strong> — CEIL (0 to −24 dBFS) and REL (5–305 ms), with its
+own amber GR meter. Both stages have click-free BYP chips.</li>
+<li><strong>Faders</strong> — DLY and REV return levels and the MST master
+volume, each with live meters.</li>
+</ul>
+
+<h2 id="rte">RTE — compressor routing</h2>
+<p>A board of 16 track chips plus DLY and REV return chips. Lit = that source
+runs through the master compressor; dim = it bypasses and rejoins after,
+dry to the master fader. Route the drums through and the pads around, or duck
+everything except the delay tail — the choice is saved per track and
+survives machine swaps.</p>
+
+<div class="pagenav">
+  <a href="modulation.html"><small>Previous</small>Modulation</a>
+  <a class="next" href="midi-link.html"><small>Next</small>MIDI &amp; Link</a>
+</div>
+
+</article>
+</div>
+
+<footer>
+  HeartBeat · <a href="index.html">Manual</a> · © 2026 Glen Macnab
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,475 @@
+/* HeartBeat site — the app's own visual language, translated to the web.
+   Forced dark, one hue per track, cyan reserved for MIDI-learn, amber for locks,
+   square corners. Colors sampled from HeartBeat/Theme.swift. */
+
+:root {
+  --bg: rgb(5, 5, 8);
+  --surface: rgb(33, 33, 42);
+  --elevated: rgb(18, 18, 23);
+  --step-off: rgb(42, 42, 52);
+  --step-accent: rgb(60, 60, 74);
+  --hairline: rgba(255, 255, 255, 0.16);
+  --hairline-soft: rgba(255, 255, 255, 0.08);
+  --amber: rgb(255, 191, 38);
+  --cyan: rgb(51, 230, 255);
+  --red: rgb(255, 61, 61);
+  --violet: rgb(194, 143, 255);
+  --text: rgba(255, 255, 255, 0.92);
+  --text-dim: rgba(255, 255, 255, 0.55);
+  --text-faint: rgba(255, 255, 255, 0.35);
+
+  /* The default track sweep (Theme.defaultTrackSlots) */
+  --t0: rgb(235, 74, 65);   --t1: rgb(229, 116, 46);  --t2: rgb(242, 169, 72);
+  --t3: rgb(252, 241, 94);  --t4: rgb(203, 249, 79);  --t5: rgb(103, 192, 57);
+  --t6: rgb(122, 251, 175); --t7: rgb(86, 188, 175);  --t8: rgb(109, 230, 252);
+  --t9: rgb(75, 162, 232);  --t10: rgb(54, 123, 187); --t11: rgb(132, 109, 221);
+  --t12: rgb(202, 114, 222);--t13: rgb(235, 76, 206); --t14: rgb(212, 93, 158);
+  --t15: rgb(240, 153, 167);
+
+  --r: 4px;           /* the app's squared-up corner */
+  --r-panel: 6px;
+  --font: ui-rounded, -apple-system, "SF Pro Rounded", system-ui, "Segoe UI", Roboto, sans-serif;
+  --mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 16px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection { background: rgba(51, 230, 255, 0.25); }
+
+a { color: var(--cyan); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+code {
+  font-family: var(--mono);
+  font-size: 0.85em;
+  background: var(--surface);
+  border: 1px solid var(--hairline-soft);
+  border-radius: 3px;
+  padding: 0.1em 0.4em;
+}
+
+/* ---------- chrome shared by every page ---------- */
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 22px;
+  background: rgba(5, 5, 8, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--hairline-soft);
+}
+
+.topbar .wordmark {
+  font-weight: 800;
+  font-size: 17px;
+  letter-spacing: 0.02em;
+  color: var(--text);
+}
+.topbar .wordmark:hover { text-decoration: none; }
+.topbar .wordmark .beat { color: var(--red); }
+
+.topbar nav { margin-left: auto; display: flex; gap: 18px; }
+.topbar nav a {
+  color: var(--text-dim);
+  font-size: 13.5px;
+  font-weight: 600;
+}
+.topbar nav a:hover { color: var(--text); text-decoration: none; }
+.topbar nav a.active { color: var(--text); }
+
+/* The 16-track rainbow hairline — the site's signature stripe. */
+.trackstripe {
+  height: 3px;
+  background: linear-gradient(90deg,
+    var(--t0) 0 6.25%,  var(--t1) 0 12.5%,  var(--t2) 0 18.75%, var(--t3) 0 25%,
+    var(--t4) 0 31.25%, var(--t5) 0 37.5%,  var(--t6) 0 43.75%, var(--t7) 0 50%,
+    var(--t8) 0 56.25%, var(--t9) 0 62.5%,  var(--t10) 0 68.75%, var(--t11) 0 75%,
+    var(--t12) 0 81.25%, var(--t13) 0 87.5%, var(--t14) 0 93.75%, var(--t15) 0 100%);
+}
+
+footer {
+  margin-top: 80px;
+  padding: 28px 22px 40px;
+  border-top: 1px solid var(--hairline-soft);
+  color: var(--text-faint);
+  font-size: 13px;
+  text-align: center;
+}
+footer a { color: var(--text-dim); }
+
+/* ---------- landing ---------- */
+
+.hero {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 84px 22px 40px;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: clamp(42px, 8vw, 76px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+}
+.hero h1 .beat { color: var(--red); }
+
+.hero .tagline {
+  margin: 18px auto 0;
+  max-width: 620px;
+  font-size: clamp(17px, 2.6vw, 21px);
+  color: var(--text-dim);
+}
+
+.hero .cta-row {
+  margin-top: 34px;
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.badge-soon {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background: var(--surface);
+  border: 1px solid var(--hairline);
+  border-radius: var(--r);
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--text-dim);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.badge-soon .dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--amber);
+  box-shadow: 0 0 8px var(--amber);
+}
+
+.btn-manual {
+  display: inline-flex;
+  align-items: center;
+  padding: 12px 20px;
+  background: var(--text);
+  color: var(--bg) !important;
+  border-radius: var(--r);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.btn-manual:hover { text-decoration: none; opacity: 0.85; }
+
+.section {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 48px 22px;
+}
+
+.section h2 {
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-bottom: 22px;
+}
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 14px;
+}
+
+.feature {
+  background: var(--elevated);
+  border: 1px solid var(--hairline-soft);
+  border-left: 3px solid var(--accent, var(--t8));
+  border-radius: var(--r-panel);
+  padding: 18px 18px 16px;
+}
+.feature h3 { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+.feature p { font-size: 14px; color: var(--text-dim); }
+.feature a { font-size: 13px; font-weight: 600; }
+
+/* ---------- the CSS-drawn app mockup ---------- */
+
+.mockup {
+  max-width: 760px;
+  margin: 46px auto 0;
+  background: var(--elevated);
+  border: 1px solid var(--hairline-soft);
+  border-radius: 10px;
+  padding: 14px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+}
+
+.m-transport { display: flex; gap: 5px; margin-bottom: 10px; }
+.m-key {
+  height: 40px;
+  background: var(--surface);
+  border-radius: var(--r);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--text-dim);
+  flex: 0 0 auto;
+}
+.m-key.flex { flex: 1 1 auto; }
+.m-key .tri {
+  width: 0; height: 0;
+  border-left: 13px solid var(--t6);
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+}
+.m-key .rec {
+  width: 22px; height: 22px; border-radius: 50%;
+  border: 2px solid var(--red);
+  display: flex; align-items: center; justify-content: center;
+}
+.m-key .rec::after { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--red); }
+.m-key .stack { text-align: center; line-height: 1.15; }
+.m-key .stack small { display: block; font-size: 8px; color: var(--text-faint); }
+
+.m-knobs {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 8px;
+  padding: 10px 4px 12px;
+}
+.m-knob { text-align: center; }
+.m-knob svg { width: 100%; max-width: 52px; height: auto; display: block; margin: 0 auto; }
+.m-knob .lbl { font-size: 9px; font-weight: 700; color: var(--text-dim); margin-top: 3px; letter-spacing: 0.06em; }
+
+.m-grid {
+  display: grid;
+  grid-template-columns: repeat(16, 1fr);
+  gap: 4px;
+}
+.m-step {
+  aspect-ratio: 1 / 1.35;
+  background: var(--step-off);
+  border-radius: 3px;
+  position: relative;
+}
+.m-step.accent { background: var(--step-accent); }
+.m-step.on { background: var(--step-color, var(--t8)); }
+.m-step.lock::after {
+  content: "";
+  position: absolute;
+  top: 0; right: 0;
+  border-style: solid;
+  border-width: 0 9px 9px 0;
+  border-color: transparent var(--amber) transparent transparent;
+  filter: drop-shadow(-1px 1px 1px rgba(0, 0, 0, 0.9));
+}
+.m-step.playhead { outline: 2px solid rgba(255, 255, 255, 0.85); outline-offset: -2px; }
+
+@media (max-width: 560px) {
+  .m-knobs { grid-template-columns: repeat(4, 1fr); }
+  .m-knobs .m-knob:nth-child(n+5) { display: none; }
+}
+
+/* ---------- manual layout ---------- */
+
+.manual {
+  display: grid;
+  grid-template-columns: 230px minmax(0, 1fr);
+  gap: 40px;
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 34px 22px 60px;
+}
+
+.manual aside {
+  position: sticky;
+  top: 76px;
+  align-self: start;
+  font-size: 13.5px;
+}
+.manual aside .group {
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin: 18px 0 6px;
+}
+.manual aside a {
+  display: block;
+  color: var(--text-dim);
+  padding: 4px 10px;
+  border-left: 2px solid transparent;
+  font-weight: 600;
+}
+.manual aside a:hover { color: var(--text); text-decoration: none; }
+.manual aside a.here {
+  color: var(--text);
+  border-left-color: var(--accent, var(--cyan));
+  background: linear-gradient(90deg, rgba(255,255,255,0.05), transparent);
+}
+
+.manual article { min-width: 0; }
+
+.manual article h1 {
+  font-size: 34px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  margin-bottom: 6px;
+}
+.manual article .lede {
+  color: var(--text-dim);
+  font-size: 17px;
+  margin-bottom: 30px;
+  max-width: 62ch;
+}
+.manual article h2 {
+  font-size: 22px;
+  font-weight: 800;
+  margin: 44px 0 12px;
+  padding-top: 18px;
+  border-top: 1px solid var(--hairline-soft);
+}
+.manual article h2:first-of-type { border-top: none; padding-top: 0; }
+.manual article h3 {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 26px 0 8px;
+}
+.manual article p { margin: 10px 0; max-width: 70ch; }
+.manual article ul, .manual article ol { margin: 10px 0 10px 22px; max-width: 66ch; }
+.manual article li { margin: 5px 0; }
+
+/* a physical control / button name */
+.key {
+  display: inline-block;
+  font-size: 0.8em;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  background: var(--surface);
+  border: 1px solid var(--hairline);
+  border-bottom-width: 2px;
+  border-radius: 3px;
+  padding: 0.05em 0.5em;
+  vertical-align: 0.05em;
+}
+.key.amber { color: var(--amber); }
+.key.cyan { color: var(--cyan); }
+.key.red { color: var(--red); }
+
+/* callouts */
+.tip, .note {
+  border-radius: var(--r-panel);
+  border: 1px solid var(--hairline-soft);
+  padding: 12px 16px;
+  margin: 16px 0;
+  font-size: 14.5px;
+  max-width: 70ch;
+  background: var(--elevated);
+}
+.tip { border-left: 3px solid var(--t6); }
+.note { border-left: 3px solid var(--amber); }
+.tip strong:first-child, .note strong:first-child {
+  text-transform: uppercase;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  display: block;
+  margin-bottom: 3px;
+  color: var(--text-dim);
+}
+
+/* parameter tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 14px 0 22px;
+  font-size: 14px;
+}
+th {
+  text-align: left;
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  padding: 6px 12px;
+  border-bottom: 1px solid var(--hairline);
+}
+td {
+  padding: 7px 12px;
+  border-bottom: 1px solid var(--hairline-soft);
+  vertical-align: top;
+}
+td:first-child {
+  font-family: var(--mono);
+  font-size: 12.5px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+td:last-child { color: var(--text-dim); }
+.tablewrap { overflow-x: auto; }
+
+/* page-turn footer nav */
+.pagenav {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 56px;
+  padding-top: 18px;
+  border-top: 1px solid var(--hairline-soft);
+}
+.pagenav a {
+  background: var(--elevated);
+  border: 1px solid var(--hairline-soft);
+  border-radius: var(--r);
+  padding: 12px 16px;
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--text);
+  flex: 0 1 auto;
+}
+.pagenav a small {
+  display: block;
+  font-weight: 600;
+  font-size: 10.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+.pagenav a:hover { text-decoration: none; border-color: var(--hairline); }
+.pagenav .next { margin-left: auto; text-align: right; }
+
+@media (max-width: 760px) {
+  .manual { grid-template-columns: 1fr; gap: 8px; }
+  .manual aside {
+    position: static;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2px 10px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--hairline-soft);
+  }
+  .manual aside .group { width: 100%; margin: 8px 0 2px; }
+  .manual aside a { border-left: none; padding: 2px 4px; }
+}
