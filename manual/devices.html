@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Machines — HeartBeat Manual</title>
+<title>Devices — HeartBeat Manual</title>
 <link rel="stylesheet" href="../style.css">
 </head>
 <body>
@@ -23,7 +23,7 @@
   <a href="index.html">Overview</a>
   <div class="group">Core</div>
   <a href="sequencer.html">Sequencer</a>
-  <a href="machines.html" class="here">Machines</a>
+  <a href="devices.html" class="here">Devices</a>
   <a href="piano-roll.html">Piano roll</a>
   <div class="group">Sound</div>
   <a href="sampling.html">Sampling</a>
@@ -35,49 +35,49 @@
 </aside>
 
 <article>
-<h1>Machines</h1>
-<p class="lede">Every track hosts one machine — a sound engine with its own knob
-pages. Swap machines from the device chip above the knobs; the sequence stays,
+<h1>Devices</h1>
+<p class="lede">Every track hosts one device — a sound engine with its own knob
+pages. Swap devices from the device chip above the knobs; the sequence stays,
 the sound changes.</p>
 
 <h2 id="devices">The devices</h2>
 <div class="tablewrap"><table>
 <tr><th>Device</th><th>Voices</th><th>What it is</th></tr>
-<tr><td>SAMPLER</td><td>1–8</td><td>Plays samples from the project pool through six machine modes — one-shot, repitch, warp, stretch, slice and grid. The Voices setting (1–8, in track setup) lets replaced hits ring instead of cutting.</td></tr>
+<tr><td>SAMPLER</td><td>1–8</td><td>Plays samples from the project pool through six sampler modes — one-shot, repitch, warp, stretch, slice and grid. The Voices setting (1–8, in track setup) lets replaced hits ring instead of cutting.</td></tr>
 <tr><td>MONO</td><td>mono</td><td>Seven detuned oscillators plus a sub sine — a fat unison monosynth with glide.</td></tr>
 <tr><td>POLY</td><td>8</td><td>Three oscillators per voice, eight voices — the polyphonic sibling.</td></tr>
 <tr><td>FM</td><td>8</td><td>Four sine operators, eight algorithms, feedback — classic 4-op FM.</td></tr>
-<tr><td>WT</td><td>8</td><td>Wavetable scanning with up to 7-voice unison, reading Serum-convention tables from a 128-slot pool.</td></tr>
-<tr><td>ACID</td><td>mono</td><td>One oscillator into a zero-delay-feedback ladder filter — a 303-style voice with slides and accents.</td></tr>
+<tr><td>WT</td><td>8</td><td>Wavetable scanning with up to 7-voice unison, reading standard 2048-sample-frame tables from a 128-slot pool.</td></tr>
+<tr><td>ACID</td><td>mono</td><td>One oscillator into a zero-delay-feedback ladder filter — a classic acid voice with slides and accents.</td></tr>
 <tr><td>MIDI</td><td>—</td><td>No internal sound: the track's notes and knob movements go out the MIDI wire to hardware or other apps.</td></tr>
 </table></div>
 
 <div class="note"><strong>Note</strong>
-Switching a track's machine resets its knob values to that machine's defaults
+Switching a track's device resets its knob values to that device's defaults
 in every pattern, and re-points the track's eight knob slots. The trigs
 themselves survive the swap.</div>
 
 <h2 id="pages">Param pages</h2>
-<p>Every internal machine's parameter area is a row of pages:
-<span class="key">TRG</span> (the step editor), the machine's sound pages, then
+<p>Every internal device's parameter area is a row of pages:
+<span class="key">TRG</span> (the step editor), the device's sound pages, then
 <span class="key">LFO</span>.</p>
 
 <div class="tablewrap"><table>
-<tr><th>Machine</th><th>Pages</th></tr>
+<tr><th>Device</th><th>Pages</th></tr>
 <tr><td>Sampler</td><td>TRG · SRC · FLTR · AMP · FX · LFO</td></tr>
 <tr><td>Mono / Poly / Wavetable / Acid</td><td>TRG · OSC · FLTR · AMP · FX · LFO</td></tr>
 <tr><td>FM</td><td>TRG · FM · MOD · FLTR · AMP · FX · LFO</td></tr>
 <tr><td>MIDI</td><td>TRG · SRC · 1 · 2 · 3 · LFO</td></tr>
 </table></div>
 
-<p>Each sound page is a fixed 2×4 knob grid. A machine that doesn't use a cell
+<p>Each sound page is a fixed 2×4 knob grid. A device that doesn't use a cell
 leaves it empty rather than reshuffling — so your hands (and any MIDI-mapped
 controller) always find the same knob in the same place. When a step is
 latched, the header reads <span class="key amber">LOCKS</span> and the knobs
 edit that step's parameter locks instead of the track sound.</p>
 
-<h2 id="sampler">The sampler's six machine modes</h2>
-<p>The sampler reinterprets its SRC page per machine mode. Pick the mode from
+<h2 id="sampler">The sampler's six modes</h2>
+<p>The sampler reinterprets its SRC page per mode. Pick the mode from
 the dropdown chip in the waveform header (it's a parameter underneath — so it
 can be locked per step). The window you play is always set by
 <span class="key">START</span> and <span class="key">LENGTH</span>.</p>
@@ -95,7 +95,7 @@ can be locked per step). The window you play is always set by
 <div class="tip"><strong>Tip</strong>
 In SLICE and GRID modes, tapping a slice segment in the waveform display plays
 that slice through the track's voice <em>and</em> points the SLICE knob at it.
-On slice machines the machine menu also offers Linear / Random / Clear Slice
+On slice devices the device menu also offers Linear / Random / Clear Slice
 Locks to scatter slice choices across the pattern's steps in one gesture.</div>
 
 <h3>SRC page by mode</h3>
@@ -159,13 +159,13 @@ performance knob. Ride it with an LFO.</li>
 <li><strong>UNISON</strong> — 1 to 7 stacked readers; <strong>SPREAD</strong> detunes
 (±40 cents) and pans the stack in one move.</li>
 </ul>
-<p>Tables follow the Serum convention — 2048-sample frames, up to 256 per file —
+<p>Tables follow the common wavetable convention — 2048-sample frames, up to 256 per file —
 and anything that isn't a clean multiple of 2048 loads as a single-cycle wave.
 Eight factory tables ship in the pool: Basic Morph, PWM, Harmonics, Sync, FM,
 Vowel, Bell and Digital. Import your own from any Files location via the
 wavetable browser.</p>
 
-<h2 id="acid">Acid — the 303 voice</h2>
+<h2 id="acid">Acid — the squelch box</h2>
 <p>One oscillator (SAW or SQR), straight into a 4-pole ladder filter modeled
 with zero-delay feedback. No filter TYPE knob — the ladder <em>is</em> the
 filter. The low end thins as resonance rises, exactly like the original;
@@ -174,12 +174,13 @@ that's the squelch.</p>
 <li><strong>Slides</strong> — it's mono, and legato is the language: a note that
 starts while the previous gate still holds <em>slides</em> — pitch glides to the
 new note with no envelope retrig. In the sequencer, just overlap the gates.
-GLIDE sets the slide time (default ≈ 65 ms, the 303's fixed feel).</li>
+GLIDE sets the slide time (default ≈ 65 ms, the classic fixed slide feel).</li>
 <li><strong>Accents</strong> — a trig with velocity 110 or higher accents: louder
-(the 303's only dynamic) plus a resonance-leaning kick to the filter cutoff.
+(accent is the voice's only dynamic, true to the original) plus a
+resonance-leaning kick to the filter cutoff.
 The ACCENT knob sets the depth. Default trig velocity is 100, so plain steps
 stay plain — push a step's velocity up to accent it.</li>
-<li><strong>DRIVE after the filter</strong> — uniquely on this machine, drive sits
+<li><strong>DRIVE after the filter</strong> — uniquely on this device, drive sits
 <em>after</em> the ladder, so the resonant peak hits the clipper hardest as it
 sweeps. That's the acid scream.</li>
 </ul>
@@ -188,7 +189,7 @@ The acid track arrives pre-squelched: low cutoff, high resonance, +50%
 envelope mod and a gated amp envelope so slides read your gate lengths. Start
 from the defaults and just write overlapping notes.</div>
 
-<h2 id="filter">FLTR page — every machine</h2>
+<h2 id="filter">FLTR page — every device</h2>
 <p>TYPE · FREQ · RESO · ENV over F.ATK · F.DEC · F.SUS · F.REL.</p>
 <div class="tablewrap"><table>
 <tr><th>TYPE</th><th>Filter</th></tr>
@@ -208,7 +209,7 @@ and a dashed amber curve showing where full envelope depth will take it.</p>
 to 4 seconds with the knob resolution concentrated where percussion lives.</p>
 <ul>
 <li><strong>REL at max shows ∞ — one-shot mode.</strong> Note-off is ignored and
-DEC becomes the tail knob, Digitakt-style. Samples default to this. Pull REL
+DEC becomes the tail knob, drum-machine style. Samples default to this. Pull REL
 below ∞ for a normal gated ADSR where SUS and your gate lengths matter.</li>
 <li><strong>DEC at max shows ∞</strong> — on the sampler the envelope holds open
 so the whole sample plays through. On synths (no sample end to stop them)
@@ -224,7 +225,7 @@ HP → BIT/SRR → DRIVE → RING → filter → STEREO → amp/pan → sends, w
 as a per-track stereo insert.</p>
 <div class="tablewrap"><table>
 <tr><th>Knob</th><th>Does</th></tr>
-<tr><td>BIT</td><td>Bit-crusher, 16 down to 2 bits — envelope-tracked SP-1200 style, so resolution falls as a note decays into a sputtery tail.</td></tr>
+<tr><td>BIT</td><td>Bit-crusher, 16 down to 2 bits — envelope-tracked like the classic vintage samplers, so resolution falls as a note decays into a sputtery tail.</td></tr>
 <tr><td>SRR</td><td>Sample-rate reduction, ÷1 to ÷100 sample-and-hold.</td></tr>
 <tr><td>DRIVE</td><td>The shared waveshaper (on the AMP page): asymmetric tanh with up to ~61× gain and automatic makeup — even harmonics, amp-like.</td></tr>
 <tr><td>RING</td><td>Ring modulator — one knob sweeps both mix and carrier (40 Hz–4 kHz).</td></tr>

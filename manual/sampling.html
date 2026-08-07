@@ -23,7 +23,7 @@
   <a href="index.html">Overview</a>
   <div class="group">Core</div>
   <a href="sequencer.html">Sequencer</a>
-  <a href="machines.html">Machines</a>
+  <a href="devices.html">Devices</a>
   <a href="piano-roll.html">Piano roll</a>
   <div class="group">Sound</div>
   <a href="sampling.html" class="here">Sampling</a>
@@ -88,7 +88,7 @@ unsliced sample plays whole.</li>
 </ul>
 <div class="tip"><strong>Tip</strong>
 Back on the waveform display, tapping a slice plays it through the track's
-voice and points the SLICE knob at it. The machine menu's Linear / Random
+voice and points the SLICE knob at it. The device menu's Linear / Random
 Slice Locks scatter slice choices across the pattern in one move.</div>
 
 <h2 id="wavetables">The wavetable pool</h2>
@@ -97,15 +97,15 @@ Slice Locks scatter slice choices across the pattern in one move.</div>
 track. Auditioning a table plays it linearly — you hear the morph sweep
 itself.</li>
 <li>Import from any Files folder (wav, aif/aiff, flac, caf). Files follow the
-Serum convention — 2048-sample frames — and anything else loads as a
+common wavetable convention — 2048-sample frames — and anything else loads as a
 single-cycle wave.</li>
 <li>Eight factory tables are seeded automatically: Basic Morph, PWM,
 Harmonics, Sync, FM, Vowel, Bell, Digital.</li>
 </ul>
 
 <h2 id="factory">Factory content</h2>
-<p>A 12-piece drum kit — 909 Kick, Snare, Clap, Closed &amp; Open Hat, Rim,
-Low/Mid/Hi Toms, Ride, plus 808 Kick and Sub Bass — is synthesized to disk
+<p>A 12-piece drum kit — kicks, snare, clap, closed and open hats, rim,
+three toms, ride and a sub bass — is synthesized to disk
 deterministically (circuit-modeled, byte-identical on every device) and added
 the first time a sampler track meets an empty pool. Factory files live in a
 shared folder outside your projects, and self-heal: if one goes missing it's
