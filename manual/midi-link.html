@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>MIDI &amp; Link — HeartBeat Manual</title>
+<title>MIDI &amp; Link · HeartBeat Manual</title>
 <link rel="stylesheet" href="../style.css">
 </head>
 <body>
@@ -36,13 +36,13 @@
 
 <article>
 <h1>MIDI &amp; Link</h1>
-<p class="lede">HeartBeat sequences hardware as happily as its own devices —
+<p class="lede">HeartBeat sequences hardware as happily as its own devices  - 
 per-track outputs, a virtual input port, sample-accurate clock, and a learn
 mode that can bind nearly everything on screen to a controller.</p>
 
 <h2 id="learn">MIDI learn</h2>
 <p>Tap the radiowaves button beside the transport (it also houses the in/out
-activity LEDs — the OUT light means notes and CCs, not clock). The screen
+activity LEDs - the OUT light means notes and CCs, not clock). The screen
 outlines every mappable control in cyan: tap one, move a hardware control,
 done. Controls that already carry a binding wear a cyan dot; long-press a
 control's outline to clear its binding.</p>
@@ -50,11 +50,11 @@ control's outline to clear its binding.</p>
 to:</p>
 <div class="tablewrap"><table>
 <tr><th>Mode</th><th>Meaning</th></tr>
-<tr><td>1 · Visible page</td><td>8 knobs follow whatever page is showing — the TRG cells, the current knob page, the LFO rows. With a step latched they write p-locks.</td></tr>
-<tr><td>2 · Selected track</td><td>Controls follow the selected track — classic "one encoder bank, any track".</td></tr>
+<tr><td>1 · Visible page</td><td>8 knobs follow whatever page is showing - the TRG cells, the current knob page, the LFO rows. With a step latched they write p-locks.</td></tr>
+<tr><td>2 · Selected track</td><td>Controls follow the selected track - classic "one encoder bank, any track".</td></tr>
 <tr><td>3 · Pinned track</td><td>Controls stick to the track selected now, wherever you navigate.</td></tr>
 </table></div>
-<p>Modes matter only at learn time — every stored binding stays live
+<p>Modes matter only at learn time - every stored binding stays live
 simultaneously, and one hardware control can carry one binding per mode.</p>
 <ul>
 <li><strong>What's learnable</strong>: transport (play/stop, record, Q, FILL,
@@ -70,27 +70,27 @@ your control sends a release; misdetections are correctable per binding with
 the MOM/TOG chip in Settings → MIDI Bindings.</li>
 <li><strong>Relative encoders</strong> (Push-style endless knobs) are supported
 via imported binding files.</li>
-<li><strong>Bindings import/export</strong>: Settings → MIDI Bindings → ••• —
+<li><strong>Bindings import/export</strong>: Settings → MIDI Bindings → •••  - 
 share a rig as a JSON file; imports merge with incoming bindings winning.
 Bindings are stored in the project and covered by undo.</li>
 </ul>
 
 <div class="tip"><strong>Tip</strong>
 Set a <strong>Control Surface</strong> in Settings and HeartBeat sends state
-back to it — motorized knobs and LEDs follow the app, page flips re-seat the
+back to it - motorized knobs and LEDs follow the app, page flips re-seat the
 visible-page bank, and Push devices are auto-configured on connect. Turning a
 mapped knob also pulls its page into view on screen.</div>
 
 <h2 id="tracks">Sequencing hardware</h2>
 <ul>
 <li>Set a track's Device to <strong>MIDI</strong>, pick an Output (any CoreMIDI
-destination — USB, Bluetooth, network, or a virtual port) and a channel.
+destination - USB, Bluetooth, network, or a virtual port) and a channel.
 An unplugged device stays selectable as "(offline)" and simply resumes when
 it returns.</li>
 <li>The MIDI device's pages: SRC (CHANNEL, BANK, SUB, PROG setup knobs and
 BEND, MOD, AT, BREATH performance knobs) plus three pages of
 <strong>24 assignable CC knobs</strong>, each with a name and CC number.</li>
-<li>P-locks on a MIDI track are real CC events sent just before the note —
+<li>P-locks on a MIDI track are real CC events sent just before the note  - 
 and the setup knobs lock too, so a single step can change channel or fire a
 bank/program change.</li>
 <li>Program changes send in spec order (bank MSB, LSB, program) when you turn
@@ -101,15 +101,15 @@ differs.</li>
 <h2 id="input">Getting MIDI in</h2>
 <p>HeartBeat publishes one virtual destination, <strong>"HeartBeat In"</strong>,
 with a stable identity across launches. Route a keyboard or controller to it
-(directly or through its sibling app Synapse) and incoming notes play — and
-record onto — the selected track, following its device. Echoes of the app's
+(directly or through its sibling app Synapse) and incoming notes play - and
+record onto - the selected track, following its device. Echoes of the app's
 own recent output are filtered automatically.</p>
 
 <h2 id="clock">Clock and transport sync</h2>
 <ul>
 <li><strong>Out</strong>: 24 PPQN MIDI clock plus Start/Continue/Stop to every
 destination in use, scheduled with exact host timestamps.</li>
-<li><strong>In</strong>: Settings → External Sync — Follow Start / Stop obeys
+<li><strong>In</strong>: Settings → External Sync - Follow Start / Stop obeys
 incoming transport bytes; Sync to external clock phase-locks the tempo to an
 incoming clock, gently, while playing.</li>
 </ul>
@@ -119,10 +119,10 @@ incoming clock, gently, while playing.</li>
 <li>Enable from Settings → Ableton Link (the standard Link settings sheet:
 enable, Start Stop Sync, peer count, and audio sharing). Status shows
 Connected / Enabled / Off.</li>
-<li>Tempo is bidirectional and the quantum is one 4/4 bar — joining a running
+<li>Tempo is bidirectional and the quantum is one 4/4 bar - joining a running
 session drops you in on the next bar line, phase-locked.</li>
 <li>With audio sharing on, HeartBeat announces a Link Audio channel named
-<strong>"Master"</strong> that streams the master mix to Link peers — it costs
+<strong>"Master"</strong> that streams the master mix to Link peers - it costs
 nothing until a peer actually subscribes.</li>
 </ul>
 
@@ -130,12 +130,12 @@ nothing until a peer actually subscribes.</li>
 <div class="tablewrap"><table>
 <tr><th>Section</th><th>Rows</th></tr>
 <tr><td>Control</td><td>MIDI Learn Bindings · Control Surface picker · Push Pad Feel (Push Default / Light / Lightest / Heavy).</td></tr>
-<tr><td>Patterns</td><td>Patterns recall sounds — re-emit every stored knob value on pattern change (off by default).</td></tr>
+<tr><td>Patterns</td><td>Patterns recall sounds - re-emit every stored knob value on pattern change (off by default).</td></tr>
 <tr><td>Morphs</td><td>Morphs auto-update (on by default).</td></tr>
 <tr><td>Pads</td><td>Pad tap plays sound (on by default).</td></tr>
 <tr><td>Ableton Link</td><td>The Link settings sheet.</td></tr>
 <tr><td>External Sync</td><td>Follow Start / Stop · Sync to external clock.</td></tr>
-<tr><td>Background</td><td>Run in background (on by default) — keep playing under the lock screen.</td></tr>
+<tr><td>Background</td><td>Run in background (on by default) - keep playing under the lock screen.</td></tr>
 <tr><td>Audio</td><td>Output Device (system route picker) · Master to Channels on multi-output interfaces. Tracks can also take their own Audio Out pairs in track setup.</td></tr>
 </table></div>
 
