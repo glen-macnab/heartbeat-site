@@ -211,85 +211,40 @@ footer a { color: var(--text-dim); }
 .feature p { font-size: 14px; color: var(--text-dim); }
 .feature a { font-size: 13px; font-weight: 600; }
 
-/* ---------- the CSS-drawn app mockup ---------- */
+/* ---------- screenshots ---------- */
 
-.mockup {
-  max-width: 760px;
+.phone {
+  max-width: 340px;
   margin: 46px auto 0;
+  border: 1px solid var(--hairline);
+  border-radius: 34px;
+  padding: 10px;
   background: var(--elevated);
-  border: 1px solid var(--hairline-soft);
-  border-radius: 10px;
-  padding: 14px;
   box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
 }
+.phone img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 26px;
+}
 
-.m-transport { display: flex; gap: 5px; margin-bottom: 10px; }
-.m-key {
-  height: 40px;
-  background: var(--surface);
-  border-radius: var(--r);
+.shot {
+  display: block;
+  width: min(320px, 100%);
+  height: auto;
+  margin: 20px auto;
+  border: 1px solid var(--hairline-soft);
+  border-radius: 14px;
+}
+.shot-row {
   display: flex;
-  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
   justify-content: center;
-  font-size: 12px;
-  font-weight: 800;
-  color: var(--text-dim);
-  flex: 0 0 auto;
+  margin: 20px 0;
 }
-.m-key.flex { flex: 1 1 auto; }
-.m-key .tri {
-  width: 0; height: 0;
-  border-left: 13px solid var(--t6);
-  border-top: 8px solid transparent;
-  border-bottom: 8px solid transparent;
-}
-.m-key .rec {
-  width: 22px; height: 22px; border-radius: 50%;
-  border: 2px solid var(--red);
-  display: flex; align-items: center; justify-content: center;
-}
-.m-key .rec::after { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--red); }
-.m-key .stack { text-align: center; line-height: 1.15; }
-.m-key .stack small { display: block; font-size: 8px; color: var(--text-faint); }
-
-.m-knobs {
-  display: grid;
-  grid-template-columns: repeat(8, 1fr);
-  gap: 8px;
-  padding: 10px 4px 12px;
-}
-.m-knob { text-align: center; }
-.m-knob svg { width: 100%; max-width: 52px; height: auto; display: block; margin: 0 auto; }
-.m-knob .lbl { font-size: 9px; font-weight: 700; color: var(--text-dim); margin-top: 3px; letter-spacing: 0.06em; }
-
-.m-grid {
-  display: grid;
-  grid-template-columns: repeat(16, 1fr);
-  gap: 4px;
-}
-.m-step {
-  aspect-ratio: 1 / 1.35;
-  background: var(--step-off);
-  border-radius: 3px;
-  position: relative;
-}
-.m-step.accent { background: var(--step-accent); }
-.m-step.on { background: var(--step-color, var(--t8)); }
-.m-step.lock::after {
-  content: "";
-  position: absolute;
-  top: 0; right: 0;
-  border-style: solid;
-  border-width: 0 9px 9px 0;
-  border-color: transparent var(--amber) transparent transparent;
-  filter: drop-shadow(-1px 1px 1px rgba(0, 0, 0, 0.9));
-}
-.m-step.playhead { outline: 2px solid rgba(255, 255, 255, 0.85); outline-offset: -2px; }
-
-@media (max-width: 560px) {
-  .m-knobs { grid-template-columns: repeat(4, 1fr); }
-  .m-knobs .m-knob:nth-child(n+5) { display: none; }
-}
+.shot-row .shot { margin: 0; flex: 0 1 240px; }
 
 /* ---------- manual layout ---------- */
 
