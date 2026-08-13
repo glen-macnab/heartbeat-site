@@ -49,6 +49,8 @@ the sound changes.</p>
 <tr><td>FM</td><td>8</td><td>Four sine operators, eight algorithms, feedback - classic 4-op FM.</td></tr>
 <tr><td>WT</td><td>8</td><td>Wavetable scanning with up to 7-voice unison, reading standard 2048-sample-frame tables from a 128-slot pool.</td></tr>
 <tr><td>ACID</td><td>mono</td><td>One oscillator into a zero-delay-feedback ladder filter - a classic acid voice with slides and accents.</td></tr>
+<tr><td>DRUM</td><td>mono</td><td>Ten synthesized drum models - 808 and 909 kicks and snares, clap, hats, tom, rim, cowbell - with punch, sweep, tone and noise macros. A new hit chokes the last.</td></tr>
+<tr><td>PLUCK</td><td>8</td><td>Karplus-Strong plucked string: a burst-excited delay line with damping, pick position and a detuned stereo double.</td></tr>
 <tr><td>MIDI</td><td> - </td><td>No internal sound: the track's notes and knob movements go out the MIDI wire to hardware or other apps.</td></tr>
 </table></div>
 
@@ -66,6 +68,8 @@ themselves survive the swap.</div>
 <tr><th>Device</th><th>Pages</th></tr>
 <tr><td>Sampler</td><td>TRG · SRC · FLTR · AMP · FX · LFO</td></tr>
 <tr><td>Mono / Poly / Wavetable / Acid</td><td>TRG · OSC · FLTR · AMP · FX · LFO</td></tr>
+<tr><td>Drum</td><td>TRG · DRUM · FLTR · AMP · FX · LFO</td></tr>
+<tr><td>Pluck</td><td>TRG · STR · FLTR · AMP · FX · LFO</td></tr>
 <tr><td>FM</td><td>TRG · FM · MOD · FLTR · AMP · FX · LFO</td></tr>
 <tr><td>MIDI</td><td>TRG · SRC · 1 · 2 · 3 · LFO</td></tr>
 </table></div>
@@ -188,6 +192,54 @@ sweeps. That's the acid scream.</li>
 The acid track arrives pre-squelched: low cutoff, high resonance, +50%
 envelope mod and a gated amp envelope so slides read your gate lengths. Start
 from the defaults and just write overlapping notes.</div>
+
+<h2 id="drum">Drum: the synthesized kit</h2>
+<p>Ten one-shot models on the MODEL knob: KICK (808) and KIK9 (909), SNARE
+(808) and SNR9 (909), CLAP, CHAT (closed hat), OHAT (open hat), TOM, RIM and
+BELL (the cowbell). Every model is synthesized from scratch, with structures
+drawn from the best-studied circuit models of the originals: the 808 kick's
+attack-FM glissando into a saturator, the 909's click band and transistor
+VCA, the 808 snare's two-mode shell, the 909 snare's 1.47-ratio pair and
+held noise burst, the clap's three sawtooth pre-echoes into a reverb-tail
+envelope, the hats' six-square cluster (Plaits' measured ratios) through a
+band-pass and the asymmetric swing VCA, and the cowbell's 540/800 Hz pulse
+pair. No samples needed; every knob is p-lockable.</p>
+<ul>
+<li><strong>PUNCH</strong>: transient weight - attack saturation on the kick
+and tom, snap on the snare, tighter pre-echoes on the clap.</li>
+<li><strong>SWEEP</strong>: pitch-envelope depth. The kick's drop, the tom's
+bend, the snare's shell lift. P-lock it per step for classic tuned-kick
+lines.</li>
+<li><strong>TONE</strong>: the model's color - body saturation on the kick,
+noise-band center on snare and clap, the hats' high-pass, the bell's
+band.</li>
+<li><strong>NOISE</strong>: the noise mix - air on the kick, wires on the
+snare, sizzle on the hats, tail length on the clap.</li>
+<li><strong>Pitch follows the keys</strong>: notes tune each hit, TUNE/FINE
+offset it, and the DEC knob on the AMP page is the length of the hit.</li>
+<li><strong>Choke</strong>: a new hit cuts the previous one, per track - run
+closed and open hats on two tracks and they choke independently, like
+separate voices on the original boxes.</li>
+</ul>
+<div class="tip"><strong>Tip</strong>
+One model per track builds the kit; the preset browser ships one of each.
+LFO the hats' TONE or p-lock the kick's SWEEP and the machine starts talking.</div>
+
+<h2 id="pluck">Pluck: the string</h2>
+<p>A Karplus-Strong string: each note fires a one-period exciter burst into a
+delay line with a damping filter in the loop, and the line rings like a
+plucked string. Eight voices - chords work.</p>
+<ul>
+<li><strong>EXCITE</strong>: the burst's color - NOISE (classic), BRITE
+(wiry), SOFT (nylon/felt), PICK (a saw stroke with skin noise).</li>
+<li><strong>RING</strong>: the loop feedback - how long the string sustains.</li>
+<li><strong>DAMP</strong>: in-loop darkening - high settings mute like a palm
+on the strings.</li>
+<li><strong>POS</strong>: pick position - a comb notch on the burst, from
+bridge twang to fingerboard round.</li>
+<li><strong>SPREAD</strong>: a second, slightly detuned string on the right -
+the stereo double.</li>
+</ul>
 
 <h2 id="filter">FLTR page: every device</h2>
 <p>TYPE · FREQ · RESO · ENV over F.ATK · F.DEC · F.SUS · F.REL.</p>
