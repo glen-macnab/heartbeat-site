@@ -258,9 +258,13 @@ and a dashed amber curve showing where full envelope depth will take it.</p>
 <img class="shot" src="../assets/shot-fltr.png" alt="The FLTR page with its live filter response curve" width="860" height="1864">
 
 <h2 id="amp">AMP page: envelopes, one-shot and gated</h2>
-<p>VOL · VEL SEN · PAN · DRIVE over ATK · DEC · SUS · REL. Envelope times run
+<p>VOL · HOLD · PAN · DRIVE over ATK · DEC · SUS · REL. Envelope times run
 to 4 seconds with the knob resolution concentrated where percussion lives.</p>
 <ul>
+<li><strong>HOLD</strong> pins the envelope at full level for a fixed time
+between attack and decay (OFF at zero) - gated stabs, sustained kicks, and a
+sample held open before the chop. P-lock it per step for classic
+length-per-hit moves.</li>
 <li><strong>REL at max shows ∞ - one-shot mode.</strong> Note-off is ignored and
 DEC becomes the tail knob, drum-machine style. Samples default to this. Pull REL
 below ∞ for a normal gated ADSR where SUS and your gate lengths matter.</li>
@@ -268,8 +272,9 @@ below ∞ for a normal gated ADSR where SUS and your gate lengths matter.</li>
 so the whole sample plays through. On synths (no sample end to stop them)
 ∞-decay becomes a long 20-second tail, and one-shot mode always decays to
 silence - so nothing can drone forever.</li>
-<li><strong>VEL SEN</strong>: how much velocity drives level; 0 flattens all
-dynamics.</li>
+<li><strong>VEL SEN</strong> lives on the TRG page's track-defaults panel now:
+how much velocity drives level, shown as a percentage. New tracks start at
+100%; 0% flattens all dynamics.</li>
 </ul>
 
 <h2 id="fx">FX page: the per-voice chain</h2>
