@@ -61,6 +61,30 @@ headphones toggle, trash, COPY and PASTE.</p>
 <tr><td>Drag empty space</td><td>Pans. Pinch zooms (anchored under your fingers).</td></tr>
 </table></div>
 
+<h2 id="velocity">The velocity lane</h2>
+<p>Tap <span class="key">VEL</span> in the bottom bar and a lane opens under the
+grid - one stem per trig, on the same timeline (it pans and zooms with the
+grid). Notes also wear their velocity in the grid itself: loud hits draw
+solid, quiet ones translucent, and ghosts draw hollow with a dashed edge.</p>
+<ul>
+<li><strong>Drag a stem</strong> up or down to set that trig's velocity; the
+value reads out in the lane's gutter.</li>
+<li><strong>Sweep across</strong> to paint a curve over many trigs in one
+gesture - crescendos in a single pass.</li>
+<li><strong>With a selection</strong>, only selected stems respond, and
+dragging any one of them moves the whole selection together, preserving the
+relative dynamics between notes.</li>
+<li><strong>Drag to the floor</strong> for a GHOST (velocity 0): silent until
+the live velocity offset lifts it. Ghost stems draw as hollow nubs on the
+baseline.</li>
+<li><strong>Velocity is per note</strong>: a chord's voices stack their stems on
+the same tick, and the handle nearest your finger is the one you grab - quiet
+inner voices under a loud top note. A voice without its own value rides the
+trig's, which rides the track default. Painting a sweep writes every voice it
+crosses.</li>
+<li>Lane edits ride the roll's own UNDO.</li>
+</ul>
+
 <h2 id="snap">Snap and the Q button</h2>
 <ul>
 <li>The grid gets finer as you zoom: 1/16 → 1/32 → 1/64 (the header shows the
