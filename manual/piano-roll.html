@@ -52,6 +52,7 @@ headphones toggle, trash, COPY and PASTE.</p>
 <tr><th>Gesture</th><th>Result</th></tr>
 <tr><td>Tap empty square</td><td>Parks the paste cursor there.</td></tr>
 <tr><td>Tap the same square again</td><td>Adds a note at that snapped position.</td></tr>
+<tr><td>Hold 0.3 s on a note</td><td>Opens the ratchet menu: OFF or a rate from 1/16 to 1/64T. The rate plays until the gate ends - stretch the note for a longer roll - and the divider lines redraw live as you pick. Per-trig, like the hardware: a chord's voices ratchet together. A trig can't hold the same pitch twice - sub-hits ARE ratchets.</td></tr>
 <tr><td>Tap a note</td><td>Selects it and latches its step - the TRG panel, p-locks and hardware mappings all target it. Auditions if headphones are on.</td></tr>
 <tr><td>Tap a selected note</td><td>Deselects it (deleting lives on the trash chip).</td></tr>
 <tr><td>Tap the pitch gutter</td><td>Selects every note on that row - and plays the pitch, notes or not: the gutter doubles as a keyboard.</td></tr>
@@ -89,9 +90,11 @@ crosses.</li>
 <ul>
 <li>The grid gets finer as you zoom: 1/16 → 1/32 → 1/64 (the header shows the
 current snap).</li>
-<li><span class="key">Q</span> governs drops: lit, moves and adds snap to the
-grid; unlit, notes land <em>exactly</em> where your finger leaves them, the
-offset written as the note's nudge.</li>
+<li><span class="key">Q</span> governs single-note drops: lit, they snap to
+the grid; unlit, notes land <em>exactly</em> where your finger leaves them,
+the offset written as the note's nudge. <strong>Group drags never snap</strong> -
+a selection keeps its internal feel and lands exactly where you drop it,
+regardless of Q.</li>
 </ul>
 
 <h2 id="overlap">Chords and the no-overlap rule</h2>

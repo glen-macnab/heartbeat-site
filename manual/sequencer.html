@@ -67,7 +67,7 @@ per-step lock and reads amber</strong> in the editors.</p>
 <tr><td>NUDGE</td><td>−23 … +23 ticks</td><td>Negative nudge before step 1 wraps to the loop tail.</td></tr>
 <tr><td>PROB</td><td>1–100%</td><td>Rolled after the condition passes - both must succeed.</td></tr>
 <tr><td>COND</td><td>see below</td><td>Trig condition.</td></tr>
-<tr><td>RETRIG</td><td>×2…×8</td><td>Ratchet - see below.</td></tr>
+<tr><td>RETRIG</td><td>OFF, 1/4…1/64T</td><td>Ratchet: the rate fills the gate - see below.</td></tr>
 <tr><td>P-locks</td><td>any knob</td><td>Per-step parameter values (CC locks on MIDI tracks).</td></tr>
 </table></div>
 
@@ -84,11 +84,13 @@ per-step lock and reads amber</strong> in the editors.</p>
 </table></div>
 
 <h3 id="retrig">Retrig (ratchet)</h3>
-<p>Per step: 2, 3, 4, 6 or 8 hits at any subdivision from 1/4 to 1/64T, with a
-velocity <strong>RAMP</strong> from 25% to 175% across the burst ("flat" at
-100%). A track-level default retrig can ratchet everything, with individual
-steps opting out via an explicit OFF. On a sampler with Voices &gt; 1 the hits
-overlap and ring; on mono devices each sub-hit chokes the last.</p>
+<p>Per step: pick a subdivision from 1/4 to 1/64T and the ratchet plays it
+<strong>until the gate ends</strong> - the GATE knob is the roll's length, so
+stretching the gate adds hits and no count needs setting. A track-level
+default retrig can ratchet everything, with individual steps opting out via
+an explicit OFF. On a sampler with Voices &gt; 1 the hits overlap and ring; on
+mono devices each sub-hit chokes the last. In the piano roll a retrigged note
+draws divider lines at its rate.</p>
 
 <h2 id="plocks">Parameter locks</h2>
 <p>The rule is simple: <strong>while a step is latched, every knob on every
