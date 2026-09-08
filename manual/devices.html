@@ -49,7 +49,7 @@ the sound changes.</p>
 <tr><td>FM</td><td>8</td><td>Four sine operators, eight algorithms, feedback - classic 4-op FM.</td></tr>
 <tr><td>WT</td><td>8</td><td>Wavetable scanning with up to 7-voice unison, reading standard 2048-sample-frame tables from a 128-slot pool.</td></tr>
 <tr><td>ACID</td><td>mono</td><td>One oscillator into a zero-delay-feedback ladder filter - a classic acid voice with slides and accents.</td></tr>
-<tr><td>DRUM</td><td>mono</td><td>Ten synthesized drum models - 808 and 909 kicks and snares, clap, hats, tom, rim, cowbell - with punch, sweep, tone and noise macros. A new hit chokes the last.</td></tr>
+<tr><td>DRUM</td><td>mono</td><td>Eight synthesized drum models - 808 kick and snare, clap, hats, tom, rim, cowbell - with punch, sweep, tone and noise macros; DEC sets each model's length and velocity shapes the hit. A new hit chokes the last.</td></tr>
 <tr><td>PLUCK</td><td>8</td><td>Karplus-Strong plucked string: a burst-excited delay line with damping, pick position and a detuned stereo double.</td></tr>
 <tr><td>MIDI</td><td> - </td><td>No internal sound: the track's notes and knob movements go out the MIDI wire to hardware or other apps.</td></tr>
 </table></div>
@@ -194,16 +194,19 @@ envelope mod and a gated amp envelope so slides read your gate lengths. Start
 from the defaults and just write overlapping notes.</div>
 
 <h2 id="drum">Drum: the synthesized kit</h2>
-<p>Ten one-shot models on the MODEL knob: KICK (808) and KIK9 (909), SNARE
-(808) and SNR9 (909), CLAP, CHAT (closed hat), OHAT (open hat), TOM, RIM and
-BELL (the cowbell). Every model is synthesized from scratch, with structures
-drawn from the best-studied circuit models of the originals: the 808 kick's
-attack-FM glissando into a saturator, the 909's click band and transistor
-VCA, the 808 snare's two-mode shell, the 909 snare's 1.47-ratio pair and
-held noise burst, the clap's three sawtooth pre-echoes into a reverb-tail
-envelope, the hats' six-square cluster (Plaits' measured ratios) through a
-band-pass and the asymmetric swing VCA, and the cowbell's 540/800 Hz pulse
-pair. No samples needed; every knob is p-lockable.</p>
+<p>Eight one-shot models on the MODEL knob: KICK, SNARE, CLAP, CHAT (closed
+hat), OHAT (open hat), TOM, RIM and BELL (the cowbell). Every model is
+synthesized from scratch, with structures drawn from the best-studied circuit
+models of the 808: the kick's attack-FM glissando and click into a saturator
+with a second stage for chest, the snare's two-mode shell over two noise
+bands (the shell's and the wires'), the clap's three sawtooth pre-echoes into
+a reverb-tail envelope, the hats' six-square cluster (Plaits' measured
+ratios, anti-aliased) through a band-pass and the asymmetric swing VCA, and
+the cowbell's 540/800 Hz pulse pair. DEC is each model's length knob: it
+scales the body, pitch and noise envelopes, so a kick can boom and an open
+hat can ring. Velocity shapes the hit as well as its level: soft hits have
+less punch, less sweep, less noise and a duller tone. No samples needed;
+every knob is p-lockable.</p>
 <ul>
 <li><strong>PUNCH</strong>: transient weight - attack saturation on the kick
 and tom, snap on the snare, tighter pre-echoes on the clap.</li>
