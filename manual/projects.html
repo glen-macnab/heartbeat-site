@@ -71,9 +71,9 @@ can't be undone.</li>
 track's setup drawer; load one from Browse Presets.</p>
 <ul>
 <li>A preset stores the device, its complete parameter set, the 8 knob
-slots, both LFOs with their links and depths, the track's default note /
-velocity / gate - and for sampler presets, the audio file itself
-<em>with its slices</em>.</li>
+slots, both LFOs with their links and depths - and for sampler presets, the
+audio file itself <em>with its slices</em>. It never touches the track's
+default note, velocity or gate: a preset is a sound, not a part.</li>
 <li>Preset audio is stashed in a shared library, so loading a preset in
 another project imports its sample into that project's pool - the +Drive
 idea.</li>
@@ -82,15 +82,37 @@ bass, lead, pad and friends, plus your own). Search matches names, sample
 names and tags; <code>#term</code> searches tags only.</li>
 </ul>
 
+<h2 id="export">Exporting a song</h2>
+<p>Open the pattern sheet and tap <span class="key">EXPORT</span> in the song
+editor's toolbar (beside REORDER). HeartBeat plays the song through the master
+bus in real time - every device, send, morph and master effect exactly as you
+hear it - and writes the result as a WAV, sample-accurate from the first beat
+to the last row plus a three-second tail for reverbs and releases to finish.
+Leading silence is trimmed. The sheet shows progress while it renders and
+hands you the file to share when it's done; the file also lands in
+<strong>Bounces/</strong>. Dismissing the sheet mid-render cancels and deletes
+the partial file.</p>
+
+<h2 id="icloud">iCloud</h2>
+<p>With iCloud Drive on, HeartBeat's folder lives in <strong>iCloud Drive →
+HeartBeat</strong> and everything in it - projects, presets, the factory
+library - follows you between devices. Files another device uploaded
+materialize in the background as their downloads land. Without iCloud Drive
+the same folder sits under On My iPhone.</p>
+<p>Project files carry a schema version. A project written by a newer
+HeartBeat than the one opening it is refused with a clear message rather than
+half-read, so a phone that hasn't updated yet can't damage a newer file.</p>
+
 <h2 id="files">On disk</h2>
-<p>Everything lives under <strong>On My iPhone → HeartBeat</strong> in the
-Files app:</p>
+<p>Everything lives under <strong>HeartBeat</strong> in the Files app (in
+iCloud Drive or On My iPhone):</p>
 <div class="tablewrap"><table>
 <tr><th>Folder</th><th>Holds</th></tr>
 <tr><td>Projects/&lt;Name&gt;/</td><td>project.json plus the project's samples, and its Wavetables/ subfolder - one portable unit you can copy out whole.</td></tr>
 <tr><td>Presets/</td><td>One JSON per sound preset, plus the preset audio library (Samples/, Wavetables/).</td></tr>
 <tr><td>Factory/</td><td>The shared factory kit and wavetables - deterministic, self-healing, never copied into projects.</td></tr>
 <tr><td>Bindings/</td><td>Exported MIDI-binding files.</td></tr>
+<tr><td>Bounces/</td><td>Exported songs and patterns, as WAV.</td></tr>
 </table></div>
 <ul>
 <li>Sample references inside a project are folder-relative, so renames and

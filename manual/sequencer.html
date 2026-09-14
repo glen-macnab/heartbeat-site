@@ -121,8 +121,28 @@ becomes a menu: Paste Whole Track, Paste Sequence, Paste Device.</li>
 <li>A single copied step <strong>fans</strong> across a live multi-selection.</li>
 <li><strong>UNDO / REDO</strong>: 50 project-level snapshots; rapid edits coalesce.</li>
 <li>The page strip holds the length picker, page dots (long-press a dot to
-<strong>loop just that page</strong>: amber ring), follow-playhead toggle, and
-<span class="key">2×→</span> which doubles the loop and duplicates its content.</li>
+<strong>loop just that page</strong>: amber ring - a section loop, below),
+follow-playhead toggle, and <span class="key">2×→</span> which doubles the loop
+and duplicates its content.</li>
+</ul>
+
+<h2 id="loop">Section loops</h2>
+<p>A section loop replays part of the pattern, in <strong>musical time</strong>:
+the region is a span of bars, so every track - a half-speed track, a 2×
+track, a 32-step track under a 64-step one - replays the same bars, in phase,
+whatever its own length. Set one by long-pressing a page dot (the page becomes
+the region) or by dragging along the piano roll's ruler
+(<a href="piano-roll.html#loop">braces</a>).</p>
+<ul>
+<li>While playing, a loop lands on the <strong>next bar line</strong> and
+restarts the section from its first beat. Stopped, it applies at once, and
+play then starts from the loop's start.</li>
+<li>Releasing the loop doesn't snap anywhere: playback runs on from where the
+looped playhead was.</li>
+<li>A loop survives stop and start. It is released by LOOP off (or the page
+ring), or by a pattern switch. It is a performance move, never saved.</li>
+<li>Recording under a loop lands notes where you heard them - in the looped
+bars, not at the transport's raw count.</li>
 </ul>
 
 <h2 id="defaults">Track defaults</h2>
@@ -130,7 +150,10 @@ becomes a menu: Paste Whole Track, Paste Sequence, Paste Device.</li>
 NOTE / VEL / GATE / NUDGE over PROB / VEL SEN / COND / RETRIG, editing what
 every unset step inherits. This is where a track's default note (the pad
 pitch), default gate and default probability live; VEL SEN is the sound's
-velocity sensitivity, up from the AMP page.</p>
+velocity sensitivity, up from the AMP page. Defaults belong to the
+<strong>pattern</strong>, like the rest of the track setup - a track can play
+a different default note, or ratchet by default, from one pattern to the
+next. Sound presets leave them alone.</p>
 
 <h2 id="recording">Recording</h2>
 <p>Arm <span class="key red">REC</span> and play: the on-screen keyboard,
@@ -188,7 +211,9 @@ handles; hand-picking a pattern exits song mode.</p>
 active one: tap a chip to switch (mid-playback, the new song's first row chains
 in at the next pattern boundary), tap + for a fresh song, and hold a chip to
 rename, duplicate or delete it. Each song keeps its own rows and LOOP setting,
-and everything saves with the project.</p>
+and everything saves with the project. <span class="key">EXPORT</span> in the
+same toolbar bounces the song to a WAV - see
+<a href="projects.html#export">Exporting a song</a>.</p>
 
 <h2 id="mutes">Mutes, pads and live modes</h2>
 <p>The pad board is 16 track pads that flash with every note. The latch row
@@ -219,12 +244,27 @@ and it records.</li>
 <img class="shot" src="../assets/shot-keys.png" alt="The live keyboard with pitch and mod wheels" width="860" height="1864">
 
 <h2 id="track-setup">Track setup</h2>
-<p>The track sheet holds the track's identity: name, device,
-MIDI output and channel (for MIDI tracks), color, audio out (Master, stereo
-pairs or mono outs), sampler Voices (1–8 - the choke control: 1 chokes each
-hit with the next, more lets them ring), the per-track quantize slider, and
-preset browse/save. Below it, the per-pattern section: length, speed, swing
-override, and Clear Recorded CC Automation.</p>
+<p>Tap the track name above the knob pages for the track sheet. It has two
+cards, and the split matters:</p>
+<ul>
+<li><strong>Track Setup</strong> is <em>pattern-level</em>: everything here can
+differ from pattern to pattern. Name, device, MIDI output, color, sampler
+Voices (1–8 - the choke control: 1 chokes each hit with the next, more lets
+them ring), the per-track quantize slider, the knob names, the track
+defaults, <strong>Send MIDI to</strong> (below), plus length, speed, swing
+override, Clear Recorded CC Automation, and preset browse/save.</li>
+<li><strong>Track In/Out</strong> is <em>project-level</em> wiring that stays put
+across patterns: MIDI channel, Stream to Link (a per-track
+<a href="midi-link.html#link">Link audio</a> channel) and Audio Out (Master,
+stereo pairs or mono outs).</li>
+</ul>
+<h3 id="send">Sending a track to another track</h3>
+<p><strong>Send MIDI to</strong> picks another track as a second destination:
+everything this track plays - sequenced trigs, live keys, pads - also plays
+that track's device, on its channel, at the same moment. A track that receives
+a send can forward on again, so A → B → C layers three devices from one
+sequence; a chain that would loop back is cut. The receiving track records the
+forwarded notes when REC is armed.</p>
 
 <div class="pagenav">
   <a href="index.html"><small>Previous</small>Overview</a>

@@ -36,9 +36,10 @@
 
 <article>
 <h1>MIDI &amp; Link</h1>
-<p class="lede">HeartBeat sequences hardware as happily as its own devices  - 
-per-track outputs, a virtual input port, sample-accurate clock, and a learn
-mode that can bind nearly everything on screen to a controller.</p>
+<p class="lede">HeartBeat sequences hardware as happily as its own devices  -
+per-track outputs, every keyboard and controller connected directly,
+sample-accurate clock, and a learn mode that can bind nearly everything on
+screen to a controller.</p>
 
 <h2 id="learn">MIDI learn</h2>
 <p>Tap the radiowaves button beside the transport (it also houses the in/out
@@ -96,14 +97,34 @@ bank/program change.</li>
 <li>Program changes send in spec order (bank MSB, LSB, program) when you turn
 the setup knobs and automatically on pattern switches for tracks whose patch
 differs.</li>
+<li><strong>Send MIDI to</strong> another track (in Track Setup) layers a second
+device under the first: everything the track plays also plays the target,
+and targets can forward on again. See
+<a href="sequencer.html#send">the sequencer chapter</a>.</li>
 </ul>
 
 <h2 id="input">Getting MIDI in</h2>
-<p>HeartBeat publishes one virtual destination, <strong>"HeartBeat In"</strong>,
-with a stable identity across launches. Route a keyboard or controller to it
-(directly or through its sibling app Synapse) and incoming notes play - and
-record onto - the selected track, following its device. Echoes of the app's
-own recent output are filtered automatically.</p>
+<p>Every MIDI source the system exposes - USB, Bluetooth, network, other
+apps' outputs - connects to HeartBeat directly, so a keyboard you plug in just
+plays, and records onto, the selected track, following its device. No router
+app needed. Connections follow plug and unplug, and echoes of the app's own
+recent output are filtered automatically.</p>
+<ul>
+<li><strong>Settings → MIDI Input</strong> lists every source with its own
+switch (all on by default, remembered across launches).</li>
+<li><strong>Other apps (HeartBeat In)</strong> is the virtual destination other
+apps and routers send to, with a stable identity across launches. Its switch
+drops what arrives without unpublishing the port, so saved routes stay
+valid.</li>
+<li><strong>Network MIDI (RTP)</strong> enables the network session; connect
+from another device's MIDI Network Setup.</li>
+<li><strong>Bluetooth MIDI Devices…</strong> opens the system pairing browser;
+a paired device then appears as an ordinary source and destination.</li>
+</ul>
+<div class="tip"><strong>Tip</strong>
+If a router app still sends a device to HeartBeat In while that device is
+also connected directly, its notes arrive twice. Switch one of the two
+off.</div>
 
 <h2 id="clock">Clock and transport sync</h2>
 <ul>
@@ -124,12 +145,17 @@ session drops you in on the next bar line, phase-locked.</li>
 <li>With audio sharing on, HeartBeat announces a Link Audio channel named
 <strong>"Master"</strong> that streams the master mix to Link peers - it costs
 nothing until a peer actually subscribes.</li>
+<li><strong>Stream to Link</strong>, in a track's Track In/Out card, announces
+a channel per track, named after the track - so Ableton Live can take the
+kick, the bass and the lead on their own channels while the master keeps
+streaming too.</li>
 </ul>
 
 <h2 id="settings">Settings reference</h2>
 <div class="tablewrap"><table>
 <tr><th>Section</th><th>Rows</th></tr>
 <tr><td>Control</td><td>MIDI Learn Bindings · Control Surface picker · Push Pad Feel (Push Default / Light / Lightest / Heavy).</td></tr>
+<tr><td>MIDI Input</td><td>Other apps (HeartBeat In) · one switch per connected source · Network MIDI (RTP) · Bluetooth MIDI Devices…</td></tr>
 <tr><td>Patterns</td><td>Patterns recall sounds - re-emit every stored knob value on pattern change (off by default).</td></tr>
 <tr><td>Morphs</td><td>Morphs auto-update (on by default).</td></tr>
 <tr><td>Pads</td><td>Pad tap plays sound (on by default).</td></tr>

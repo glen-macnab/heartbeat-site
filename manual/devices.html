@@ -67,7 +67,8 @@ themselves survive the swap.</div>
 <div class="tablewrap"><table>
 <tr><th>Device</th><th>Pages</th></tr>
 <tr><td>Sampler</td><td>TRG · SRC · FLTR · AMP · FX · LFO</td></tr>
-<tr><td>Mono / Poly / Wavetable / Acid</td><td>TRG · OSC · FLTR · AMP · FX · LFO</td></tr>
+<tr><td>Mono</td><td>TRG · OSC · MOD · FLTR · AMP · FX · LFO</td></tr>
+<tr><td>Poly / Wavetable / Acid</td><td>TRG · OSC · FLTR · AMP · FX · LFO</td></tr>
 <tr><td>Drum</td><td>TRG · DRUM · FLTR · AMP · FX · LFO</td></tr>
 <tr><td>Pluck</td><td>TRG · STR · FLTR · AMP · FX · LFO</td></tr>
 <tr><td>FM</td><td>TRG · FM · MOD · FLTR · AMP · FX · LFO</td></tr>
@@ -76,9 +77,13 @@ themselves survive the swap.</div>
 
 <p>Each sound page is a fixed 2×4 knob grid. A device that doesn't use a cell
 leaves it empty rather than reshuffling - so your hands (and any MIDI-mapped
-controller) always find the same knob in the same place. When a step is
+controller) always find the same knob in the same place. A knob's caption (a
+CC number, a sub-label) sits on the knob face under its value. When a step is
 latched, the header reads <span class="key amber">LOCKS</span> and the knobs
 edit that step's parameter locks instead of the track sound.</p>
+<p><strong>TUNE</strong> steps in whole semitones on every device, and reads as
+one (+7, −12); <strong>FINE</strong> covers the cents in between. The pitch
+wheel bends around whatever TUNE says without moving it.</p>
 
 <h2 id="sampler">The sampler's six modes</h2>
 <p>The sampler reinterprets its SRC page per mode. Pick the mode from
@@ -121,17 +126,37 @@ Locks to scatter slice choices across the pattern's steps in one gesture.</div>
 <li><strong>SAMPLE</strong>: the pool slot (1-based). Latched at trig time, so it p-locks cleanly per step.</li>
 </ul>
 
-<h2 id="analog">Mono &amp; Poly synths: OSC page</h2>
+<h2 id="analog">Mono synth: OSC &amp; MOD pages</h2>
+<p>The mono synth's source section is a <strong>mixer</strong>: the unison
+stack, a second oscillator, the sub and a noise source each have their own
+level into the filter, so any one of them can play alone - noise for a hat,
+sub for a pure bass.</p>
+<p><strong>OSC page:</strong> TUNE · FINE · WAVE · OSC1 over TUNE2 · FINE2 ·
+WAVE2 · OSC2.</p>
 <div class="tablewrap"><table>
 <tr><th>Knob</th><th>Does</th></tr>
-<tr><td>TUNE / FINE</td><td>±24 semitones / ±50 cents.</td></tr>
-<tr><td>WAVE</td><td>SAW, SQR, PLS (25% pulse) or TRI - anti-aliased.</td></tr>
-<tr><td>SUB</td><td>Level of a sine one octave down.</td></tr>
+<tr><td>TUNE / FINE</td><td>Whole semitones ±24 / ±50 cents.</td></tr>
+<tr><td>WAVE</td><td>SAW, SQR, PLS or TRI for the unison stack - anti-aliased.</td></tr>
+<tr><td>OSC1</td><td>The stack's level into the mix.</td></tr>
+<tr><td>TUNE2 / FINE2</td><td>The second oscillator's offset: stepped semitones ±24 (64 = unison) and ±50 cents.</td></tr>
+<tr><td>WAVE2</td><td>SAW, SQR, PLS, TRI or SIN for oscillator two.</td></tr>
+<tr><td>OSC2</td><td>Oscillator two's level (0 = off - and the classic single-oscillator sound).</td></tr>
+</table></div>
+<p><strong>MOD page:</strong> PW · DETUNE · WIDTH · GLIDE over SYNC · XMOD ·
+SUB · NOISE.</p>
+<div class="tablewrap"><table>
+<tr><th>Knob</th><th>Does</th></tr>
+<tr><td>PW</td><td>Pulse width of SQR and PLS on both oscillators: 0 is 50%, 127 a 5% needle.</td></tr>
 <tr><td>DETUNE</td><td>Unison spread, up to ±60 cents across the stack.</td></tr>
 <tr><td>WIDTH</td><td>Stereo placement of the unison stack.</td></tr>
 <tr><td>GLIDE</td><td>Constant-time portamento, up to ~1.2 s.</td></tr>
-<tr><td>LEVEL</td><td>Oscillator section level into the filter.</td></tr>
+<tr><td>SYNC</td><td>Past the middle, oscillator two hard-syncs to the stack's center oscillator.</td></tr>
+<tr><td>XMOD</td><td>Oscillator two phase-modulates the stack - cross-mod depth.</td></tr>
+<tr><td>SUB</td><td>Level of a sine one octave down.</td></tr>
+<tr><td>NOISE</td><td>White noise level into the mix, pre-filter.</td></tr>
 </table></div>
+<p>The <strong>Poly</strong> synth keeps the single OSC page: TUNE · FINE ·
+WAVE · SUB · DETUNE · WIDTH · GLIDE · LEVEL, with the same stack.</p>
 
 <h2 id="fm">FM synth: FM &amp; MOD pages</h2>
 <p><strong>FM page:</strong> TUNE · FINE · ALGO · RATIO C / RATIO A · RATIO B · FDBK · LEVEL.

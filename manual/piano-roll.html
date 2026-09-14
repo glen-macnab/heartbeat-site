@@ -42,9 +42,19 @@ trig: the trig owns the step position, and every voice can carry its own gate
 and nudge.</p>
 
 <p>Open it from the roll button in the step grid's clipboard row. The header
-carries the track name, the current snap, its own undo/redo, and DONE; the
-transport row underneath has play, record, <span class="key">Q</span>, the
-headphones toggle, trash, COPY and PASTE.</p>
+carries the track name with <strong>◀ ▶</strong> to step to the previous or
+next track (wrapping 16 → 1), an <strong>S</strong> solo (the mixer's solo),
+its own undo/redo, and <strong>✕</strong> to close. The transport row underneath
+has play, record, <span class="key">Q</span>, the headphones toggle, trash,
+COPY and PASTE. Along the bottom, the edit bar and a row of captioned faces:
+<span class="key">STEPS</span> (track length), <span class="key">SPEED</span>
+(pattern speed), <span class="key">GRID</span>, <span class="key">DOUBLE</span>
+(the grid's 2×→) and <span class="key">LOOP</span>.</p>
+<p>Every note wears its name (C3, F♯4) on the note itself when there's room
+clear of the gate handle: dark ink on loud notes, light on quiet ones. The
+grid and ruler count <em>musical</em> time: on a 2× track a step is a 1/32 and
+a bar is 32 steps, and the readout in the corner where the ruler meets the
+pitch gutter says so.</p>
 <img class="shot" src="../assets/shot-roll.png" alt="The piano roll editing a kick pattern" width="860" height="1864">
 
 <h2 id="gestures">Gestures</h2>
@@ -59,8 +69,27 @@ headphones toggle, trash, COPY and PASTE.</p>
 <tr><td>Hold 0.3 s on empty space, drag</td><td>Marquee select (cyan dashes); the selection latches and auditions on release.</td></tr>
 <tr><td>Drag a note</td><td>Moves it. Grabbing a member of a selection moves the whole group together.</td></tr>
 <tr><td>Drag a note's right edge</td><td>Stretches the gate, snapped to the grid; a group stretches by the same delta.</td></tr>
-<tr><td>Drag empty space</td><td>Pans. Pinch zooms (anchored under your fingers).</td></tr>
+<tr><td>Drag empty space</td><td>Pans. Pinch over the grid zooms time (anchored under your fingers).</td></tr>
+<tr><td>Pinch in the pitch gutter</td><td>Zooms the row height, 14 to 60 points, holding the pitch under your fingers still. Note names scale with the rows.</td></tr>
+<tr><td>Drag along the ruler</td><td>Braces a loop region (below). Drag a bracket to move that end alone; drag between the brackets to slide the whole region.</td></tr>
 </table></div>
+
+<h2 id="loop">Loop braces</h2>
+<p>A drag along the ruler draws a pair of brackets - a
+<a href="sequencer.html#loop">section loop</a>, in musical time, so every other
+track replays the same bars. Amber while the loop is on, at half strength
+until the bar line lands; grey while it is off. The braces stay put when you
+switch the loop off, so switching it back on needs no redraw. Each bracket
+moves on its own; the span between them slides the region whole; everything
+snaps to the current grid.</p>
+<ul>
+<li><span class="key">LOOP</span> reads ON or OFF and toggles the loop over the
+braced span. With nothing braced yet, a tap braces the selected notes; a long
+press re-braces the selection at any time.</li>
+<li>A fresh brace switches the loop on; adjusting existing braces keeps the
+loop's on/off state.</li>
+<li>Outside the region the grid dims while the loop is on.</li>
+</ul>
 
 <h2 id="velocity">The velocity lane</h2>
 <p>Tap <span class="key">VEL</span> in the bottom bar and a lane opens under the
@@ -86,10 +115,13 @@ crosses.</li>
 <li>Lane edits ride the roll's own UNDO.</li>
 </ul>
 
-<h2 id="snap">Snap and the Q button</h2>
+<h2 id="snap">Grid, snap and the Q button</h2>
 <ul>
-<li>The grid gets finer as you zoom: 1/16 → 1/32 → 1/64 (the header shows the
-current snap).</li>
+<li><span class="key">GRID</span> on AUTO gets finer as you zoom: 1/16 → 1/32
+→ 1/64. Or pin a division: 1/8, 1/16, 1/32, 1/64, or the triplets 1/8T, 1/16T
+and 1/32T. The corner readout shows the division in musical time.</li>
+<li><span class="key">SPEED</span> changes the pattern's speed for this track
+from the roll; the grid, ruler and readout follow.</li>
 <li><span class="key">Q</span> governs single-note drops: lit, they snap to
 the grid; unlit, notes land <em>exactly</em> where your finger leaves them,
 the offset written as the note's nudge. <strong>Group drags never snap</strong> -
@@ -116,9 +148,13 @@ only that voice; landing on an occupied step joins its chord.</li>
 completely separate from the app's. DONE hands you back with the app stack
 untouched.</li>
 <li><strong>COPY / PASTE</strong>: the app-wide step clipboard, so notes
-round-trip with the step grid. Paste lands at the cursor if one is parked,
-otherwise just after the selection; the pasted notes come back selected,
-ready to drag as a group.</li>
+round-trip with the step grid. Paste lands at the cursor if one is parked -
+in pitch as well as time: the copied notes transpose so their lowest lands on
+the cursor's row - otherwise just after the selection. Pasting onto occupied
+steps <strong>merges</strong>: new pitches join the chord up to the six-voice
+limit, matching pitches take the pasted gate and velocity, nothing already
+there is lost. The pasted notes come back selected, ready to drag as a
+group.</li>
 <li><strong>Trash</strong>: deletes the whole selection as one undoable event.</li>
 <li><strong>Headphones</strong>: audition on selection: selected or added notes
 play through the track's own voice at their velocities (never recorded).
