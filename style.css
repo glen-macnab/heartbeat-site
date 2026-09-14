@@ -245,6 +245,10 @@ footer a { color: var(--text-dim); }
   margin: 20px 0;
 }
 .shot-row .shot { margin: 0; flex: 0 1 240px; }
+/* A sideways-phone capture: full column width, gentler corners. */
+.shot.wide { width: 100%; max-width: 860px; border-radius: 10px; }
+.phone.wide { max-width: 900px; border-radius: 26px; }
+.phone.wide img { border-radius: 18px; }
 
 /* ---------- manual layout ---------- */
 
