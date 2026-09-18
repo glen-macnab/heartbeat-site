@@ -259,6 +259,17 @@ across patterns: MIDI channel, Stream to Link (a per-track
 <a href="midi-link.html#link">Link audio</a> channel) and Audio Out (Master,
 stereo pairs or mono outs).</li>
 </ul>
+<h3 id="reorder">Reordering tracks</h3>
+<p>The sheet's header works like the piano roll's: the chevrons flip through
+tracks, and the <strong>Reorder Tracks</strong> button (three lines, beside the
+close button) opens a list of the sixteen tracks with drag handles. Drag a track to a new slot and
+everything travels with it - its color, sound, trigs, p-locks, mutes in both
+scopes, morph captures, MIDI sends, the sidechain key and any bindings pinned to
+it - in every pattern. Only an untouched default name ("Track 5") stays with
+the slot. A move is one undo step. Note
+that NEI trig conditions listen to the track directly above, so a move changes
+what they follow.</p>
+
 <h3 id="send">Sending a track to another track</h3>
 <p><strong>Send MIDI to</strong> picks another track as a second destination:
 everything this track plays - sequenced trigs, live keys, pads - also plays
