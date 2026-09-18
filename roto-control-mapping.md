@@ -104,11 +104,13 @@ sidechain routing, delay ping-pong.
 # Setup 2 — HB CREATE (music creation, channel 15)
 
 Where the HEARTBEAT setup is built for jamming a finished kit (mix, mutes, scenes, global
-FX), **HB CREATE** is for building the music. It leans on all three learn modes: page 1
-is a **visible-page** deck (mode 1 — 8 knobs that always control whatever the param area
-shows), page 2 shapes the **selected track** (mode 2), and pages 3–4 carry **pinned
-macros** (mode 3 — one knob per track, selection-independent). All controls on **MIDI
-channel 15**, same CC rule. Files:
+FX), **HB CREATE** is for building the music. It was built on the three learn modes of
+the time: page 1 is a **visible-page** deck (8 knobs that always control whatever the
+param area shows), page 2 shapes the **selected track**, and pages 3–4 carry **pinned
+macros** (one knob per track, selection-independent). The selected-track learn mode
+retired on 2026-09-18 (learn now offers Visible page and Pinned track only); page 2's
+imported bindings keep firing exactly as before, they just can't be re-learned in that
+mode. All controls on **MIDI channel 15**, same CC rule. Files:
 
 - [`docs/create-bindings-2/roto-heartbeat-create-bindings.json`](create-bindings-2/roto-heartbeat-create-bindings.json) —
   the 64 HeartBeat bindings (channel 15). Import alongside the performance bindings; no
