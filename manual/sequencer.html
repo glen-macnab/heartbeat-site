@@ -262,11 +262,20 @@ stereo pairs or mono outs).</li>
 <h3 id="reorder">Reordering tracks</h3>
 <p>The sheet's header works like the piano roll's: the chevrons flip through
 tracks, and the <strong>Reorder Tracks</strong> button (three lines, beside the
-close button) opens a list of the sixteen tracks with drag handles. Drag a track to a new slot and
-everything travels with it - its color, sound, trigs, p-locks, mutes in both
-scopes, morph captures, MIDI sends, the sidechain key and any bindings pinned to
-it - in every pattern. Only an untouched default name ("Track 5") stays with
-the slot. A move is one undo step. Note
+close button) opens a list of the sixteen tracks with drag handles. A switch at
+the top picks the reach of a move:</p>
+<ul>
+<li><strong>All Patterns</strong>: drag a track to a new slot and everything
+travels with it - its color, sound, trigs, p-locks, mutes in both scopes, morph
+captures, MIDI sends, the sidechain key and any bindings pinned to it - in every
+pattern. Only an untouched default name ("Track 5") stays with the slot.</li>
+<li><strong>This Pattern</strong>: only the active pattern changes, Digitakt
+style. The track's content, sound, machine, color, defaults and knob layout move
+to the new slot in this pattern, along with the pattern's mutes, morph captures
+and sends; every other pattern keeps its order. The slots' project wiring - MIDI
+channel, audio out, Link stream - and MIDI bindings stay where they are.</li>
+</ul>
+<p>A move is one undo step. Note
 that NEI trig conditions listen to the track directly above, so a move changes
 what they follow.</p>
 
