@@ -245,17 +245,22 @@ and it records.</li>
 <img class="shot" src="../assets/shot-keys.png" alt="The live keyboard with pitch and mod wheels" width="860" height="1864">
 
 <h2 id="track-setup">Track setup</h2>
-<p>Tap the track name above the knob pages for the track sheet. It has two
-cards, and the split matters:</p>
+<p>Tap the track name above the knob pages for the track sheet. Its cards
+split by scope, and the split matters:</p>
 <ul>
-<li><strong>Track Setup</strong> is <em>pattern-level</em>: everything here can
-differ from pattern to pattern. Name, device, MIDI output, color, sampler
-Voices (1–8 - the choke control: 1 chokes each hit with the next, more lets
-them ring), the per-track quantize slider, the knob names, the track
-defaults, <strong>Send MIDI to</strong> (below), plus length, speed, swing
-override, Clear Recorded CC Automation, and preset browse/save.</li>
-<li><strong>Track In/Out</strong> is <em>project-level</em> wiring that stays put
-across patterns: MIDI channel, Stream to Link (a per-track
+<li><strong>Track Setup (Pattern P01)</strong> is <em>pattern-level</em>:
+everything here can differ from pattern to pattern. Name, device, color,
+sampler Voices (1–8 - the choke control: 1 chokes each hit with the next, more
+lets them ring), the per-track quantize slider, length, speed, swing override,
+Clear Recorded CC Automation, and <strong>Send MIDI to track</strong> (below).
+The knob names and track defaults are pattern-level too.</li>
+<li><strong>MIDI In</strong> is <em>project-level</em>: the Input Channel this
+track answers on (Off by default) and, optionally, the one Input Device it
+listens to. See <a href="midi-link.html#input">getting MIDI in</a>.</li>
+<li><strong>MIDI Out</strong> (MIDI device only): the Output this pattern's
+notes go to (pattern-level) and the Channel they go out on (project-level).</li>
+<li><strong>Audio Out</strong> (internal devices only) is <em>project-level</em>
+wiring that stays put across patterns: Stream to Link (a per-track
 <a href="midi-link.html#link">Link audio</a> channel) and Audio Out (Master,
 stereo pairs or mono outs).</li>
 </ul>
@@ -280,7 +285,7 @@ that NEI trig conditions listen to the track directly above, so a move changes
 what they follow.</p>
 
 <h3 id="send">Sending a track to another track</h3>
-<p><strong>Send MIDI to</strong> picks another track as a second destination:
+<p><strong>Send MIDI to track</strong> picks another track as a second destination:
 everything this track plays - sequenced trigs, live keys, pads - also plays
 that track's device, on its channel, at the same moment. A track that receives
 a send can forward on again, so A → B → C layers three devices from one
