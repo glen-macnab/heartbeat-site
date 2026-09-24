@@ -67,16 +67,16 @@ mute scopes). There's also an <em>Ignore</em> target to silence noisy
 controller outputs.</li>
 <li><strong>Buttons vs toggles</strong>: after a learn the app probes whether
 your control sends a release; misdetections are correctable per binding with
-the MOM/TOG chip in Settings → MIDI Bindings.</li>
+the MOM/TOG chip in Settings → MIDI Setup → MIDI Learn Bindings.</li>
 <li><strong>Relative encoders</strong> (Push-style endless knobs) are supported
 via imported binding files.</li>
-<li><strong>Bindings import/export</strong>: Settings → MIDI Bindings → •••  - 
+<li><strong>Bindings import/export</strong>: Settings → MIDI Setup → MIDI Learn Bindings → •••  - 
 share a rig as a JSON file; imports merge with incoming bindings winning.
 Bindings are stored in the project and covered by undo.</li>
 </ul>
 
 <div class="tip"><strong>Tip</strong>
-Set a <strong>Control Surface</strong> in Settings and HeartBeat sends state
+Set a <strong>Control Surface</strong> in Settings → MIDI Setup and HeartBeat sends state
 back to it - motorized knobs and LEDs follow the app, page flips re-seat the
 visible-page bank, and Push devices are auto-configured on connect. Turning a
 mapped knob also pulls its page into view on screen.</div>
@@ -110,7 +110,7 @@ apps' outputs - connects to HeartBeat directly, so a keyboard you plug in just
 plays, and records onto, the selected track, following its device. No router
 app needed. Connections follow plug and unplug, and echoes of the app's own
 recent output are filtered automatically.</p>
-<p>Where a note lands works the Elektron way. In Settings, <strong>Auto
+<p>Where a note lands works the Elektron way. In Settings → MIDI Setup, <strong>Auto
 Channel</strong> is the channel that always plays the selected track: Any (the
 default) or one channel, and <strong>Auto Channel Source</strong> narrows that to
 one input. In the track sheet, every track's <strong>MIDI In</strong> card gives
@@ -122,7 +122,7 @@ Channel on Any, the selected track does; anything else is ignored. Recording
 lands on whichever track received the note; the on-screen keys and pads always
 play the selected track.</p>
 <ul>
-<li><strong>Settings → MIDI Input</strong> lists every source with its own
+<li><strong>Settings → MIDI Setup → MIDI Input</strong> lists every source with its own
 switch (all on by default, remembered across launches).</li>
 <li><strong>Other apps (HeartBeat In)</strong> is the virtual destination other
 apps and routers send to, with a stable identity across launches. Its switch
@@ -141,9 +141,15 @@ off.</div>
 
 <h2 id="clock">Clock and transport sync</h2>
 <ul>
-<li><strong>Out</strong>: 24 PPQN MIDI clock plus Start/Continue/Stop to every
-destination in use, scheduled with exact host timestamps.</li>
-<li><strong>In</strong>: Settings → External Sync - Follow Start / Stop obeys
+<li><strong>Out</strong>: 24 PPQN MIDI clock and Start/Continue/Stop, scheduled
+with exact host timestamps. Settings → MIDI Setup → <strong>Sync Out</strong> is
+a grid: a destination per row, a <strong>Clock</strong> and a <strong>Start /
+Stop</strong> checkbox per destination. A destination you have never ticked
+follows its tracks (clocked while one plays it), and Start / Stop follows the
+clock choice unless you set it apart - so a synth you sequence gets both without
+a visit to Settings, a drum machine you only want in sync gets them with a tick,
+and a device that must not restart can take clock alone.</li>
+<li><strong>In</strong>: Settings → MIDI Setup → External Sync - Follow Start / Stop obeys
 incoming transport bytes; Sync to external clock phase-locks the tempo to an
 incoming clock, gently, while playing.</li>
 </ul>
@@ -168,9 +174,7 @@ streaming too.</li>
 <div class="tablewrap"><table>
 <tr><th>Section</th><th>Rows</th></tr>
 <tr><td>Audio</td><td>Output Device (system route picker) · Master to Channels on multi-output interfaces. Tracks can also take their own Audio Out pairs in track setup.</td></tr>
-<tr><td>Control</td><td>MIDI Learn Bindings · Control Surface picker · Push Pad Feel (Push Default / Light / Lightest / Heavy).</td></tr>
-<tr><td>MIDI Input</td><td>Other apps (HeartBeat In) · one switch per connected source · Network MIDI (RTP) · Bluetooth MIDI Devices… · Auto Channel Source (Any or one input) · Auto Channel (Any or 1 to 16).</td></tr>
-<tr><td>External Sync</td><td>Follow Start / Stop · Sync to external clock.</td></tr>
+<tr><td>MIDI Setup</td><td>Its own page, four cards. <em>Control Surface</em>: MIDI Learn Bindings · Control Surface picker · Push Pad Feel (Push Default / Light / Lightest / Heavy). <em>MIDI Input</em>: Other apps (HeartBeat In) · one switch per connected source · Network MIDI (RTP) · Bluetooth MIDI Devices… · Auto Channel Source (Any or one input) · Auto Channel (Any or 1 to 16). <em>Sync Out</em>: a grid with a Clock and a Start / Stop checkbox per destination. <em>External Sync</em>: Follow Start / Stop · Sync to external clock.</td></tr>
 <tr><td>Projects</td><td>New projects start with random sounds - every track of a new project loads a random preset (off by default).</td></tr>
 <tr><td>Ableton Link</td><td>The Link settings sheet.</td></tr>
 <tr><td>Background</td><td>Run in background (on by default) - keep playing under the lock screen.</td></tr>
