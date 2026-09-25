@@ -74,7 +74,7 @@ themselves survive the swap.</div>
 <tr><td>Pluck</td><td>TRG · STR · FLTR · AMP · FX · LFO</td></tr>
 <tr><td>FM</td><td>TRG · FM · MOD · FLTR · AMP · FX · LFO</td></tr>
 <tr><td>MIDI</td><td>TRG · SRC · 1 · 2 · 3 · LFO</td></tr>
-<tr><td>AU</td><td>TRG · MIX · P1 · P2 · P3 · LFO</td></tr>
+<tr><td>AU</td><td>TRG · P1 · P2 · P3 · MIX · LFO</td></tr>
 </table></div>
 
 <p>Each sound page is a fixed 2×4 knob grid. A device that doesn't use a cell
@@ -289,19 +289,20 @@ p-locks, retrigs, conditions, sends from other tracks and the piano roll all
 drive the plugin. Notes land sample-accurate, and a plugin that reports latency
 is pulled forward by that much so it stays on the grid with the rest of the
 board.</li>
+<li><strong>P1 · P2 · P3:</strong> 24 parameter slots. Tap a knob's name to
+pick the plugin parameter it turns from a searchable list (or clear it), and
+to set the LFO riding the slot. The knob then reads the plugin's own units on
+its face - Hz, dB, a waveform name - and moving it moves the plugin. Slots take
+p-locks, LFOs, recorded automation lanes, morphs and MIDI learn like any knob,
+and moving a parameter inside the plugin's own window updates its slot.</li>
 <li><strong>MIX page:</strong> VOL · PAN · DELAY · REVERB · CHORUS - the
 track's own mixer stage around the plugin's output, so the AU track sits in the
 mix, the global sends and the master chain exactly like a sampler track. The
 Audio Out card routes it to a hardware pair or mono channel like any other.</li>
-<li><strong>P1 · P2 · P3:</strong> 24 parameter slots. Tap a knob's name to
-pick the plugin parameter it turns from a searchable list (or clear it). The
-knob then reads the plugin's own units on its face - Hz, dB, a waveform name -
-and moving it moves the plugin. Slots take p-locks, LFOs, recorded automation
-lanes, morphs and MIDI learn like any knob, and moving a parameter inside the
-plugin's own window updates its slot.</li>
-<li><strong>Open Plugin Window</strong> (in the AU Plugin card) shows the
+<li><strong>The plugin window</strong> opens from the window button beside the
+preset search on the knob page, or from the AU Plugin card, and shows the
 plugin's own interface in a sheet. The plugin's <strong>factory presets</strong>
-are one menu down.</li>
+are one menu down in the card.</li>
 <li><strong>Saving.</strong> The plugin's full state saves with the project (in
 the project folder's Files/AU/) whenever you close its window, whenever the
 project autosaves, and when HeartBeat goes to the background. Sound presets
