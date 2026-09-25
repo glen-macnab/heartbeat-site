@@ -52,6 +52,7 @@ the sound changes.</p>
 <tr><td>DRUM</td><td>mono</td><td>Eight synthesized drum models - 808 kick and snare, clap, hats, tom, rim, cowbell - with punch, sweep, tone and noise macros; DEC sets each model's length and velocity shapes the hit. A new hit chokes the last.</td></tr>
 <tr><td>PLUCK</td><td>8</td><td>Karplus-Strong plucked string: a burst-excited delay line with damping, pick position and a detuned stereo double.</td></tr>
 <tr><td>MIDI</td><td> - </td><td>No internal sound: the track's notes and knob movements go out the MIDI wire to hardware or other apps.</td></tr>
+<tr><td>AU</td><td>plugin's</td><td>Hosts any Audio Unit (AUv3) instrument installed on the device. The plugin's audio comes back into the track's mixer stage, and 24 knob slots turn any of its parameters. See <a href="#au">AU Synth</a>.</td></tr>
 </table></div>
 
 <div class="note"><strong>Note</strong>
@@ -73,6 +74,7 @@ themselves survive the swap.</div>
 <tr><td>Pluck</td><td>TRG · STR · FLTR · AMP · FX · LFO</td></tr>
 <tr><td>FM</td><td>TRG · FM · MOD · FLTR · AMP · FX · LFO</td></tr>
 <tr><td>MIDI</td><td>TRG · SRC · 1 · 2 · 3 · LFO</td></tr>
+<tr><td>AU</td><td>TRG · MIX · P1 · P2 · P3 · LFO</td></tr>
 </table></div>
 
 <p>Each sound page is a fixed 2×4 knob grid. A device that doesn't use a cell
@@ -272,6 +274,43 @@ on the strings.</li>
 bridge twang to fingerboard round.</li>
 <li><strong>SPREAD</strong>: a second, slightly detuned string on the right -
 the stereo double.</li>
+</ul>
+
+<h2 id="au">AU Synth: hosted plugins</h2>
+<p>The AU device plays an Audio Unit instrument from another app - anything
+installed on the phone that registers as an AUv3 instrument. Set a track's
+device to <strong>AU</strong>, then pick the plugin in the track sheet's AU
+Plugin card, listed by manufacturer. The card reads Loading, then Ready with
+the plugin's latency and its share of the render load; a plugin the phone no
+longer has shows as missing and the track stays silent until it returns.</p>
+<ul>
+<li><strong>It plays like an internal device.</strong> Trigs, the live keyboard,
+p-locks, retrigs, conditions, sends from other tracks and the piano roll all
+drive the plugin. Notes land sample-accurate, and a plugin that reports latency
+is pulled forward by that much so it stays on the grid with the rest of the
+board.</li>
+<li><strong>MIX page:</strong> VOL · PAN · DELAY · REVERB · CHORUS - the
+track's own mixer stage around the plugin's output, so the AU track sits in the
+mix, the global sends and the master chain exactly like a sampler track. The
+Audio Out card routes it to a hardware pair or mono channel like any other.</li>
+<li><strong>P1 · P2 · P3:</strong> 24 parameter slots. Tap a knob's name to
+pick the plugin parameter it turns from a searchable list (or clear it). The
+knob then reads the plugin's own units on its face - Hz, dB, a waveform name -
+and moving it moves the plugin. Slots take p-locks, LFOs, recorded automation
+lanes, morphs and MIDI learn like any knob, and moving a parameter inside the
+plugin's own window updates its slot.</li>
+<li><strong>Open Plugin Window</strong> (in the AU Plugin card) shows the
+plugin's own interface in a sheet. The plugin's <strong>factory presets</strong>
+are one menu down.</li>
+<li><strong>Saving.</strong> The plugin's full state saves with the project (in
+the project folder's Files/AU/) whenever you close its window, whenever the
+project autosaves, and when HeartBeat goes to the background. Sound presets
+saved from an AU track carry the plugin and its state,
+so a preset recalls the exact patch on any project where that plugin is
+installed.</li>
+<li>Plugins run in their own process: a crashing plugin drops out on its own
+and HeartBeat keeps playing. Only the FLTR, AMP and FX pages below don't apply
+to an AU track - the plugin owns its voice.</li>
 </ul>
 
 <h2 id="filter">FLTR page: every device</h2>
