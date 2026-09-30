@@ -97,7 +97,7 @@ can be locked per step). The window you play is always set by
 <tr><th>Mode</th><th>What it does</th></tr>
 <tr><td>ONE SHOT</td><td>Classic playback of the START/LENGTH window. <span class="key">MODE</span> picks direction and looping: FWD, REV, FWD∞, REV∞; <span class="key">LOOP</span> places the loop point inside the window.</td></tr>
 <tr><td>REPITCH</td><td>Fits the window into <span class="key">BARS</span> by changing playback speed - pitch follows tempo, like vinyl. LOOP becomes a simple ON/OFF wrap.</td></tr>
-<tr><td>WARP</td><td>Beat-slicing time-stretch: the window is cut into musical segments (<span class="key">SEG</span>: 1/4 … 1/64 note divisions) whose starts always land on the tempo grid across BARS. Pitch stays put at TUNE; segment joins are crossfaded. The first BARS stop is <code>AUTO</code> - the loop length is guessed from the sample's duration at the current tempo.</td></tr>
+<tr><td>WARP</td><td>Beat-slicing time-stretch: the window is cut into musical segments (<span class="key">SEG</span>: 1/4 … 1/64 note divisions) whose starts always land on the tempo grid across BARS. Pitch stays put at TUNE; segment joins are crossfaded. The first BARS stop is <code>AUTO</code> - the loop length is guessed from the sample's duration at the current tempo. A warp plays once per trigger unless MODE (in the LOOP cell) is set to a loop; the REV settings walk the segments last to first.</td></tr>
 <tr><td>STRETCH</td><td>Smooth time-stretch: the playhead crosses the window in BARS while pitch stays fully independent - granular-smooth, best on pads, vocals and melodic loops.</td></tr>
 <tr><td>SLICE</td><td>Plays your hand-placed slice markers from the slice editor. The <span class="key">SLICE</span> knob picks a slice; incoming notes step through slices with wraparound instead of repitching. The region before your first marker counts as slice 1.</td></tr>
 <tr><td>GRID</td><td>Even chop: <span class="key">GRID</span> divides the window into 2, 4, 8, 16, 32 or 64 equal slices; SLICE and notes select exactly as in SLICE mode.</td></tr>
@@ -118,7 +118,7 @@ Locks to scatter slice choices across the pattern's steps in one gesture.</div>
 <tr><td>4</td><td>SAMPLE</td><td>SAMPLE</td><td>SAMPLE</td><td>SAMPLE</td><td>SAMPLE</td><td>SAMPLE</td></tr>
 <tr><td>5</td><td>START</td><td>START</td><td>SEG</td><td>START</td><td> - </td><td> - </td></tr>
 <tr><td>6</td><td>LENGTH</td><td>LENGTH</td><td> - </td><td>LENGTH</td><td> - </td><td>GRID</td></tr>
-<tr><td>7</td><td>LOOP</td><td>LOOP on/off</td><td> - </td><td> - </td><td>SLICE</td><td>SLICE</td></tr>
+<tr><td>7</td><td>LOOP</td><td>LOOP on/off</td><td>MODE</td><td> - </td><td>SLICE</td><td>SLICE</td></tr>
 <tr><td>8</td><td>LEVEL</td><td>LEVEL</td><td>LEVEL</td><td>LEVEL</td><td>LEVEL</td><td>LEVEL</td></tr>
 </table></div>
 
