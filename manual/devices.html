@@ -319,12 +319,14 @@ to an AU track - the plugin owns its voice.</li>
 </ul>
 
 <h2 id="audioin">Audio In: the external input</h2>
-<p>The Audio In device passes a signal from your audio interface (or the
-built-in microphone) through a track. Set a track's device to
-<strong>Audio In</strong> and pick the source in the track sheet's Audio In
-card: a single input channel, which plays to both sides, or a pair as left
-and right. While any track in the pattern runs the device, HeartBeat keeps
-the interface's inputs open.</p>
+<p>The Audio In device passes a signal from your audio interface through a
+track. Set a track's device to <strong>Audio In</strong> and pick the source
+in the track sheet's Audio In card: a single input channel as mono, which
+plays to both sides, or a pair as stereo. A new Audio In track starts with
+its input <strong>Off</strong>: HeartBeat never picks an input for you,
+because the built-in microphone through the speaker is instant feedback.
+While any track in the pattern runs the device, HeartBeat keeps the
+interface's inputs open.</p>
 <ul>
 <li><strong>IN page:</strong> GAIN · PAN · CHORUS · DRIVE over HP · STEREO ·
 DELAY · REVERB. GAIN opens at unity; the rest is the same stage the AU and
