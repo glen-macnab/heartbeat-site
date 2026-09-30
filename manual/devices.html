@@ -53,7 +53,6 @@ the sound changes.</p>
 <tr><td>PLUCK</td><td>8</td><td>Karplus-Strong plucked string: a burst-excited delay line with damping, pick position and a detuned stereo double.</td></tr>
 <tr><td>MIDI</td><td> - </td><td>No internal sound: the track's notes and knob movements go out the MIDI wire to hardware or other apps.</td></tr>
 <tr><td>AU</td><td>plugin's</td><td>Hosts any Audio Unit (AUv3) instrument installed on the device. The plugin's audio comes back into the track's mixer stage, and 24 knob slots turn any of its parameters. See <a href="#au">AU Synth</a>.</td></tr>
-<tr><td>AUDIO IN</td><td> - </td><td>An external signal: one hardware input channel or a pair, through the track's gain, drive, highpass, stereo width, chorus and sends into the mix. See <a href="#audioin">Audio In</a>.</td></tr>
 </table></div>
 
 <div class="note"><strong>Note</strong>
@@ -74,9 +73,8 @@ themselves survive the swap.</div>
 <tr><td>Drum</td><td>TRG · DRUM · FLTR · AMP · FX · LFO</td></tr>
 <tr><td>Pluck</td><td>TRG · STR · FLTR · AMP · FX · LFO</td></tr>
 <tr><td>FM</td><td>TRG · FM · MOD · FLTR · AMP · FX · LFO</td></tr>
-<tr><td>MIDI</td><td>TRG · SRC · 1 · 2 · 3 · LFO</td></tr>
+<tr><td>MIDI</td><td>TRG · SRC · 1 · 2 · 3 · (MIX) · LFO - MIX appears once the audio return has an input</td></tr>
 <tr><td>AU</td><td>TRG · P1 · P2 · P3 · MIX · LFO</td></tr>
-<tr><td>Audio In</td><td>TRG · IN · LFO</td></tr>
 </table></div>
 
 <p>Each sound page is a fixed 2×4 knob grid. A device that doesn't use a cell
@@ -318,27 +316,25 @@ and HeartBeat keeps playing. Only the FLTR, AMP and FX pages below don't apply
 to an AU track - the plugin owns its voice.</li>
 </ul>
 
-<h2 id="audioin">Audio In: the external input</h2>
-<p>The Audio In device passes a signal from your audio interface through a
-track. Set a track's device to <strong>Audio In</strong> and pick the source
-in the track sheet's Audio In card: a single input channel as mono, which
-plays to both sides, or a pair as stereo. A new Audio In track starts with
-its input <strong>Off</strong>: HeartBeat never picks an input for you,
-because the built-in microphone through the speaker is instant feedback.
-While any track in the pattern runs the device, HeartBeat keeps the
-interface's inputs open.</p>
+<h2 id="audioin">MIDI device: the audio return</h2>
+<p>A MIDI track can bring its hardware synth's audio back through the same
+track. In the track sheet's Audio In card pick the interface input the synth
+is connected to: a single channel as mono, which plays to both sides, or a
+pair as stereo. Every track switched to the MIDI device starts with the
+return <strong>Off</strong>: HeartBeat never picks an input for you, because
+the built-in microphone through the speaker is instant feedback. While any
+MIDI track in the pattern has a return, HeartBeat keeps the interface's
+inputs open.</p>
 <ul>
-<li><strong>IN page:</strong> GAIN · PAN · CHORUS · DRIVE over HP · STEREO ·
-DELAY · REVERB. GAIN opens at unity; the rest is the same stage the AU and
-internal devices run, so a hardware synth or a microphone sits in the mix,
-the global sends and the master chain like any other track, and the Audio
-Out card routes it to a hardware pair or mono channel.</li>
-<li><strong>Trigs don't fire it</strong> - the signal is always passing -
-but p-locks, LFOs, recorded automation lanes, morphs and MIDI learn on the
-IN page's knobs all work, so a step can duck the gain, sweep the highpass or
-open the drive in time with the pattern.</li>
-<li>The scope shows the input after its stage. Latency is one audio buffer
-plus the interface's own.</li>
+<li><strong>The MIX page</strong> appears before LFO once a return is chosen:
+GAIN · PAN · CHORUS · DRIVE over HP · STEREO · DELAY · REVERB. GAIN opens at
+unity; the rest is the same stage the AU and internal devices run, so the
+synth sits in the mix, the global sends and the master chain like any other
+track, and the Audio Out card routes it to a hardware pair or mono channel.
+The MIX knobs are track values (per pattern) and take MIDI learn; they don't
+take p-locks, since a lock on a MIDI track goes out the wire as a CC.</li>
+<li>The scope shows the return after its stage on every page but LFO.
+Latency is one audio buffer plus the interface's own.</li>
 </ul>
 
 <h2 id="filter">FLTR page: every device</h2>
