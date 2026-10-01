@@ -36,68 +36,78 @@
 
 <article>
 <h1>HeartBeat Manual</h1>
-<p class="lede">HeartBeat is a 16-track groovebox for iPhone: a
-hardware-style step sequencer driving samplers, synths and external
-hardware, with performance tools layered on top. This manual covers all of
-it.</p>
+<p class="lede">HeartBeat is a 16-track groovebox for iPhone and iPad. A step
+sequencer in the hardware tradition drives samplers, synths, plugins and
+your external gear, and a layer of performance tools sits on top. This
+manual goes through all of it, one chapter per area. You don't need to read
+it in order.</p>
 
 <h2 id="tour">The Perform screen</h2>
-<p>The header names the loaded project - color square and title on the left -
-with a menu on the right switching between <strong>PERFORM</strong>,
-<strong>PROJECTS</strong> and <strong>SETTINGS</strong>. Perform is where
-you'll live. Top to bottom:</p>
+<p>You'll spend most of your time on the Perform screen. Along the very top
+is the project's name with its colour square, and on the right a menu that
+switches between <strong>PERFORM</strong>, <strong>PROJECTS</strong> and
+<strong>SETTINGS</strong>. Below that, from the top down:</p>
 <div class="tablewrap"><table>
 <tr><th>Band</th><th>What it is</th></tr>
-<tr><td>Transport</td><td>Play, record, <span class="key">Q</span>, <span class="key">FILL</span>, tempo, the pattern button, and the MIDI-learn button with its activity LEDs. <a href="sequencer.html#transport">→</a></td></tr>
-<tr><td>Top carousel</td><td>Swipeable pages: VIZ (the device visualizer), GFX (delay &amp; reverb), MIX (mixer), MFX (DJ FX), EQ, MSTR (dynamics), RTE (compressor routing). <a href="fx-mixer.html">→</a></td></tr>
-<tr><td>Param area</td><td>TRG (the step editor) plus the selected device's knob pages. Latch a step and every knob writes p-locks. <a href="devices.html#pages">→</a></td></tr>
-<tr><td>Step grid</td><td>16 steps per page, up to 128 per track, with the clipboard row (COPY, PASTE, piano roll, UNDO, REDO) above. <a href="sequencer.html">→</a></td></tr>
-<tr><td>Track pads</td><td>16 track pads, re-purposed by the mode row: MUTE, PLAY, MORPH, GEN, KEYS. <a href="sequencer.html#mutes">→</a></td></tr>
+<tr><td>Transport</td><td>Play, record, <span class="key">Q</span>, <span class="key">FILL</span>, the tempo, the pattern button, and the MIDI learn button with its little in and out lights. <a href="sequencer.html#transport">→</a></td></tr>
+<tr><td>Top carousel</td><td>Swipeable pages. VIZ shows what the selected device is doing; GFX is the delay and reverb; then the MIX mixer, MFX DJ effects, EQ, MSTR dynamics and RTE compressor routing. <a href="fx-mixer.html">→</a></td></tr>
+<tr><td>Param area</td><td>TRG, the step editor, followed by the selected device's knob pages. Latch a step and the knobs write p-locks to it instead of changing the track. <a href="devices.html#pages">→</a></td></tr>
+<tr><td>Step grid</td><td>16 steps a page, up to 128 per track, with COPY, PASTE, the piano roll button, UNDO and REDO above it. <a href="sequencer.html">→</a></td></tr>
+<tr><td>Track pads</td><td>16 pads, one per track. The row above them changes what a pad does: MUTE, PLAY, MORPH, GEN or KEYS. <a href="sequencer.html#mutes">→</a></td></tr>
 </table></div>
-<p>Turn the phone on its side and the same bands rearrange into a
-two-by-two grid: the transport moves up into the header, the top carousel
-sits beside the knob pages, and the step grid sits beside the track pads,
-every button at its upright size. Nothing changes but the arrangement.</p>
+<p>Turn the phone on its side and the same five bands rearrange into a
+two-by-two grid. The transport moves up into the header, the carousel sits
+next to the knob pages, and the steps sit next to the pads. Nothing is
+hidden and nothing shrinks. On an iPad the whole board grows to fill the
+screen in either orientation.</p>
 <img class="shot wide" src="../assets/shot-landscape.png" alt="The Perform screen in landscape: transport in the header, display beside knobs, steps beside track pads" width="2442" height="1227">
+<img class="shot" src="../assets/shot-ipad.png" alt="The Perform screen on an iPad held upright: the same board at iPad size" width="1032" height="1376">
 
-<h2 id="color">The color language</h2>
+<h2 id="color">The colour language</h2>
+<p>A few colours mean the same thing everywhere, so once you've learned them
+you can read any screen at a glance.</p>
 <ul>
-<li><strong>One hue per track</strong>, carried through every surface - pads,
-steps, faders, meters, waveforms.</li>
-<li><strong style="color:rgb(255,191,38)">Amber</strong> always means "set on
-the step / armed": p-locks, lock notches, queued patterns, page loops, FILL.</li>
-<li><strong style="color:rgb(51,230,255)">Cyan</strong> is reserved for MIDI
+<li>Each track has its own hue, and it follows the track onto its pad, its
+steps, its fader, its meter and its waveform.</li>
+<li><strong style="color:rgb(255,191,38)">Amber</strong> means something is set
+on the step, or armed: p-locks, lock notches, a queued pattern, a page loop,
+FILL.</li>
+<li><strong style="color:rgb(51,230,255)">Cyan</strong> is only ever MIDI
 learn.</li>
-<li><strong style="color:rgb(194,143,255)">Violet</strong> is morphs;
+<li><strong style="color:rgb(194,143,255)">Violet</strong> is morphs, and
 <strong style="color:rgb(255,61,61)">red</strong> is record.</li>
+<li>Green and red LEDs on the keyboard and down the piano roll's gutter show
+which notes are in the pattern's scale and which aren't.</li>
 </ul>
 
 <h2 id="start">Five minutes to a beat</h2>
 <ol>
-<li><strong>Pick a track</strong>: tap pad 1. A fresh sampler track meets an
-empty pool and seeds the factory drum kit automatically.</li>
-<li><strong>Place trigs</strong>: tap steps 1, 5, 9, 13. Press play.</li>
-<li><strong>Shape the sound</strong>: swipe the param area to FLTR or AMP and
-turn knobs; watch the visualizer follow.</li>
-<li><strong>Lock a step</strong>: long-hold step 5, turn FREQ. Amber arc,
-amber notch: that step now differs. Unlatch and keep going.</li>
-<li><strong>Add movement</strong>: hold <span class="key">FILL</span> for your
-fill steps, push a step's PROB below 100, or put an LFO on the filter. From
-there: <a href="devices.html">devices</a>,
-<a href="piano-roll.html">the piano roll</a>,
-<a href="modulation.html#morphs">morphs</a>…</li>
+<li><strong>Pick a track.</strong> Tap pad 1. A new sampler track with an
+empty pool loads the factory drum kit for you.</li>
+<li><strong>Put some trigs down.</strong> Tap steps 1, 5, 9 and 13. Press
+play.</li>
+<li><strong>Shape it.</strong> Swipe the param area across to FLTR or AMP and
+turn things. The display above follows along.</li>
+<li><strong>Lock a step.</strong> Hold step 5 until it latches, then turn
+FREQ. The knob's arc and the step's corner go amber. That step now has its
+own filter setting. Unlatch and carry on.</li>
+<li><strong>Add some life.</strong> Hold <span class="key">FILL</span> on the
+steps you want only in fills, drop a step's PROB under 100, or put an LFO on
+the filter. After that, have a look at <a href="devices.html">the
+devices</a>, <a href="piano-roll.html">the piano roll</a> and
+<a href="modulation.html#morphs">morphs</a>.</li>
 </ol>
 
 <h2 id="chapters">Chapters</h2>
 <div class="tablewrap"><table>
-<tr><td><a href="sequencer.html">Sequencer</a></td><td>Trigs, p-locks, conditions, retrigs, section loops, recording, patterns, song mode, mutes, the live keyboard, track setup.</td></tr>
-<tr><td><a href="devices.html">Devices</a></td><td>The six sampler modes, the synths and the AU plugin host, page by page, knob by knob.</td></tr>
-<tr><td><a href="piano-roll.html">Piano roll</a></td><td>The note editor: gestures, chords, per-voice gates, its own undo.</td></tr>
-<tr><td><a href="sampling.html">Sampling</a></td><td>Recording, resampling, the slice editor, sample and wavetable pools.</td></tr>
-<tr><td><a href="modulation.html">Modulation</a></td><td>LFOs, recorded automation, and A/B morphs.</td></tr>
-<tr><td><a href="fx-mixer.html">FX &amp; mixer</a></td><td>Sends, DJ FX, EQ, compression, limiting, routing, the mixer.</td></tr>
-<tr><td><a href="midi-link.html">MIDI &amp; Link</a></td><td>Learn mode, sequencing hardware, track-to-track sends, getting MIDI in, clock, Ableton Link and per-track Link audio.</td></tr>
-<tr><td><a href="projects.html">Projects &amp; files</a></td><td>Projects, iCloud, autosave, undo, presets, song export, and where everything lives on disk.</td></tr>
+<tr><td><a href="sequencer.html">Sequencer</a></td><td>Trigs, p-locks, conditions, retrigs, section loops, recording, patterns, song mode, mutes, the live keyboard, the track sheet.</td></tr>
+<tr><td><a href="devices.html">Devices</a></td><td>The sampler's six modes, the synths, the AU plugin host and the MIDI device, page by page.</td></tr>
+<tr><td><a href="piano-roll.html">Piano roll</a></td><td>The note editor: gestures, chords, velocities, loop braces, scales and its own undo.</td></tr>
+<tr><td><a href="sampling.html">Sampling</a></td><td>Recording, resampling, the slice editor, the sample and wavetable pools, the factory library.</td></tr>
+<tr><td><a href="modulation.html">Modulation</a></td><td>LFOs, recorded knob moves, and morphs.</td></tr>
+<tr><td><a href="fx-mixer.html">FX &amp; mixer</a></td><td>Sends, the mixer, DJ effects, EQ, compression, limiting and routing.</td></tr>
+<tr><td><a href="midi-link.html">MIDI &amp; Link</a></td><td>Learn mode, sequencing hardware, getting MIDI in, clock out, Ableton Link, and the Settings page.</td></tr>
+<tr><td><a href="projects.html">Projects &amp; files</a></td><td>Projects, autosave and undo, presets, exporting a song, iCloud, and what lives where on disk.</td></tr>
 </table></div>
 
 <div class="pagenav">

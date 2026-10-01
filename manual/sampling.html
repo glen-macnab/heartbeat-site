@@ -36,85 +36,88 @@
 
 <article>
 <h1>Sampling</h1>
-<p class="lede">Every project carries its own 128-slot sample pool and
-128-slot wavetable pool. Record into them, import into them, slice what's
-there - it all lives inside the project folder.</p>
+<p class="lede">Every project has its own pool of 128 samples and another
+128 wavetables. You record into them, import into them and slice what's
+there, and all of it lives inside the project's folder.</p>
 
 <h2 id="pool">The sample pool</h2>
 <ul>
-<li><strong>128 numbered slots</strong> per project - the slot numbers are what
-the sampler's SAMPLE knob (and p-locks) address, so they never shift: deleting
-leaves a hole in place and the next import fills the first hole.</li>
-<li>Tap a row to assign it to the current track and audition it; the speaker
-button auditions without assigning.</li>
-<li><strong>Import</strong> from any Files-app location: Choose Samples Folder…,
-browse subfolders, audition on tap, <code>+</code> to import. A file already in
-the pool shows a green badge and re-points instead of duplicating. Formats:
-wav, aif/aiff, mp3, m4a, flac, caf, aac, ogg. Samples decode up to 60 s.</li>
-<li>Importing copies the file <em>into the project's folder</em> - projects
-stay self-contained.</li>
+<li>The pool is 128 numbered slots. The slot number is what the sampler's
+SAMPLE knob and its p-locks point at, so slots never move: deleting a sample
+leaves a hole, and the next import fills the first hole it finds.</li>
+<li>Tap a row to put that sample on the current track and hear it. The
+speaker button plays it without assigning it.</li>
+<li>Importing works from anywhere in the Files app. Choose Samples Folder,
+browse into subfolders, tap to audition, <code>+</code> to import. A file
+that's already in the pool shows a green badge and gets re-pointed instead of
+copied twice. It reads wav, aif and aiff, mp3, m4a, flac, caf, aac and ogg,
+and decodes up to 60 seconds of each.</li>
+<li>An import copies the file into the project's folder, so a project is
+always self-contained.</li>
 </ul>
 
 <h2 id="recording">Recording a sample</h2>
-<p>From the pool browser, choose <strong>Record a Sample…</strong> Two sources:</p>
+<p>From the pool browser choose Record a Sample. There are two sources:</p>
 <div class="tablewrap"><table>
 <tr><th>Source</th><th>Records</th></tr>
-<tr><td>Resample</td><td>The master mix - everything you hear except the metronome. If the transport isn't running, hitting record starts it automatically.</td></tr>
-<tr><td>Mic/Input</td><td>The microphone or a connected interface (pick the device, mono/stereo, and channel pair on multi-channel interfaces). Input is metered but not monitored back through the mix.</td></tr>
+<tr><td>Resample</td><td>The master mix, which is everything you hear apart from the metronome. If the transport isn't running, pressing record starts it.</td></tr>
+<tr><td>Mic/Input</td><td>The microphone or a connected interface. You pick the device, mono or stereo, and on a multi-channel interface the channel pair. The input is metered but not played back through the mix.</td></tr>
 </table></div>
 <ul>
-<li><strong>Snap to bar</strong> (on by default): while playing, the take starts
-and stops on the next bar line - a resampled loop comes out exactly
-bar-length. The level meter turns red above clipping range.</li>
-<li>Takes run up to <strong>60 seconds</strong>. Afterwards: name it (defaults
-count up as <code>Resample 1</code>, <code>Sample 1</code>, …), preview, then
-<strong>Add to Pool → Track N</strong> assigns it straight to the track you came
-from - or Discard.</li>
+<li>Snap to bar is on by default. While playing, the take starts and stops
+on the next bar line, so a resampled loop comes out exactly a bar long. The
+level meter goes red when you're clipping.</li>
+<li>Takes run up to 60 seconds. When you stop, you name it (the defaults
+count up, Resample 1, Sample 1 and so on), listen back, and either Add to
+Pool → Track N, which puts it straight onto the track you came from, or
+discard it.</li>
 </ul>
 
 <h2 id="slices">The slice editor</h2>
-<p>With a track's sampler in SLICE mode, the scissors chip in the waveform
+<p>With a sampler track in SLICE mode, the scissors chip in the waveform
 header opens the slice editor.</p>
 <ul>
-<li><strong>Tap the waveform</strong> to add a marker · <strong>tap a marker</strong>
-to select it (it turns amber) · <strong>drag</strong> to move it · trash deletes
-the selected marker · Clear removes them all.</li>
-<li>The <strong>GRID row</strong> (4 / 8 / 16 / 32 / 64) seeds an even chop you
-can then adjust by hand.</li>
-<li>Slices are stored on the <em>pool slot</em>, so every track playing that
-sample shares them - and presets carry them along.</li>
-<li>The region before your first marker counts as <strong>slice 1</strong>; an
-unsliced sample plays whole.</li>
+<li>Tap the waveform to add a marker. Tap a marker to select it (it turns
+amber), drag it to move it, trash deletes the selected one and Clear removes
+them all.</li>
+<li>The GRID row (4, 8, 16, 32 or 64) lays down an even chop you can then
+adjust by hand.</li>
+<li>Slices belong to the pool slot, so every track playing that sample
+shares them, and a preset carries them along.</li>
+<li>Everything before your first marker counts as slice 1. A sample with no
+markers plays whole.</li>
 </ul>
 <div class="tip"><strong>Tip</strong>
 Back on the waveform display, tapping a slice plays it through the track's
-voice and points the SLICE knob at it. The device menu's Linear / Random
+voice and points the SLICE knob at it. The device menu's Linear and Random
 Slice Locks scatter slice choices across the pattern in one move.</div>
 
 <h2 id="wavetables">The wavetable pool</h2>
 <ul>
-<li>128 slots per project, browsed from the waveform header on a Wavetable
-track. Auditioning a table plays it linearly - you hear the morph sweep
+<li>128 slots per project, browsed from the waveform header on a wavetable
+track. Auditioning a table plays straight through it, so you hear the morph
 itself.</li>
-<li>Import from any Files folder (wav, aif/aiff, flac, caf). Files follow the
-common wavetable convention - 2048-sample frames - and anything else loads as a
+<li>Import from any Files folder: wav, aif and aiff, flac or caf. Files follow
+the common convention of 2048-sample frames, and anything else loads as a
 single-cycle wave.</li>
-<li>Eight factory tables are seeded automatically: Basic Morph, PWM,
-Harmonics, Sync, FM, Vowel, Bell, Digital.</li>
+<li>Eight factory tables are there from the start: Basic Morph, PWM,
+Harmonics, Sync, FM, Vowel, Bell and Digital.</li>
 </ul>
 
 <h2 id="factory">Factory content</h2>
-<p>A factory library ships with the app: a 20-piece starter kit (the 909 and
-808 set, a sub bass, a noise sweep) that fills the pool the first time a
-sampler track meets an empty pool, plus folders of kicks, snares, closed and
-open hats, claps, toms, percussion, cymbals, drum loops, basses and FX to browse from
-the Samples drawer. Factory files live in a shared folder outside your
-projects, mirrored from the app bundle, and self-heal: if one goes missing it
-is copied back rather than playing silence.</p>
-<p>The preset browser carries two sampler sounds from every folder of the
-library - Deep Kick and Punch Kick, Crack Snare and Room Snare, Deep Sub and
-Growl Bass, Break 170 and House Chop among them - each pointing at its factory
-sample, so loading one never copies audio into the project.</p>
+<p>The app ships with a sample library. There's a 20-piece starter kit (the
+909 and 808 set, a sub bass, a noise sweep) that fills the pool the first time
+a sampler track meets an empty one, and folders of kicks, snares, closed and
+open hats, claps, toms, percussion, cymbals, drum loops, basses and FX to
+browse from the Samples drawer. The factory files live in a shared folder on
+the device, outside your projects, mirrored from the app itself. If one goes
+missing it's copied back rather than playing silence.</p>
+<p>The preset browser is stocked from the same library: a few dozen sampler
+sounds across every folder (Deep Kick and Punch Kick, Crack Snare and Room
+Snare, Deep Sub and Growl Bass, Break 170 and House Chop among them), each
+pointing at its factory sample so loading one never copies audio into your
+project, plus a set of mono synth presets that lean on the synth's whole
+feature set, and one of each drum model.</p>
 
 <div class="pagenav">
   <a href="piano-roll.html"><small>Previous</small>Piano roll</a>

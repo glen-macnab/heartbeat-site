@@ -36,33 +36,33 @@
 
 <article>
 <h1>Devices</h1>
-<p class="lede">Every track hosts one device - a sound engine with its own knob
-pages. Swap devices from the device chip above the knobs; the sequence stays,
-the sound changes.</p>
+<p class="lede">Every track runs one device, which is a sound engine with its
+own set of knob pages. You swap devices from the chip above the knobs. The
+sequence stays put; only the sound changes.</p>
 
 <h2 id="devices">The devices</h2>
 <div class="tablewrap"><table>
 <tr><th>Device</th><th>Voices</th><th>What it is</th></tr>
-<tr><td>SAMPLER</td><td>1–8</td><td>Plays samples from the project pool through six sampler modes - one-shot, repitch, warp, stretch, slice and grid. The Voices setting (1–8, in track setup) lets replaced hits ring instead of cutting.</td></tr>
-<tr><td>MONO</td><td>mono</td><td>Seven detuned oscillators plus a sub sine - a fat unison monosynth with glide.</td></tr>
-<tr><td>POLY</td><td>8</td><td>Three oscillators per voice, eight voices - the polyphonic sibling.</td></tr>
-<tr><td>FM</td><td>8</td><td>Four sine operators, eight algorithms, feedback - classic 4-op FM.</td></tr>
-<tr><td>WT</td><td>8</td><td>Wavetable scanning with up to 7-voice unison, reading standard 2048-sample-frame tables from a 128-slot pool.</td></tr>
-<tr><td>ACID</td><td>mono</td><td>One oscillator into a zero-delay-feedback ladder filter - a classic acid voice with slides and accents.</td></tr>
-<tr><td>DRUM</td><td>mono</td><td>Eight synthesized drum models - 808 kick and snare, clap, hats, tom, rim, cowbell - with punch, sweep, tone and noise macros; DEC sets each model's length and velocity shapes the hit. A new hit chokes the last.</td></tr>
-<tr><td>PLUCK</td><td>8</td><td>Karplus-Strong plucked string: a burst-excited delay line with damping, pick position and a detuned stereo double.</td></tr>
-<tr><td>MIDI</td><td> - </td><td>No internal sound: the track's notes and knob movements go out the MIDI wire to hardware or other apps.</td></tr>
-<tr><td>AU</td><td>plugin's</td><td>Hosts any Audio Unit (AUv3) instrument installed on the device. The plugin's audio comes back into the track's mixer stage, and 24 knob slots turn any of its parameters. See <a href="#au">AU Synth</a>.</td></tr>
+<tr><td>SAMPLER</td><td>1–8</td><td>Plays samples from the project's pool, six different ways: one-shot, repitch, warp, stretch, slice and grid. Voices (in the track sheet) decides whether a new hit cuts the last one off or lets it ring.</td></tr>
+<tr><td>MONO</td><td>mono</td><td>Seven detuned oscillators and a sub sine. A big unison monosynth with glide.</td></tr>
+<tr><td>POLY</td><td>8</td><td>Three oscillators a voice, eight voices. The mono synth's polyphonic sibling.</td></tr>
+<tr><td>FM</td><td>8</td><td>Four sine operators, eight algorithms and feedback. Classic four-op FM.</td></tr>
+<tr><td>WT</td><td>8</td><td>Wavetable scanning with up to seven-voice unison, reading standard 2048-sample-frame tables from a pool of 128.</td></tr>
+<tr><td>ACID</td><td>mono</td><td>One oscillator into a zero-delay-feedback ladder filter. Slides and accents included.</td></tr>
+<tr><td>DRUM</td><td>mono</td><td>Eight drum models built from scratch: 808-style kick and snare, clap, hats, tom, rim and cowbell, with punch, sweep, tone and noise macros. Each new hit chokes the last.</td></tr>
+<tr><td>PLUCK</td><td>8</td><td>A Karplus-Strong string: a burst into a delay line with damping, pick position and a detuned stereo double.</td></tr>
+<tr><td>MIDI</td><td> - </td><td>No sound of its own. Notes and knob moves go out the MIDI wire to hardware or other apps, and the synth's audio can come back in through the same track.</td></tr>
+<tr><td>AU</td><td>plugin's</td><td>Hosts any Audio Unit instrument (AUv3) installed on the device. The plugin's audio comes back through the track's own mixer stage, and 24 knob slots turn its parameters. See <a href="#au">AU Synth</a>.</td></tr>
 </table></div>
 
-<div class="note"><strong>Note</strong>
-Switching a track's device resets its knob values to that device's defaults
-in every pattern, and re-points the track's eight knob slots. The trigs
-themselves survive the swap.</div>
+<div class="note"><strong>Worth knowing</strong>
+Switching a track's device resets its knob values to the new device's
+defaults in every pattern, and re-points its eight knob slots. The trigs
+survive the swap.</div>
 
 <h2 id="pages">Param pages</h2>
-<p>Every internal device's parameter area is a row of pages:
-<span class="key">TRG</span> (the step editor), the device's sound pages, then
+<p>Every device's parameter area is a row of pages: <span class="key">TRG</span>
+(the step editor) first, then the device's own sound pages, then
 <span class="key">LFO</span>.</p>
 
 <div class="tablewrap"><table>
@@ -73,41 +73,43 @@ themselves survive the swap.</div>
 <tr><td>Drum</td><td>TRG · DRUM · FLTR · AMP · FX · LFO</td></tr>
 <tr><td>Pluck</td><td>TRG · STR · FLTR · AMP · FX · LFO</td></tr>
 <tr><td>FM</td><td>TRG · FM · MOD · FLTR · AMP · FX · LFO</td></tr>
-<tr><td>MIDI</td><td>TRG · SRC · 1 · 2 · 3 · (MIX) · LFO - MIX appears once the audio return has an input</td></tr>
+<tr><td>MIDI</td><td>TRG · SRC · 1 · 2 · 3 · LFO, with a MIX page before LFO once the audio return has an input</td></tr>
 <tr><td>AU</td><td>TRG · P1 · P2 · P3 · MIX · LFO</td></tr>
 </table></div>
 
-<p>Each sound page is a fixed 2×4 knob grid. A device that doesn't use a cell
-leaves it empty rather than reshuffling - so your hands (and any MIDI-mapped
-controller) always find the same knob in the same place. A knob's caption (a
-CC number, a sub-label) sits on the knob face under its value. When a step is
-latched, the header reads <span class="key amber">LOCKS</span> and the knobs
-edit that step's parameter locks instead of the track sound.</p>
-<p><strong>TUNE</strong> steps in whole semitones on every device, and reads as
-one (+7, −12); <strong>FINE</strong> covers the cents in between. The pitch
-wheel bends around whatever TUNE says without moving it.</p>
+<p>Each sound page is a fixed grid of two rows of four knobs. If a device
+doesn't use a cell, that cell stays empty rather than everything shuffling
+along, so your hands (and any controller you've mapped) find the same knob in
+the same place on every device. The small caption on a knob face, a CC number
+or a sub-label, sits under its value. When a step is latched the header reads
+<span class="key amber">LOCKS</span>, the knobs edit that step's locks instead
+of the track, and the display above shows the step's values too.</p>
+<p><strong>TUNE</strong> moves in whole semitones on every device and reads
+that way (+7, −12). <strong>FINE</strong> covers the cents in between. The
+pitch wheel bends around whatever TUNE says without moving it.</p>
 
 <h2 id="sampler">The sampler's six modes</h2>
-<p>The sampler reinterprets its SRC page per mode. Pick the mode from
-the dropdown chip in the waveform header (it's a parameter underneath - so it
-can be locked per step). The window you play is always set by
-<span class="key">START</span> and <span class="key">LENGTH</span>.</p>
+<p>The sampler reads its SRC page differently depending on the mode, which
+you pick from the dropdown chip in the waveform header. The mode is a
+parameter underneath, so a step can lock it. Whatever the mode, the bit of
+the sample you're playing is set by <span class="key">START</span> and
+<span class="key">LENGTH</span>.</p>
 
 <div class="tablewrap"><table>
 <tr><th>Mode</th><th>What it does</th></tr>
-<tr><td>ONE SHOT</td><td>Classic playback of the START/LENGTH window. <span class="key">MODE</span> picks direction and looping: FWD, REV, FWD∞, REV∞; <span class="key">LOOP</span> places the loop point inside the window.</td></tr>
-<tr><td>REPITCH</td><td>Fits the window into <span class="key">BARS</span> by changing playback speed - pitch follows tempo, like vinyl. LOOP becomes a simple ON/OFF wrap.</td></tr>
-<tr><td>WARP</td><td>Beat-slicing time-stretch: the window is cut into musical segments (<span class="key">SEG</span>: 1/4 … 1/64 note divisions) whose starts always land on the tempo grid across BARS. Pitch stays put at TUNE; segment joins are crossfaded. The first BARS stop is <code>AUTO</code> - the loop length is guessed from the sample's duration at the current tempo.</td></tr>
-<tr><td>STRETCH</td><td>Smooth time-stretch: the playhead crosses the window in BARS while pitch stays fully independent - granular-smooth, best on pads, vocals and melodic loops.</td></tr>
-<tr><td>SLICE</td><td>Plays your hand-placed slice markers from the slice editor. The <span class="key">SLICE</span> knob picks a slice; incoming notes step through slices with wraparound instead of repitching. The region before your first marker counts as slice 1.</td></tr>
-<tr><td>GRID</td><td>Even chop: <span class="key">GRID</span> divides the window into 2, 4, 8, 16, 32 or 64 equal slices; SLICE and notes select exactly as in SLICE mode.</td></tr>
+<tr><td>ONE SHOT</td><td>Plays the START/LENGTH window the ordinary way. <span class="key">MODE</span> picks direction and looping (FWD, REV, FWD∞, REV∞) and <span class="key">LOOP</span> places the loop point inside the window.</td></tr>
+<tr><td>REPITCH</td><td>Fits the window into <span class="key">BARS</span> by changing playback speed, so pitch follows tempo like a record. LOOP becomes a plain on/off.</td></tr>
+<tr><td>WARP</td><td>Beat-slicing time-stretch. The window is cut into musical segments (<span class="key">SEG</span>, from 1/4 to 1/64 notes) whose starts always land on the tempo grid across BARS, so the pitch stays where TUNE puts it. The joins are crossfaded. The first BARS setting is <code>AUTO</code>, which guesses the loop's length from how long the sample is at the current tempo.</td></tr>
+<tr><td>STRETCH</td><td>Smooth time-stretch: the playhead crosses the window in BARS while pitch stays put. Granular and smooth, so it suits pads, vocals and melodic loops.</td></tr>
+<tr><td>SLICE</td><td>Plays the slice markers you placed in the slice editor. The <span class="key">SLICE</span> knob picks a slice, and incoming notes step through the slices (wrapping round) instead of changing pitch. Anything before your first marker counts as slice 1.</td></tr>
+<tr><td>GRID</td><td>An even chop: <span class="key">GRID</span> cuts the window into 2, 4, 8, 16, 32 or 64 equal slices, and SLICE and notes pick them exactly as in SLICE mode.</td></tr>
 </table></div>
 
 <div class="tip"><strong>Tip</strong>
-In SLICE and GRID modes, tapping a slice segment in the waveform display plays
-that slice through the track's voice <em>and</em> points the SLICE knob at it.
-On slice devices the device menu also offers Linear / Random / Clear Slice
-Locks to scatter slice choices across the pattern's steps in one gesture.</div>
+In SLICE and GRID modes, tapping a slice in the waveform display plays it
+through the track's voice and points the SLICE knob at it. The device menu
+on those modes also has Linear, Random and Clear Slice Locks, which spread
+slice choices across the pattern's steps in one go.</div>
 
 <h3>SRC page by mode</h3>
 <div class="tablewrap"><table>
@@ -123,218 +125,217 @@ Locks to scatter slice choices across the pattern's steps in one gesture.</div>
 </table></div>
 
 <ul>
-<li><strong>TUNE</strong> ±24 semitones · <strong>FINE</strong> ±50 cents.</li>
-<li><strong>BARS</strong>: 1/4, 1/2, 1, 2, 4, 8 or 16 bars - the sample's musical length for the tempo-fitting modes.</li>
-<li><strong>SAMPLE</strong>: the pool slot (1-based). Latched at trig time, so it p-locks cleanly per step.</li>
+<li>TUNE is ±24 semitones and FINE is ±50 cents.</li>
+<li>BARS is 1/4, 1/2, 1, 2, 4, 8 or 16 bars: how long the sample is, musically, for the modes that fit it to tempo.</li>
+<li>SAMPLE is the pool slot, counting from 1. It's read at the moment the trig fires, so p-locking it per step works cleanly.</li>
 </ul>
 
 <h2 id="analog">Mono synth: OSC &amp; MOD pages</h2>
-<p>The mono synth's source section is a <strong>mixer</strong>: the unison
+<p>The mono synth's source section is really a little mixer. The unison
 stack, a second oscillator, the sub and a noise source each have their own
-level into the filter, so any one of them can play alone - noise for a hat,
-sub for a pure bass.</p>
+level going into the filter, so any one of them can play on its own. Noise
+alone makes a hat; sub alone makes a clean bass.</p>
 <p><strong>OSC page:</strong> TUNE · FINE · WAVE · OSC1 over TUNE2 · FINE2 ·
 WAVE2 · OSC2.</p>
 <div class="tablewrap"><table>
 <tr><th>Knob</th><th>Does</th></tr>
-<tr><td>TUNE / FINE</td><td>Whole semitones ±24 / ±50 cents.</td></tr>
-<tr><td>WAVE</td><td>SAW, SQR, PLS or TRI for the unison stack - anti-aliased.</td></tr>
+<tr><td>TUNE / FINE</td><td>Whole semitones ±24 and ±50 cents.</td></tr>
+<tr><td>WAVE</td><td>SAW, SQR, PLS or TRI for the unison stack, all anti-aliased.</td></tr>
 <tr><td>OSC1</td><td>The stack's level into the mix.</td></tr>
-<tr><td>TUNE2 / FINE2</td><td>The second oscillator's offset: stepped semitones ±24 (64 = unison) and ±50 cents.</td></tr>
+<tr><td>TUNE2 / FINE2</td><td>The second oscillator's offset: stepped semitones ±24 (64 is unison) and ±50 cents.</td></tr>
 <tr><td>WAVE2</td><td>SAW, SQR, PLS, TRI or SIN for oscillator two.</td></tr>
-<tr><td>OSC2</td><td>Oscillator two's level (0 = off - and the classic single-oscillator sound).</td></tr>
+<tr><td>OSC2</td><td>Oscillator two's level. 0 is off, which gives you the classic single-oscillator sound.</td></tr>
 </table></div>
 <p><strong>MOD page:</strong> PW · DETUNE · WIDTH · GLIDE over SYNC · XMOD ·
 SUB · NOISE.</p>
 <div class="tablewrap"><table>
 <tr><th>Knob</th><th>Does</th></tr>
-<tr><td>PW</td><td>Pulse width of SQR and PLS on both oscillators: 0 is 50%, 127 a 5% needle.</td></tr>
+<tr><td>PW</td><td>Pulse width of SQR and PLS on both oscillators: 0 is 50%, 127 is a 5% needle.</td></tr>
 <tr><td>DETUNE</td><td>Unison spread, up to ±60 cents across the stack.</td></tr>
-<tr><td>WIDTH</td><td>Stereo placement of the unison stack.</td></tr>
-<tr><td>GLIDE</td><td>Constant-time portamento, up to ~1.2 s.</td></tr>
-<tr><td>SYNC</td><td>Past the middle, oscillator two hard-syncs to the stack's center oscillator.</td></tr>
-<tr><td>XMOD</td><td>Oscillator two phase-modulates the stack - cross-mod depth.</td></tr>
-<tr><td>SUB</td><td>Level of a sine one octave down.</td></tr>
-<tr><td>NOISE</td><td>White noise level into the mix, pre-filter.</td></tr>
+<tr><td>WIDTH</td><td>Where the stack sits in the stereo field.</td></tr>
+<tr><td>GLIDE</td><td>Portamento, constant time, up to about 1.2 seconds.</td></tr>
+<tr><td>SYNC</td><td>Past halfway, oscillator two hard-syncs to the stack's centre oscillator.</td></tr>
+<tr><td>XMOD</td><td>Oscillator two phase-modulates the stack. Cross-mod depth.</td></tr>
+<tr><td>SUB</td><td>Level of a sine an octave down.</td></tr>
+<tr><td>NOISE</td><td>White noise into the mix, before the filter.</td></tr>
 </table></div>
 <div class="shot-row">
 <img class="shot" src="../assets/shot-mono.png" alt="The mono synth's OSC page: two oscillators, the second a fifth up, over the unison waveform display" width="860" height="1864">
 <img class="shot" src="../assets/shot-monomod.png" alt="The mono synth's MOD page: pulse width, detune, width, glide, sync, cross-mod, sub and noise" width="860" height="1864">
 </div>
-<p>The <strong>Poly</strong> synth keeps the single OSC page: TUNE · FINE ·
-WAVE · SUB · DETUNE · WIDTH · GLIDE · LEVEL, with the same stack.</p>
+<p>The <strong>Poly</strong> synth keeps to a single OSC page, TUNE · FINE ·
+WAVE · SUB · DETUNE · WIDTH · GLIDE · LEVEL, built on the same stack.</p>
 
 <h2 id="fm">FM synth: FM &amp; MOD pages</h2>
 <p><strong>FM page:</strong> TUNE · FINE · ALGO · RATIO C / RATIO A · RATIO B · FDBK · LEVEL.
 <strong>MOD page:</strong> FM · M.ATK · M.DEC · M.LVL / DET.</p>
 <ul>
-<li><strong>ALGO</strong>: eight operator topologies:
-<code>2PAIR</code> (two 2-op pairs), <code>PR+2</code> (pair + two sines),
-<code>FAN+1</code> (two modulators into one carrier + sine),
-<code>CHN+1</code> (3-op chain + sine), <code>STACK</code> (full 4-op chain),
-<code>FAN3</code> (three modulators into one), <code>1→3</code> (one modulator,
-three carriers), <code>ADD4</code> (pure additive).</li>
-<li><strong>RATIO A / B / C</strong>: operator frequency ratios from ×0.25 to ×16
-(RATIO B drives two operators).</li>
-<li><strong>FM</strong>: the modulation-index macro: how hard modulators push carriers.</li>
-<li><strong>M.ATK / M.DEC / M.LVL</strong>: the modulator envelope. It ignores
-note-off (the amp envelope does the gating); M.LVL at max means a static,
-unchanging FM amount.</li>
-<li><strong>FDBK</strong>: the top operator modulates itself for noise and edge.</li>
-<li><strong>DET</strong>: spreads two operators up to ±14 cents for thickness.</li>
+<li>ALGO picks one of eight operator layouts:
+<code>2PAIR</code> (two two-op pairs), <code>PR+2</code> (a pair plus two sines),
+<code>FAN+1</code> (two modulators into one carrier, plus a sine),
+<code>CHN+1</code> (a three-op chain plus a sine), <code>STACK</code> (the full
+four-op chain), <code>FAN3</code> (three modulators into one), <code>1→3</code>
+(one modulator, three carriers) and <code>ADD4</code> (pure additive).</li>
+<li>RATIO A, B and C set the operators' frequency ratios from ×0.25 to ×16.
+RATIO B drives two operators.</li>
+<li>FM is the modulation index: how hard the modulators push the carriers.</li>
+<li>M.ATK, M.DEC and M.LVL are the modulator envelope. It ignores note-off
+(the amp envelope does the gating), and with M.LVL at maximum the FM amount
+just holds still.</li>
+<li>FDBK lets the top operator modulate itself, for noise and edge.</li>
+<li>DET spreads two operators up to ±14 cents apart for thickness.</li>
 </ul>
 
 <h2 id="wavetable">Wavetable synth: OSC page</h2>
 <ul>
-<li><strong>SCAN</strong>: SMOOTH crossfades between adjacent frames as POS moves;
-STEP hard-switches.</li>
-<li><strong>TABLE</strong>: the wavetable pool slot (128 slots per project).</li>
-<li><strong>POS</strong>: the scan position through the table's frames: the
-performance knob. Ride it with an LFO.</li>
-<li><strong>UNISON</strong>: 1 to 7 stacked readers; <strong>SPREAD</strong> detunes
-(±40 cents) and pans the stack in one move.</li>
+<li>SCAN decides how POS moves through the table: SMOOTH crossfades between
+neighbouring frames, STEP switches between them.</li>
+<li>TABLE picks the wavetable from the project's pool of 128.</li>
+<li>POS is the position in the table. It's the performance knob, and it loves
+an LFO.</li>
+<li>UNISON stacks 1 to 7 readers, and SPREAD detunes them (±40 cents) and
+pans them out in one move.</li>
 </ul>
-<p>Tables follow the common wavetable convention - 2048-sample frames, up to 256 per file  - 
-and anything that isn't a clean multiple of 2048 loads as a single-cycle wave.
-Eight factory tables ship in the pool: Basic Morph, PWM, Harmonics, Sync, FM,
-Vowel, Bell and Digital. Import your own from any Files location via the
-wavetable browser.</p>
+<p>Tables follow the usual convention of 2048-sample frames, up to 256 per
+file. Anything that isn't a clean multiple of 2048 loads as a single-cycle
+wave. Eight factory tables come in the pool: Basic Morph, PWM, Harmonics,
+Sync, FM, Vowel, Bell and Digital. You can bring in your own from anywhere in
+Files through the wavetable browser.</p>
 
 <h2 id="acid">Acid: the squelch box</h2>
-<p>One oscillator (SAW or SQR), straight into a 4-pole ladder filter modeled
-with zero-delay feedback. No filter TYPE knob - the ladder <em>is</em> the
-filter. The low end thins as resonance rises, exactly like the original;
-that's the squelch.</p>
+<p>One oscillator, SAW or SQR, straight into a four-pole ladder filter
+modelled with zero-delay feedback. There's no TYPE knob here because the
+ladder is the filter. The low end thins out as you push the resonance, just
+like the original, and that's where the squelch comes from.</p>
 <ul>
-<li><strong>Slides</strong>: it's mono, and legato is the language: a note that
-starts while the previous gate still holds <em>slides</em> - pitch glides to the
-new note with no envelope retrig. In the sequencer, just overlap the gates.
-GLIDE sets the slide time (default ≈ 65 ms, the classic fixed slide feel).</li>
-<li><strong>Accents</strong>: a trig with velocity 110 or higher accents: louder
-(accent is the voice's only dynamic, true to the original) plus a
-resonance-leaning kick to the filter cutoff.
-The ACCENT knob sets the depth. Default trig velocity is 100, so plain steps
-stay plain - push a step's velocity up to accent it.</li>
-<li><strong>DRIVE after the filter</strong>: uniquely on this device, drive sits
-<em>after</em> the ladder, so the resonant peak hits the clipper hardest as it
-sweeps. That's the acid scream.</li>
+<li>Slides. It's mono and legato is how you speak to it: a note that starts
+while the previous gate is still open slides, so the pitch glides across
+without the envelope restarting. In the sequencer that just means overlapping
+the gates. GLIDE is the slide time, about 65 ms by default.</li>
+<li>Accents. A trig with velocity 110 or more is accented: louder (accent is
+this voice's only dynamic, true to form) plus a resonant kick to the cutoff.
+ACCENT sets how much. The default trig velocity is 100, so plain steps stay
+plain and you push a step's velocity up to accent it.</li>
+<li>Drive after the filter. On this device alone the drive comes after the
+ladder, so the resonant peak hits the clipper hardest as it sweeps. That's
+the scream.</li>
 </ul>
 <div class="tip"><strong>Tip</strong>
-The acid track arrives pre-squelched: low cutoff, high resonance, +50%
-envelope mod and a gated amp envelope so slides read your gate lengths. Start
-from the defaults and just write overlapping notes.</div>
+An acid track arrives already squelchy: low cutoff, high resonance, +50%
+envelope and a gated amp envelope so your gate lengths matter. Leave the
+knobs alone to begin with and just write overlapping notes.</div>
 
 <h2 id="drum">Drum: the synthesized kit</h2>
 <p>Eight one-shot models on the MODEL knob: KICK, SNARE, CLAP, CHAT (closed
-hat), OHAT (open hat), TOM, RIM and BELL (the cowbell). Every model is
-synthesized from scratch, with structures drawn from the best-studied circuit
-models of the 808: the kick's attack-FM glissando and click into a saturator
-with a second stage for chest, the snare's two-mode shell over two noise
-bands (the shell's and the wires'), the clap's three sawtooth pre-echoes into
-a reverb-tail envelope, the hats' six-square cluster (Plaits' measured
-ratios, anti-aliased) through a band-pass and the asymmetric swing VCA, and
-the cowbell's 540/800 Hz pulse pair. DEC is each model's length knob: it
-scales the body, pitch and noise envelopes, so a kick can boom and an open
-hat can ring. Velocity shapes the hit as well as its level: soft hits have
-less punch, less sweep, less noise and a duller tone. No samples needed;
-every knob is p-lockable.</p>
+hat), OHAT (open hat), TOM, RIM and BELL, which is the cowbell. There are no
+samples in here; each one is synthesised, with structures borrowed from the
+well-studied 808 circuits. The kick's attack is an FM glide and a click into a
+saturator, with a second stage for chest. The snare is a two-mode shell over
+two bands of noise, one for the shell and one for the wires. The clap is three
+sawtooth pre-echoes into a reverb-tail envelope. The hats are a cluster of six
+squares at Plaits' measured ratios through a band-pass and the asymmetric
+swing VCA, and the cowbell is the 540 and 800 Hz pulse pair. DEC is each
+model's length knob and scales its body, pitch and noise envelopes together,
+so a kick can boom and an open hat can ring. Velocity shapes the hit as well
+as the level: a soft hit has less punch, less sweep, less noise and a duller
+tone. Every knob can be p-locked.</p>
 <img class="shot" src="../assets/shot-drum.png" alt="The DRUM page: MODEL, PUNCH, SWEEP, TONE and NOISE knobs under the drum visualizer" width="860" height="1864">
 <ul>
-<li><strong>PUNCH</strong>: transient weight - attack saturation on the kick
-and tom, snap on the snare, tighter pre-echoes on the clap.</li>
-<li><strong>SWEEP</strong>: pitch-envelope depth. The kick's drop, the tom's
-bend, the snare's shell lift. P-lock it per step for classic tuned-kick
-lines.</li>
-<li><strong>TONE</strong>: the model's color - body saturation on the kick,
-noise-band center on snare and clap, the hats' high-pass, the bell's
-band.</li>
-<li><strong>NOISE</strong>: the noise mix - air on the kick, wires on the
-snare, sizzle on the hats, tail length on the clap.</li>
-<li><strong>Pitch follows the keys</strong>: notes tune each hit, TUNE/FINE
-offset it, and the DEC knob on the AMP page is the length of the hit.</li>
-<li><strong>Choke</strong>: a new hit cuts the previous one, per track - run
-closed and open hats on two tracks and they choke independently, like
-separate voices on the original boxes.</li>
+<li>PUNCH is the transient: attack saturation on the kick and tom, snap on
+the snare, tighter pre-echoes on the clap.</li>
+<li>SWEEP is pitch-envelope depth: the kick's drop, the tom's bend, the lift
+in the snare's shell. P-lock it per step for tuned kick lines.</li>
+<li>TONE is the model's colour: body saturation on the kick, the noise band's
+centre on the snare and clap, the hats' high-pass, the bell's band.</li>
+<li>NOISE is the noise mix: air on the kick, wires on the snare, sizzle on the
+hats, tail length on the clap.</li>
+<li>Pitch follows the keys. Notes tune each hit, TUNE and FINE offset it, and
+DEC on the AMP page is the length of the hit.</li>
+<li>Choke is per track. Put closed and open hats on two tracks and they choke
+independently, like separate voices on the old boxes.</li>
 </ul>
 <div class="tip"><strong>Tip</strong>
-One model per track builds the kit; the preset browser ships one of each.
-LFO the hats' TONE or p-lock the kick's SWEEP and the machine starts talking.</div>
+One model per track makes a kit, and the preset browser has one of each to
+start from. Put an LFO on the hats' TONE or p-lock the kick's SWEEP and it
+starts to talk.</div>
 
 <h2 id="pluck">Pluck: the string</h2>
-<p>A Karplus-Strong string: each note fires a one-period exciter burst into a
-delay line with a damping filter in the loop, and the line rings like a
-plucked string. Eight voices - chords work.</p>
+<p>A Karplus-Strong string. Each note fires a one-period burst into a delay
+line with a damping filter in the loop, and the line rings like a plucked
+string. Eight voices, so chords are fine.</p>
 <ul>
-<li><strong>EXCITE</strong>: the burst's color - NOISE (classic), BRITE
-(wiry), SOFT (nylon/felt), PICK (a saw stroke with skin noise).</li>
-<li><strong>RING</strong>: the loop feedback - how long the string sustains.</li>
-<li><strong>DAMP</strong>: in-loop darkening - high settings mute like a palm
-on the strings.</li>
-<li><strong>POS</strong>: pick position - a comb notch on the burst, from
-bridge twang to fingerboard round.</li>
-<li><strong>SPREAD</strong>: a second, slightly detuned string on the right -
-the stereo double.</li>
+<li>EXCITE is the burst's colour: NOISE (the classic), BRITE (wiry), SOFT
+(nylon or felt) and PICK (a saw stroke with a bit of skin noise).</li>
+<li>RING is the loop's feedback, which is how long the string sustains.</li>
+<li>DAMP darkens inside the loop. High settings mute it like a palm on the
+strings.</li>
+<li>POS is the pick position, a comb notch on the burst from bridge twang to
+round fingerboard.</li>
+<li>SPREAD adds a second, slightly detuned string on the right as a stereo
+double.</li>
 </ul>
 
 <h2 id="au">AU Synth: hosted plugins</h2>
-<p>The AU device plays an Audio Unit instrument from another app - anything
-installed on the phone that registers as an AUv3 instrument. Set a track's
-device to <strong>AU</strong>, then pick the plugin in the track sheet's AU
-Plugin card, listed by manufacturer. The card reads Loading, then Ready with
-the plugin's latency and its share of the render load; a plugin the phone no
-longer has shows as missing and the track stays silent until it returns.</p>
+<p>The AU device plays an Audio Unit instrument from another app, which means
+anything on the phone that registers as an AUv3 instrument. Set a track's
+device to AU and pick the plugin in the track sheet's AU Plugin card, where
+they're listed by manufacturer. The card reads Loading, then Ready along with
+the plugin's latency and how much of the render it's using. If the phone no
+longer has a plugin the card says so and the track stays quiet until it's
+back.</p>
 <ul>
-<li><strong>It plays like an internal device.</strong> Trigs, the live keyboard,
-p-locks, retrigs, conditions, sends from other tracks and the piano roll all
-drive the plugin. Notes land sample-accurate, and a plugin that reports latency
-is pulled forward by that much so it stays on the grid with the rest of the
-board.</li>
-<li><strong>P1 · P2 · P3:</strong> 24 parameter slots. Tap a knob's name to
-pick the plugin parameter it turns from a searchable list (or clear it), and
-to set the LFO riding the slot. The knob then reads the plugin's own units on
-its face - Hz, dB, a waveform name - and moving it moves the plugin. Slots take
-p-locks, LFOs, recorded automation lanes, morphs and MIDI learn like any knob,
-and moving a parameter inside the plugin's own window updates its slot.</li>
-<li><strong>MIX page:</strong> VOL · PAN · CHORUS · DRIVE over HP · STEREO ·
-DELAY · REVERB - the track's own stage around the plugin's output: the same
-drive, highpass, stereo width and chorus the internal voices run, then the
-sends, so the AU track sits in the mix, the global sends and the master chain
-exactly like a sampler track. The Audio Out card routes it to a hardware pair
-or mono channel like any other.</li>
-<li><strong>The plugin window</strong> opens from the puzzle-piece button beside
-TRG on the knob page, or from the AU Plugin card, and shows the
-plugin's own interface in a sheet. The plugin's <strong>factory presets</strong>
-are one menu down in the card.</li>
-<li><strong>Saving.</strong> The plugin's full state saves with the project (in
-the project folder's Files/AU/) whenever you close its window, whenever the
-project autosaves, and when HeartBeat goes to the background. Sound presets
-saved from an AU track carry the plugin and its state,
-so a preset recalls the exact patch on any project where that plugin is
-installed.</li>
-<li>Plugins run in their own process: a crashing plugin drops out on its own
-and HeartBeat keeps playing. Only the FLTR, AMP and FX pages below don't apply
-to an AU track - the plugin owns its voice.</li>
+<li>It plays like any other device. Trigs, the live keyboard, p-locks,
+retrigs, conditions, sends from other tracks and the piano roll all drive
+it. Notes land sample-accurately, and if the plugin reports latency it's
+pulled forward by that much so it sits on the grid with everything else.</li>
+<li>P1, P2 and P3 are 24 parameter slots. Tap a knob's name to pick the
+plugin parameter it turns from a searchable list (or clear it), and to put an
+LFO on the slot. The knob then shows the plugin's own units on its face, Hz
+or dB or a waveform name, and turning it turns the plugin. Slots take
+p-locks, LFOs, recorded automation, morphs and MIDI learn like any knob, and
+if you move a parameter inside the plugin's own window the slot follows.</li>
+<li>The MIX page is VOL · PAN · CHORUS · DRIVE over HP · STEREO · DELAY ·
+REVERB: the track's own stage around the plugin's output, with the same
+drive, highpass, stereo width and chorus the internal voices have, then the
+sends. So an AU track sits in the mix, the sends and the master chain exactly
+like a sampler track, and the Audio Out card can route it to a hardware pair
+or a mono channel.</li>
+<li>The plugin's own window opens from the puzzle-piece button next to TRG
+on the knob page, or from the AU Plugin card. Its factory presets are in a
+menu on the card.</li>
+<li>The plugin's full state saves with the project, in the project folder's
+Files/AU/, whenever you close its window, whenever the project autosaves, and
+when HeartBeat goes to the background. A sound preset saved from an AU track
+carries the plugin and its state with it, so the preset brings back the exact
+patch in any project on a device that has the plugin.</li>
+<li>Plugins run in their own process, so if one crashes it drops out on its
+own and HeartBeat keeps playing. The FLTR, AMP and FX pages below don't
+apply to an AU track; the plugin owns its voice.</li>
 </ul>
+<div class="shot-row">
+<img class="shot" src="../assets/shot-au.png" alt="The AU device hosting a plugin: its first page of eight parameter slots under the output scope" width="860" height="1864">
+<img class="shot" src="../assets/shot-aumix.png" alt="The AU device's MIX page: VOL, PAN, CHORUS, DRIVE over HP, STEREO, DELAY and REVERB" width="860" height="1864">
+</div>
 
 <h2 id="audioin">MIDI device: the audio return</h2>
-<p>A MIDI track can bring its hardware synth's audio back through the same
-track. In the track sheet's Audio In card pick the interface input the synth
-is connected to: a single channel as mono, which plays to both sides, or a
-pair as stereo. Every track switched to the MIDI device starts with the
-return <strong>Off</strong>: HeartBeat never picks an input for you, because
-the built-in microphone through the speaker is instant feedback. While any
-MIDI track in the pattern has a return, HeartBeat keeps the interface's
-inputs open.</p>
+<p>A MIDI track can bring its hardware synth's audio back in through the same
+track, so the synth you're sequencing also sits in your mix. In the track
+sheet's Audio In card, pick the interface input the synth is plugged into:
+one channel as mono (it plays on both sides) or a pair as stereo. Every track
+you switch to the MIDI device starts with this set to Off, and HeartBeat will
+never pick an input for you, because the built-in microphone through the
+speaker is a feedback loop waiting to happen. While any MIDI track in the
+pattern has a return, the interface's inputs stay open.</p>
 <ul>
-<li><strong>The MIX page</strong> appears before LFO once a return is chosen:
-GAIN · PAN · CHORUS · DRIVE over HP · STEREO · DELAY · REVERB. GAIN opens at
-unity; the rest is the same stage the AU and internal devices run, so the
-synth sits in the mix, the global sends and the master chain like any other
-track, and the Audio Out card routes it to a hardware pair or mono channel.
-The MIX knobs are track values (per pattern) and take MIDI learn; they don't
-take p-locks, since a lock on a MIDI track goes out the wire as a CC.</li>
-<li>The scope shows the return after its stage on every page but LFO.
-Latency is one audio buffer plus the interface's own.</li>
+<li>Once a return is chosen a MIX page appears before LFO: GAIN · PAN ·
+CHORUS · DRIVE over HP · STEREO · DELAY · REVERB. GAIN starts at unity and the
+rest is the same stage the AU and internal devices get, so the synth sits in
+the mix, the sends and the master chain like any other track, and the Audio
+Out card routes it to a hardware pair or mono channel. These knobs are track
+values, per pattern, and they take MIDI learn. They don't take p-locks, since
+a lock on a MIDI track goes out the wire as a CC.</li>
+<li>The display shows the return after its stage on every page but LFO.
+Latency is one audio buffer plus whatever your interface adds.</li>
 </ul>
 
 <h2 id="filter">FLTR page: every device</h2>
@@ -343,50 +344,52 @@ Latency is one audio buffer plus the interface's own.</li>
 <tr><th>TYPE</th><th>Filter</th></tr>
 <tr><td>OFF</td><td>Bypass.</td></tr>
 <tr><td>LP2</td><td>12 dB/oct lowpass.</td></tr>
-<tr><td>LP4</td><td>24 dB/oct lowpass (two cascaded stages).</td></tr>
+<tr><td>LP4</td><td>24 dB/oct lowpass (two stages in a row).</td></tr>
 <tr><td>BP</td><td>Bandpass.</td></tr>
 <tr><td>HP</td><td>Highpass.</td></tr>
 <tr><td>NOT</td><td>Notch.</td></tr>
 </table></div>
-<p>FREQ sweeps 20 Hz–18 kHz; ENV is a bipolar envelope-to-cutoff depth with its
-own ADSR underneath. The filter pane draws the actual frequency response  - 
-and a dashed amber curve showing where full envelope depth will take it.</p>
+<p>FREQ sweeps from 20 Hz to 18 kHz. ENV is a bipolar envelope-to-cutoff
+amount with its own ADSR underneath. The filter display draws the real
+frequency response, and a dashed amber curve shows where the envelope will
+take it at full depth.</p>
 <img class="shot" src="../assets/shot-fltr.png" alt="The FLTR page with its live filter response curve" width="860" height="1864">
 
 <h2 id="amp">AMP page: envelopes, one-shot and gated</h2>
-<p>VOL · HOLD · PAN · DRIVE over ATK · DEC · SUS · REL. Envelope times run
-to 4 seconds with the knob resolution concentrated where percussion lives.</p>
+<p>VOL · HOLD · PAN · DRIVE over ATK · DEC · SUS · REL. Envelope times go up
+to 4 seconds, with most of the knob's travel spent where drums live.</p>
 <ul>
-<li><strong>HOLD</strong> pins the envelope at full level for a fixed time
-between attack and decay (OFF at zero) - gated stabs, sustained kicks, and a
-sample held open before the chop. P-lock it per step for classic
-length-per-hit moves.</li>
-<li><strong>REL at max shows ∞ - one-shot mode.</strong> Note-off is ignored and
-DEC becomes the tail knob, drum-machine style. Samples default to this. Pull REL
-below ∞ for a normal gated ADSR where SUS and your gate lengths matter.</li>
-<li><strong>DEC at max shows ∞</strong>: on the sampler the envelope holds open
-so the whole sample plays through. On synths (no sample end to stop them)
-∞-decay becomes a long 20-second tail, and one-shot mode always decays to
-silence - so nothing can drone forever.</li>
-<li><strong>VEL SEN</strong> lives on the TRG page's track-defaults panel now:
-how much velocity drives level, shown as a percentage. New tracks start at
-100%; 0% flattens all dynamics.</li>
+<li>HOLD pins the envelope at full level for a set time between attack and
+decay (OFF at zero). Think gated stabs, kicks that sustain, a sample held
+open before the chop. P-lock it per step for length-per-hit moves.</li>
+<li>REL at maximum reads ∞ and that's one-shot mode. Note-off is ignored and
+DEC becomes the tail, drum-machine style. Samples start out this way. Pull
+REL below ∞ and you have a normal gated ADSR where SUS and your gate lengths
+matter.</li>
+<li>DEC at maximum also reads ∞. On the sampler that holds the envelope open
+so the whole sample plays through. Synths have no sample end to stop them, so
+there ∞ becomes a long 20-second tail, and in one-shot mode they always decay
+to silence. Nothing can drone forever by accident.</li>
+<li>VEL SEN lives on the TRG page's track defaults these days: how much
+velocity drives the level, as a percentage. New tracks start at 100%, and 0%
+flattens all dynamics.</li>
 </ul>
 
 <h2 id="fx">FX page: the per-voice chain</h2>
-<p>BIT · SRR · CHORUS · RING over HP · STEREO · DELAY · REVERB. Signal order:
-HP → BIT/SRR → DRIVE → RING → filter → STEREO → amp/pan → sends, with CHORUS
-as a per-track stereo insert.</p>
+<p>BIT · SRR · CHORUS · RING over HP · STEREO · DELAY · REVERB. The order
+through the voice is HP, then BIT and SRR, then DRIVE, RING, the filter,
+STEREO, the amp and pan, then the sends, with CHORUS as a stereo insert on
+the track's sum.</p>
 <div class="tablewrap"><table>
 <tr><th>Knob</th><th>Does</th></tr>
-<tr><td>BIT</td><td>Bit-crusher, 16 down to 2 bits - envelope-tracked like the classic vintage samplers, so resolution falls as a note decays into a sputtery tail.</td></tr>
-<tr><td>SRR</td><td>Sample-rate reduction, ÷1 to ÷100 sample-and-hold.</td></tr>
-<tr><td>DRIVE</td><td>The shared waveshaper (on the AMP page): asymmetric tanh with up to ~61× gain and automatic makeup - even harmonics, amp-like.</td></tr>
-<tr><td>RING</td><td>Ring modulator - one knob sweeps both mix and carrier (40 Hz–4 kHz).</td></tr>
-<tr><td>CHORUS</td><td>Stereo quadrature chorus on the track sum.</td></tr>
-<tr><td>HP</td><td>Dedicated highpass ahead of everything, 20 Hz–4 kHz.</td></tr>
-<tr><td>STEREO</td><td>Mid/side width, 100% = as recorded; above that, mono sources gain synthesized width.</td></tr>
-<tr><td>DELAY / REVERB</td><td>Sends to the global tempo-synced delay and plate reverb. See <a href="fx-mixer.html">FX &amp; mixer</a>.</td></tr>
+<tr><td>BIT</td><td>Bit crusher, 16 bits down to 2. It tracks the envelope the way the old samplers did, so the resolution falls away as a note decays into a sputtery tail.</td></tr>
+<tr><td>SRR</td><td>Sample-rate reduction, from ÷1 to ÷100, sample and hold.</td></tr>
+<tr><td>DRIVE</td><td>The waveshaper (on the AMP page): asymmetric tanh with up to about 61× gain and automatic makeup. Even harmonics, amp-like.</td></tr>
+<tr><td>RING</td><td>Ring modulator. One knob sweeps both the mix and the carrier, 40 Hz to 4 kHz.</td></tr>
+<tr><td>CHORUS</td><td>Stereo quadrature chorus on the track's sum.</td></tr>
+<tr><td>HP</td><td>A dedicated highpass ahead of everything, 20 Hz to 4 kHz.</td></tr>
+<tr><td>STEREO</td><td>Mid/side width. 100% is as recorded; past that, mono sources get synthesised width.</td></tr>
+<tr><td>DELAY / REVERB</td><td>Sends to the shared tempo-synced delay and plate reverb. See <a href="fx-mixer.html">FX &amp; mixer</a>.</td></tr>
 </table></div>
 
 <div class="pagenav">

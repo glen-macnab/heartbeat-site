@@ -36,261 +36,276 @@
 
 <article>
 <h1>Sequencer</h1>
-<p class="lede">Sixteen tracks, sixteen patterns, and a step grid where every
-step can carry its own pitch, chord, length, timing, probability and a stack
-of parameter locks.</p>
+<p class="lede">Sixteen tracks, sixteen patterns, and a step grid where any
+step can carry its own pitch, chord, length, timing, probability and a pile
+of parameter locks. This chapter is the heart of the app.</p>
 
 <h2 id="numbers">The shape of a pattern</h2>
-<ul>
-<li><strong>16 tracks</strong>, each hosting one <a href="devices.html">device</a>.</li>
-<li><strong>16 patterns</strong> per project (P01–P16), each with an optional name.</li>
-<li>Per track, per pattern: a length of <strong>1–128 steps</strong> (16 per page),
-a <strong>speed</strong> from 1/8× to 4×, and its own swing override - so
-polymetric loops are just tracks of different lengths.</li>
-<li>A step is a 16th note, subdivided into <strong>24 ticks</strong> for
-micro-timing; nudge runs −23…+23 ticks, just under a step either way.</li>
-<li>Tempo 30–300 BPM, swing 50–80%, and per-pattern scale with root
-(22 scales from Major to Minor Bebop - or Chromatic for off).</li>
-</ul>
+<p>A project has 16 patterns, P01 to P16, and you can name them. Each
+pattern has 16 tracks, and each track hosts one <a href="devices.html">device</a>.
+Within a pattern every track gets its own length, anywhere from 1 to 128
+steps (16 to a page), its own speed from 1/8× up to 4×, and if you want it, its
+own swing. So a 12-step hi-hat against a 16-step kick is nothing special,
+it's just two tracks of different lengths.</p>
+<p>A step is a sixteenth note split into 24 ticks for micro-timing, so a
+nudge can go from −23 to +23 ticks, which is just short of a whole step
+either way. Tempo runs 30 to 300 BPM and swing 50 to 80%. Each pattern can
+also hold a scale and a root note, with 22 scales to pick from, or Chromatic
+to turn that off.</p>
 
 <h2 id="trigs">Trigs</h2>
-<p>Tap a step to place a trig; tap again to clear it (clearing wipes
-everything the step carried, so re-adding starts fresh). Every value a trig
-holds is optional - <strong>unset means "ride the track default", set means a
-per-step lock and reads amber</strong> in the editors.</p>
+<p>Tap a step to put a trig on it. Tap it again to clear it, and clearing
+really clears: everything the step was carrying goes with it, so if you put
+the trig back it starts fresh. Every value a trig can hold is optional. If
+it's unset the step follows the track default, and if it's set it's a lock
+on that step and shows amber in the editors.</p>
 
 <div class="tablewrap"><table>
 <tr><th>Field</th><th>Range</th><th>Notes</th></tr>
-<tr><td>NOTE</td><td>C-2 … G8</td><td>Unset = track default note. Up to 6 chord voices per trig.</td></tr>
-<tr><td>VEL</td><td>0–127</td><td>0 shows as <code>GHOST</code> - a silent trig that only speaks when a live velocity offset lifts it.</td></tr>
-<tr><td>GATE</td><td>1/24 step … 128 steps</td><td>Whole steps read bare ("1"), fractions get decimals.</td></tr>
-<tr><td>NUDGE</td><td>−23 … +23 ticks</td><td>Negative nudge before step 1 wraps to the loop tail.</td></tr>
-<tr><td>PROB</td><td>1–100%</td><td>Rolled after the condition passes - both must succeed.</td></tr>
-<tr><td>COND</td><td>see below</td><td>Trig condition.</td></tr>
-<tr><td>RETRIG</td><td>OFF, 1/4…1/64T</td><td>Ratchet: the rate fills the gate - see below.</td></tr>
-<tr><td>P-locks</td><td>any knob</td><td>Per-step parameter values (CC locks on MIDI tracks).</td></tr>
+<tr><td>NOTE</td><td>C-2 to G8</td><td>Unset means the track's default note. A trig can hold up to 6 chord voices.</td></tr>
+<tr><td>VEL</td><td>0 to 127</td><td>0 reads as <code>GHOST</code>: a silent trig that only sounds if a live velocity offset lifts it.</td></tr>
+<tr><td>GATE</td><td>1/24 of a step to 128 steps</td><td>Whole steps read plain ("1"), fractions get decimals.</td></tr>
+<tr><td>NUDGE</td><td>−23 to +23 ticks</td><td>Nudging step 1 early wraps round to the end of the loop.</td></tr>
+<tr><td>PROB</td><td>1 to 100%</td><td>Rolled after the condition passes. Both have to come up.</td></tr>
+<tr><td>COND</td><td>see below</td><td>The trig condition.</td></tr>
+<tr><td>RETRIG</td><td>OFF, 1/4 to 1/64T</td><td>Repeats the hit at that rate until the gate runs out.</td></tr>
+<tr><td>P-locks</td><td>any knob</td><td>Parameter values for this step only. On MIDI tracks they go out as CCs.</td></tr>
 </table></div>
 
 <h3 id="conditions">Trig conditions</h3>
+<p>A condition decides whether the step fires at all on a given pass. The
+¬ versions are the opposite of the plain ones.</p>
 <div class="tablewrap"><table>
 <tr><th>Label</th><th>Fires…</th></tr>
-<tr><td> - </td><td>Always (default).</td></tr>
-<tr><td>FILL / ¬FILL</td><td>Only while <span class="key">FILL</span> is held / released. Holding FILL flips every one of these at once.</td></tr>
-<tr><td>1ST / ¬1ST</td><td>Only the first pass after start or a pattern switch / every pass except it.</td></tr>
-<tr><td>PRE / ¬PRE</td><td>Only if this step fired on the previous pass / only if it didn't.</td></tr>
-<tr><td>NEI / ¬NEI</td><td>Only if the previous track's last conditional step fired / didn't.</td></tr>
-<tr><td>LST / ¬LST</td><td>Only on the final pass before a queued pattern change / every other pass.</td></tr>
-<tr><td>1:2 … 1:8</td><td>Cycle conditions: pass n of every m (1:2, 2:2, 1:4, 2:4, 3:4, 4:4, 1:8).</td></tr>
+<tr><td> - </td><td>Every time. The default.</td></tr>
+<tr><td>FILL / ¬FILL</td><td>Only while you're holding <span class="key">FILL</span>, or only while you aren't. Holding FILL flips every one of these at once.</td></tr>
+<tr><td>1ST / ¬1ST</td><td>Only on the first pass after you press play or switch pattern, or on every pass except that one.</td></tr>
+<tr><td>PRE / ¬PRE</td><td>Only if this step fired last time round, or only if it didn't.</td></tr>
+<tr><td>NEI / ¬NEI</td><td>Only if the last conditional step on the track above fired, or only if it didn't.</td></tr>
+<tr><td>LST / ¬LST</td><td>Only on the last pass before a queued pattern change, or on every other pass.</td></tr>
+<tr><td>1:2 to 1:8</td><td>Cycles: pass n of every m. 1:2, 2:2, 1:4, 2:4, 3:4, 4:4 and 1:8.</td></tr>
 </table></div>
 
 <h3 id="retrig">Retrig (ratchet)</h3>
-<p>Per step: pick a subdivision from 1/4 to 1/64T and the ratchet plays it
-<strong>until the gate ends</strong> - the GATE knob is the roll's length, so
-stretching the gate adds hits and no count needs setting. A track-level
-default retrig can ratchet everything, with individual steps opting out via
-an explicit OFF. On a sampler with Voices &gt; 1 the hits overlap and ring; on
-mono devices each sub-hit chokes the last. In the piano roll a retrigged note
-draws divider lines at its rate, and on the step grid the pad badges the rate
-itself (1/16, 1/4T…).</p>
+<p>Pick a rate from 1/4 to 1/64T on a step and it repeats the hit at that
+rate for as long as the gate lasts. That's the whole trick: the GATE knob is
+the length of the roll, so to get more hits you stretch the gate rather than
+counting anything. You can set a retrig as a track default too, so every
+step rolls unless a step says OFF. On a sampler with Voices above 1 the hits
+overlap and ring into each other; on a mono device each one chokes the one
+before. The piano roll draws divider lines on a retrigged note, and on the
+step grid the pad shows the rate.</p>
 
 <h2 id="plocks">Parameter locks</h2>
-<p>The rule is simple: <strong>while a step is latched, every knob on every
-page writes to that step</strong> instead of the track. Long-hold a trig to
-latch it (the TRG editor opens), then turn anything - the knob's arc goes
-amber and the step gains an amber corner notch. Unlatch to edit the track's
-base sound again.</p>
+<p>Here's the rule, and it's the same one the Elektron boxes use: while a
+step is latched, every knob on every page writes to that step rather than
+to the track. Hold a trig until it latches (the TRG editor opens), turn
+anything, and the knob's arc goes amber while the step gets an amber notch
+in its corner. Unlatch and you're editing the track's base sound again.</p>
 <ul>
-<li><strong>Double-tap a knob</strong> to clear its lock (double-tap also clears
-any value cell back to the track default).</li>
-<li>On MIDI tracks locks are real CC events sent just ahead of the note  - 
-including setup locks: CHANNEL, BANK, SUB (bank LSB) and PROG, so one step can
-re-channel or fire a patch change.</li>
-<li>The step's note and its locks share one probability/condition roll.</li>
+<li>Double-tap a knob to clear its lock. Double-tap also puts any value
+cell back to the track default.</li>
+<li>On a MIDI track a lock is a real CC, sent just ahead of the note. The
+setup knobs lock as well, so one step can switch channel or send a bank
+and program change.</li>
+<li>A step's note and its locks share one probability and condition roll.
+They play together or not at all.</li>
+<li>The display follows along: with a step latched, the filter curve, the
+envelopes and the rest of the visualizer show that step's locked values
+rather than the track's.</li>
 </ul>
 
 <h2 id="editing">Editing on the grid</h2>
 <ul>
-<li><strong>Long-press</strong> (0.18 s) latches a step for editing. Further
-long-presses <strong>grow the selection</strong>: hold several trigs and every
-edit fans across all of them. A tap moves the latch; tapping any selected step
-drops the whole selection.</li>
-<li><strong>COPY / PASTE</strong> are context-aware: with a step latched they move
-that step (a multi-selection copies with its spacing and lays back out from
-the paste target); with nothing latched they act on the whole track - PASTE
-becomes a menu: Paste Whole Track, Paste Sequence, Paste Device.</li>
-<li>A single copied step <strong>fans</strong> across a live multi-selection.</li>
-<li><strong>UNDO / REDO</strong>: 50 project-level snapshots; rapid edits coalesce.</li>
-<li>The page strip holds the length picker, page dots (long-press a dot to
-<strong>loop just that page</strong>: amber ring - a section loop, below),
-follow-playhead toggle, and <span class="key">2×→</span> which doubles the loop
-and duplicates its content.</li>
+<li>Holding a step for about a fifth of a second latches it. Hold more steps
+and the selection grows, and every edit then lands on all of them. A tap
+moves the latch to a new step, and tapping any selected step drops the lot.</li>
+<li>COPY and PASTE look at what's latched. With a step latched they copy
+that step, and a multi-selection keeps its spacing and lays back out from
+wherever you paste. With nothing latched they work on the whole track, and
+PASTE turns into a menu: Paste Whole Track, Paste Sequence or Paste
+Device.</li>
+<li>A single copied step pastes onto every step in a selection at once.</li>
+<li>UNDO and REDO keep 50 project-wide snapshots. Quick runs of edits are
+grouped into one.</li>
+<li>The strip above the steps has the length picker, the page dots, the
+follow-playhead toggle and <span class="key">2×→</span>, which doubles the
+loop and copies the content into the new half. Hold a page dot to loop just
+that page; it gets an amber ring. That's a section loop, next.</li>
 </ul>
 
 <h2 id="loop">Section loops</h2>
-<p>A section loop replays part of the pattern, in <strong>musical time</strong>:
-the region is a span of bars, so every track - a half-speed track, a 2×
-track, a 32-step track under a 64-step one - replays the same bars, in phase,
-whatever its own length. Set one by long-pressing a page dot (the page becomes
-the region) or by dragging along the piano roll's ruler
-(<a href="piano-roll.html#loop">braces</a>).</p>
+<p>A section loop replays part of the pattern in musical time. The region is
+a span of bars, so a half-speed track, a 2× track and a 32-step track all
+replay the same bars together and stay in phase, whatever their own lengths.
+Hold a page dot to loop that page, or drag along the piano roll's ruler to
+draw <a href="piano-roll.html#loop">braces</a>.</p>
 <ul>
-<li>While playing, a loop lands on the <strong>next bar line</strong> and
-restarts the section from its first beat. Stopped, it applies at once, and
-play then starts from the loop's start.</li>
-<li>Releasing the loop doesn't snap anywhere: playback runs on from where the
-looped playhead was.</li>
-<li>A loop survives stop and start. It is released by LOOP off (or the page
-ring), or by a pattern switch. It is a performance move, never saved.</li>
-<li>Recording under a loop lands notes where you heard them - in the looped
-bars, not at the transport's raw count.</li>
+<li>While playing, the loop takes effect on the next bar line and restarts
+the section from its first beat. If you're stopped it applies at once, and
+play starts from the top of the loop.</li>
+<li>Letting the loop go doesn't jump anywhere. Playback just carries on
+from wherever the looped playhead was.</li>
+<li>A loop survives stop and start. It ends when you turn LOOP off, tap the
+page ring, or switch pattern. It's a live move and never saves.</li>
+<li>Recording under a loop puts the notes where you heard them, in the
+looped bars, not at the transport's raw count.</li>
 </ul>
 <img class="shot" src="../assets/shot-pageloop.png" alt="The step grid looping its first page: the page dot wears the amber loop ring while the pattern plays" width="860" height="1864">
 
 <h2 id="defaults">Track defaults</h2>
-<p>With nothing latched, the TRG page shows <strong>TRACK DEFAULTS</strong>:
-NOTE / VEL / GATE / NUDGE over PROB / VEL SEN / COND / RETRIG, editing what
-every unset step inherits. This is where a track's default note (the pad
-pitch), default gate and default probability live; VEL SEN is the sound's
-velocity sensitivity, up from the AMP page. Defaults belong to the
-<strong>pattern</strong>, like the rest of the track setup - a track can play
-a different default note, or ratchet by default, from one pattern to the
-next. Sound presets leave them alone.</p>
+<p>With nothing latched, the TRG page shows the track defaults: NOTE, VEL,
+GATE and NUDGE over PROB, VEL SEN, COND and RETRIG. This is what every unset
+step inherits, so it's where the track's default note (the pad's pitch),
+its default gate and its default probability live. VEL SEN is how much
+velocity affects the level. Defaults belong to the pattern, like the rest of
+the track setup, so a track can play a different note or roll by default
+from one pattern to the next. Loading a sound preset leaves them alone.</p>
 
 <h2 id="recording">Recording</h2>
-<p>Arm <span class="key red">REC</span> and play: the on-screen keyboard,
-external MIDI in, and pads in PLAY mode all record. Recording is
-<strong>track-aware</strong>: pad hits land on the pad's own track; keys and
-MIDI-in land on the selected track.</p>
+<p>Arm <span class="key red">REC</span> and play something. The on-screen
+keyboard, a MIDI keyboard and the pads in PLAY mode all record. Pad hits
+land on the pad's own track; keys and MIDI land on the selected track.</p>
 <ul>
-<li>Hits snap to the nearest step with the remainder written as nudge;
-gates tidy to the nearest half step. Simultaneous notes stack into chords
-(up to 6 voices).</li>
-<li><span class="key">Q</span> toggles <strong>record quantize</strong>: lit,
-recorded hits hard-snap to the step. <strong>Hold Q</strong> for the quantize
-panel: a GLOBAL QUANTIZE slider and the selected track's own amount. Global
-and track quantize are <em>playback</em> quantize - always on, independent of
-the Q light, non-destructively pulling micro-timing toward the grid by the
-larger of the two amounts.</li>
-<li><strong>Knob recording</strong>: turn any knob while recording and it writes
-an automation lane at full tick resolution. Recording over an old sweep
-<strong>replaces</strong> it - no interleaved mess. Clear a track's lanes from
-its track sheet.</li>
-<li><strong>Count-in</strong>: off / 1 / 2 / 4 bars (record only), set in the
-tempo popover along with the metronome and its volume.</li>
+<li>Hits snap to the nearest step and the difference is written as nudge,
+so the feel is kept. Gates round to the nearest half step. Notes played
+together become a chord, up to 6 voices.</li>
+<li><span class="key">Q</span> is record quantize: lit, hits snap hard to
+the step. Hold Q for the quantize panel, which has a global slider and one
+for the selected track. Those two are playback quantize, always on and
+independent of the Q light, pulling micro-timing toward the grid by
+whichever of the two is larger. Nothing is rewritten.</li>
+<li>Turn a knob while recording and it writes an automation lane at full
+tick resolution. Recording over an old sweep replaces it rather than mixing
+the two. Clear a track's lanes from its track sheet.</li>
+<li>Count-in is off, 1, 2 or 4 bars and only applies when recording. It's in
+the tempo panel along with the metronome and its level.</li>
 </ul>
 
 <h2 id="transport">Transport bar</h2>
 <div class="tablewrap"><table>
 <tr><th>Control</th><th>Does</th></tr>
-<tr><td>▶ / ■</td><td>Play / stop.</td></tr>
-<tr><td>● REC</td><td>Arms recording (writes only while playing; a red strip tops the bar while hot).</td></tr>
-<tr><td>Q</td><td>Tap: record quantize. Hold: quantize amount sliders.</td></tr>
-<tr><td>FILL</td><td>Momentary - hold to flip every FILL/¬FILL condition; lights amber.</td></tr>
-<tr><td>BPM</td><td>Drag vertically to change; tap for the tempo panel: slider, TAP tempo, swing 50–80%, metronome + volume, count-in.</td></tr>
-<tr><td>Pattern</td><td>Shows the active pattern name and label; pulses white/amber when a switch is queued. Tap for the pattern grid.</td></tr>
+<tr><td>▶ / ■</td><td>Play and stop.</td></tr>
+<tr><td>● REC</td><td>Arms recording. It only writes while playing, and a red strip sits across the top of the bar while it's hot.</td></tr>
+<tr><td>Q</td><td>Tap for record quantize, hold for the quantize sliders.</td></tr>
+<tr><td>FILL</td><td>Hold it and every FILL and ¬FILL condition flips. Lights amber while held.</td></tr>
+<tr><td>BPM</td><td>Drag up or down to change tempo. Tap for the tempo panel: slider, TAP tempo, swing, metronome and level, count-in.</td></tr>
+<tr><td>Pattern</td><td>The active pattern's name and label. It pulses white and amber while a switch is queued. Tap for the pattern grid.</td></tr>
 </table></div>
 
 <h2 id="patterns">Patterns</h2>
-<p>The pattern sheet is a 4×4 grid: <strong>tap to queue</strong> a switch at
-the next pattern boundary (the pad wears a pulsing amber ring), <strong>hold to
-jump now</strong> with tracks keeping phase. While stopped a tap just selects.
-Long-press menus offer Restart Now, Play Once Then Return, Name…, Copy Current
-Here, and Clear.</p>
-<ul>
-<li><strong>SCALE</strong> row: pick a root and scale for the pattern; the
-keyboards dim out-of-scale keys, and QUANTIZE TRIGS folds existing notes into
-the scale.</li>
-</ul>
+<p>The pattern sheet is a four-by-four grid. Tap a pattern to queue it for
+the next pattern boundary (its pad gets a pulsing amber ring), or hold it to
+jump straight away with every track keeping its place. While stopped, a tap
+just selects. Hold for the menu: Restart Now, Play Once Then Return, Name,
+Copy Current Here, and Clear.</p>
+<p>The SCALE row sets a root and scale for the pattern. The live keyboard
+and the piano roll then light a green LED on the notes that are in the scale
+and a red one on the notes that aren't, and QUANTIZE TRIGS folds any notes
+you've already written into the scale.</p>
 
 <h2 id="song">Song mode</h2>
-<p>A song chains rows of <em>pattern × repeats</em> (1–32 each, up to 99 rows),
-each row optionally recalling a <a href="modulation.html#morphs">morph</a> as
-it takes over. Toggle SONG MODE and press play: the chain runs from the top,
-looping if LOOP is on, otherwise holding the last pattern. Reorder with drag
-handles; hand-picking a pattern exits song mode.</p>
-<p>A project holds up to 16 songs. The strip above the row editor picks the
-active one: tap a chip to switch (mid-playback, the new song's first row chains
-in at the next pattern boundary), tap + for a fresh song, and hold a chip to
-rename, duplicate or delete it. Each song keeps its own rows and LOOP setting,
+<p>A song is a list of rows, each one a pattern and a repeat count from 1 to
+32, up to 99 rows long. A row can also recall a <a href="modulation.html#morphs">morph</a>
+as it comes in. Turn SONG MODE on and press play and the list runs from the
+top, looping if LOOP is on, otherwise sitting on the last pattern when it
+gets there. Reorder rows with the drag handles. Picking a pattern by hand
+drops you out of song mode.</p>
+<p>A project can hold 16 songs. The strip above the rows picks the active
+one: tap a chip to switch (mid-playback the new song's first row comes in at
+the next pattern boundary), tap + for a new song, hold a chip to rename,
+duplicate or delete it. Each song has its own rows and its own LOOP setting
 and everything saves with the project. <span class="key">EXPORT</span> in the
-same toolbar bounces the song to a WAV - see
+same toolbar bounces the song to a WAV; see
 <a href="projects.html#export">Exporting a song</a>.</p>
 
 <h2 id="mutes">Mutes, pads and live modes</h2>
-<p>The pad board is 16 track pads that flash with every note. The latch row
-above switches what they do:</p>
+<p>The sixteen pads at the bottom are the tracks. They flash with every note,
+and tapping one selects its track the moment your finger lands. The row
+above changes what a pad does:</p>
 <div class="tablewrap"><table>
 <tr><th>Mode</th><th>Pads become</th></tr>
-<tr><td>MUTE</td><td>Mute toggles. Two scopes: GLOBAL (survives pattern changes) and PTN (saved with the pattern) - what's silent is the union. Slide across pads to paint mutes.</td></tr>
-<tr><td>PLAY</td><td>Performance pads: touch-down fires the track's default note, touch-up releases - and REC captures hits onto each pad's own track.</td></tr>
-<tr><td>GEN</td><td>The generator band: two euclidean pulse generators per track (combined OR/XOR/AND/SUB) and an arpeggiator (UP, DOWN, U/D, D/U, CONV, DIV, ORDER, RND; 1–6 octaves; gate 25–100%).</td></tr>
-<tr><td>KEYS</td><td>The full live keyboard (below).</td></tr>
+<tr><td>MUTE</td><td>Mute buttons. There are two scopes, GLOBAL (survives pattern changes) and PTN (saved with the pattern), and a track is silent if either has it muted. Slide a finger across pads to paint mutes.</td></tr>
+<tr><td>PLAY</td><td>Finger drums. Touch fires the track's default note, lift releases it, and REC records the hits onto each pad's own track.</td></tr>
+<tr><td>GEN</td><td>Generators: two Euclidean pulse generators per track, combined with OR, XOR, AND or SUB, plus an arpeggiator with UP, DOWN, U/D, D/U, CONV, DIV, ORDER and RND, 1 to 6 octaves and a gate from 25 to 100%.</td></tr>
+<tr><td>KEYS</td><td>The live keyboard, below.</td></tr>
 </table></div>
 
 <h3 id="keys">The live keyboard</h3>
 <ul>
-<li>Full 128-note range with a scroll strip above it - the strip is the whole
-range, the lit window is what you see; each track remembers its position.</li>
-<li>True multi-touch: one finger per note, slide across boundaries for
-glissando while other fingers hold a chord.</li>
-<li><strong>Velocity comes from where you touch the key</strong>: soft at the
-top edge, 127 at the bottom.</li>
-<li>Scale-aware: out-of-scale keys dim but stay playable; keys light in the
-track color when pressed, sequenced, or held by external MIDI.</li>
-<li><strong>PITCH</strong> wheel springs back to center (real pitch bend on MIDI
-tracks, ±2 semitones render-side on internal devices). <strong>MOD</strong>
-wheel latches - CC 1 out on MIDI tracks, filter cutoff on internal devices,
-and it records.</li>
+<li>The whole 128-note range, with a scroll strip above it. The strip is the
+full range and the lit part is what's on screen. Each track remembers where
+you left it.</li>
+<li>Proper multi-touch: one finger per note. Slide a finger across keys for
+a glissando while the others hold a chord.</li>
+<li>Velocity comes from where you land on the key: soft near the top, 127
+at the bottom.</li>
+<li>With a scale set, a small LED near the top of each key says whether it's
+in the scale (green) or not (red). Every key still plays. Keys light up in
+the track colour when you press them, when the sequencer plays them, or when
+MIDI from outside holds them.</li>
+<li>The PITCH wheel springs back to centre. On a MIDI track it's real pitch
+bend; on an internal device it bends ±2 semitones. The MOD wheel stays where
+you leave it, sends CC 1 on MIDI tracks and moves the filter cutoff on
+internal devices, and it records.</li>
 </ul>
-<img class="shot" src="../assets/shot-keys.png" alt="The live keyboard with pitch and mod wheels" width="860" height="1864">
+<img class="shot" src="../assets/shot-keys.png" alt="The live keyboard under an F minor scale, with green LEDs on the notes in the scale and red on the rest, plus pitch and mod wheels" width="860" height="1864">
 
 <h2 id="track-setup">Track setup</h2>
-<p>Tap the track name above the knob pages for the track sheet. Its cards
-split by scope, and the split matters:</p>
+<p>Tap the track name above the knob pages to open the track sheet. It's
+split into cards, and the split tells you how far a setting reaches:</p>
 <ul>
-<li><strong>Track Setup (Pattern P01)</strong> is <em>pattern-level</em>:
-everything here can differ from pattern to pattern. Name, device, color,
-sampler Voices (1–8 - the choke control: 1 chokes each hit with the next, more
-lets them ring), the per-track quantize slider, length, speed, swing override,
-Clear Recorded CC Automation, and <strong>Send MIDI to track</strong> (below).
-The knob names and track defaults are pattern-level too.</li>
-<li><strong>MIDI In</strong> is <em>project-level</em>: the Input Channel this
-track answers on (Off by default) and, optionally, the one Input Device it
+<li><strong>Track Setup (Pattern P01)</strong> is per pattern, so everything
+on it can be different in another pattern: name, device, colour, sampler
+Voices (1 to 8, where 1 chokes each hit with the next and more lets them
+ring), the track's own quantize, length, speed, swing, Clear Recorded CC
+Automation, and <strong>Send MIDI to track</strong>. The knob names and the
+track defaults are per pattern too.</li>
+<li><strong>Presets</strong> is where you browse the preset library or save
+the track's sound as a new preset.</li>
+<li><strong>MIDI In</strong> is project-wide: the Input Channel this track
+answers on (Off unless you set one) and, if you like, the one Input Device it
 listens to. See <a href="midi-link.html#input">getting MIDI in</a>.</li>
-<li><strong>MIDI Out</strong> (MIDI device only): the Output this pattern's
-notes go to (pattern-level) and the Channel they go out on (project-level).</li>
-<li><strong>Audio Out</strong> (internal devices only) is <em>project-level</em>
-wiring that stays put across patterns: Stream to Link (a per-track
-<a href="midi-link.html#link">Link audio</a> channel) and Audio Out (Master,
-stereo pairs or mono outs).</li>
+<li><strong>MIDI Out</strong> shows on MIDI tracks: the output this pattern's
+notes go to (per pattern) and the channel they go out on (project-wide).</li>
+<li><strong>Audio In</strong> also shows on MIDI tracks: the interface input
+your synth's audio comes back on. See <a href="devices.html#audioin">the
+audio return</a>.</li>
+<li><strong>Audio Out</strong> is project-wide wiring that stays put across
+patterns: Stream to Link, which gives the track its own
+<a href="midi-link.html#link">Link audio</a> channel, and the audio output,
+either the master or a pair or single channel on your interface. It's there
+for internal devices and for MIDI tracks with an audio return.</li>
 </ul>
+<img class="shot" src="../assets/shot-tracksheet.png" alt="The track sheet: Track Setup for the pattern, then Presets, MIDI In and Audio Out cards, with REORDER and the close button in its header" width="860" height="1864">
+
 <h3 id="reorder">Reordering tracks</h3>
-<p>The sheet's header works like the piano roll's: the chevrons flip through
-tracks, and the <strong>Reorder Tracks</strong> button (three lines, beside the
-close button) opens a list of the sixteen tracks with drag handles. A switch at
-the top picks the reach of a move:</p>
+<p>The sheet's header works like the piano roll's: the chevrons step through
+the tracks, and <strong>REORDER</strong> opens a list of all sixteen with drag
+handles. A switch at the top sets how far a move reaches:</p>
 <ul>
-<li><strong>All Patterns</strong>: drag a track to a new slot and everything
-travels with it - its color, sound, trigs, p-locks, mutes in both scopes, morph
-captures, MIDI sends, the sidechain key and any bindings pinned to it - in every
-pattern. Only an untouched default name ("Track 5") stays with the slot.</li>
-<li><strong>This Pattern</strong>: only the active pattern changes, Digitakt
-style. The track's content, sound, machine, color, defaults and knob layout move
-to the new slot in this pattern, along with the pattern's mutes, morph captures
-and sends; every other pattern keeps its order. The slots' project wiring - MIDI
-channel, audio out, Link stream - and MIDI bindings stay where they are.</li>
+<li><strong>All Patterns</strong> moves the track in every pattern, and
+everything travels with it: colour, sound, trigs, p-locks, mutes in both
+scopes, morph captures, MIDI sends, the sidechain key, and any controller
+bindings pinned to it. The only thing that stays behind is an untouched
+default name like "Track 5".</li>
+<li><strong>This Pattern</strong> moves it in the active pattern only, the
+way a Digitakt would. The content, sound, device, colour, defaults and knob
+layout go to the new slot in this pattern along with the pattern's mutes,
+morph captures and sends. The other patterns keep their order, and the
+slots' project wiring (MIDI channel, audio out, Link stream) and bindings
+stay where they are.</li>
 </ul>
-<p>A move is one undo step. Note
-that NEI trig conditions listen to the track directly above, so a move changes
-what they follow.</p>
+<p>A move is one undo step. One thing to keep in mind: NEI conditions watch
+the track directly above, so moving tracks changes what they listen to.</p>
 
 <h3 id="send">Sending a track to another track</h3>
-<p><strong>Send MIDI to track</strong> picks another track as a second destination:
-everything this track plays - sequenced trigs, live keys, pads - also plays
-that track's device, on its channel, at the same moment. A track that receives
-a send can forward on again, so A → B → C layers three devices from one
-sequence; a chain that would loop back is cut. The receiving track records the
-forwarded notes when REC is armed.</p>
+<p><strong>Send MIDI to track</strong> picks a second destination. Everything
+this track plays, sequenced or live, also plays that track's device on its
+channel at the same moment. A track that receives a send can pass it on, so
+A → B → C stacks three devices on one sequence, and a chain that would loop
+back on itself is cut. The receiving track records the forwarded notes if
+REC is armed.</p>
 
 <div class="pagenav">
   <a href="index.html"><small>Previous</small>Overview</a>

@@ -36,91 +36,93 @@
 
 <article>
 <h1>Projects &amp; files</h1>
-<p class="lede">A project is one self-contained folder: the song, its 16
-patterns, every sample and wavetable it uses. Nothing is hidden - it's all
-visible in the Files app.</p>
+<p class="lede">A project is one folder with everything in it: the song, its
+16 patterns, every sample and wavetable it uses, and the saved state of any
+plugins. Nothing is hidden away. You can see all of it in the Files app.</p>
 
 <h2 id="projects">The Projects screen</h2>
 <ul>
-<li>Projects list by last edit, most recent first; the active one wears a
-green check. Tap to load - the app jumps straight to Perform.</li>
-<li>Every project carries a <strong>color square</strong>. Tap it to pick from
-the theme palette; the color shows beside the project name in the app header.
-Recoloring is cosmetic - it never reorders the list.</li>
-<li><strong>＋</strong> creates a new project (carrying over your current tempo).
-With <strong>New projects start with random sounds</strong> on in Settings, every
-track of the new project loads a random preset from your library, the same kit
-in every pattern. Swipe a row for Delete, Rename or Duplicate - duplicating copies the whole
-folder, samples included, so the copy owns its files.</li>
-<li>Renaming a project renames its folder to match.</li>
-<li>On a first launch the bundled <strong>Factory project</strong> loads - a
-ready-to-play kit built entirely from factory content.</li>
+<li>Projects are listed by when you last touched them, newest first, and the
+one that's open has a green tick. Tap one to load it and you land straight on
+the Perform screen.</li>
+<li>Every project has a colour square. Tap it to pick a colour from the
+palette, and it shows next to the project's name in the header. Changing the
+colour doesn't move the project in the list.</li>
+<li><strong>＋</strong> makes a new project at your current tempo. If New
+projects start with random sounds is on in Settings, every track of the new
+project gets a random preset from your library, the same kit in every
+pattern. Swipe a row for Delete, Rename or Duplicate. Duplicating copies the
+whole folder, samples included, so the copy owns its own files.</li>
+<li>Renaming a project renames its folder too.</li>
+<li>The first time you open the app, the bundled Factory project loads. It's
+a ready-to-play kit made entirely from factory content.</li>
 </ul>
 
 <h2 id="autosave">Autosave and undo</h2>
 <ul>
-<li>Every edit autosaves a couple of seconds after you pause; switching
-projects flushes immediately. There is no save button to forget.</li>
-<li><strong>Undo/redo</strong> covers the whole project - trigs, locks,
-patterns, track setups, pools, slices, FX settings, morphs, the song chain,
-even MIDI bindings - 50 steps deep, with rapid edits coalescing into one.
-Transient things (DJ FX, app settings) sit outside it, and deleting a project
-can't be undone.</li>
+<li>Every edit saves a couple of seconds after you stop, and switching
+projects saves straight away. There's no save button to forget.</li>
+<li>Undo and redo cover the whole project: trigs, locks, patterns, track
+setups, pools, slices, FX settings, morphs, the song, even your MIDI
+bindings. Fifty steps, with quick runs of edits grouped into one. Things that
+don't save with the project (the DJ effects, app settings) aren't in it, and
+deleting a project can't be undone.</li>
 </ul>
 
 <h2 id="presets">Sound presets</h2>
-<p>Presets are rig-level - shared across every project. Save one from any
-track's setup drawer; load one from Browse Presets.</p>
+<p>Presets belong to you rather than to a project, so they're there in every
+project. Save one from any track's sheet and load one from Browse Presets.</p>
 <ul>
-<li>A preset stores the device, its complete parameter set, the 8 knob
-slots, both LFOs with their links and depths - and for sampler presets, the
-audio file itself <em>with its slices</em>. It never touches the track's
-default note, velocity or gate: a preset is a sound, not a part.</li>
-<li>Preset audio is stashed in a shared library, so loading a preset in
-another project imports its sample into that project's pool - the +Drive
-idea.</li>
-<li>Organize with <strong>#tags</strong> (picked from a checklist - kick, snare,
-bass, lead, pad and friends, plus your own). Search matches names, sample
-names and tags; <code>#term</code> searches tags only.</li>
+<li>A preset holds the device, its complete parameter set, the eight knob
+slots, both LFOs with their links and depths, and for a sampler preset the
+audio file itself with its slices. An AU preset holds the plugin and its
+state. A preset never touches the track's default note, velocity or gate. It's
+a sound, not a part.</li>
+<li>Preset audio is kept in a shared library, so loading a preset into
+another project imports its sample into that project's pool.</li>
+<li>Organise them with tags, picked from a list (kick, snare, bass, lead, pad
+and friends, plus your own). Search matches names, sample names and tags, and
+<code>#term</code> searches tags only.</li>
 </ul>
 
 <h2 id="export">Exporting a song</h2>
 <p>Open the pattern sheet and tap <span class="key">EXPORT</span> in the song
-editor's toolbar (beside REORDER). HeartBeat plays the song through the master
-bus in real time - every device, send, morph and master effect exactly as you
-hear it - and writes the result as a WAV, sample-accurate from the first beat
-to the last row plus a three-second tail for reverbs and releases to finish.
-Leading silence is trimmed. The sheet shows progress while it renders and
-hands you the file to share when it's done; the file also lands in
-<strong>Bounces/</strong>. Dismissing the sheet mid-render cancels and deletes
-the partial file.</p>
+editor's toolbar, next to REORDER. HeartBeat plays the song through the
+master bus in real time, every device, send, morph and master effect exactly
+as you'd hear it, and writes it out as a WAV, sample-accurate from the first
+beat to the end of the last row plus three seconds for the reverbs and
+releases to finish. Any silence at the start is trimmed. You can watch the
+progress as it renders, and when it's done it hands you the file to share. A
+copy also lands in Bounces/. If you dismiss the sheet partway through, the
+render stops and the partial file is deleted.</p>
 
 <h2 id="icloud">iCloud</h2>
-<p>With iCloud Drive on, HeartBeat's folder lives in <strong>iCloud Drive →
-HeartBeat</strong> and everything in it - projects, presets, the factory
-library - follows you between devices. Files another device uploaded
-materialize in the background as their downloads land. Without iCloud Drive
-the same folder sits under On My iPhone.</p>
-<p>Project files carry a schema version. A project written by a newer
-HeartBeat than the one opening it is refused with a clear message rather than
+<p>With iCloud Drive turned on, HeartBeat's folder lives in iCloud Drive →
+HeartBeat, and your projects, presets and bindings follow you between
+devices. Files another device has uploaded appear as their downloads land.
+Without iCloud Drive the same folder sits under On My iPhone. The factory
+library is the one thing that stays local on each device, since it's a copy of
+what's in the app anyway.</p>
+<p>Project files carry a schema version. If a newer HeartBeat wrote a project
+than the one trying to open it, it's refused with a clear message rather than
 half-read, so a phone that hasn't updated yet can't damage a newer file.</p>
 
 <h2 id="files">On disk</h2>
-<p>Everything lives under <strong>HeartBeat</strong> in the Files app (in
-iCloud Drive or On My iPhone):</p>
+<p>Everything is under HeartBeat in the Files app, in iCloud Drive or On My
+iPhone:</p>
 <div class="tablewrap"><table>
 <tr><th>Folder</th><th>Holds</th></tr>
-<tr><td>Projects/&lt;Name&gt;/</td><td>project.json plus the project's samples, its Wavetables/ subfolder and Files/AU/ (saved states of hosted AU plugins) - one portable unit you can copy out whole.</td></tr>
-<tr><td>Presets/</td><td>One JSON per sound preset, plus the preset audio library (Samples/, Wavetables/).</td></tr>
-<tr><td>Factory/</td><td>The shared factory library (Samples/ by folder, Wavetables/) - an exact mirror of the app bundle, kept on the device outside iCloud, self-healing, never copied into projects. Anything else placed in it is removed on the next launch.</td></tr>
-<tr><td>Bindings/</td><td>Exported MIDI-binding files.</td></tr>
+<tr><td>Projects/&lt;Name&gt;/</td><td>project.json, the project's samples, its Wavetables/ folder and Files/AU/ with the saved state of any hosted plugins. One portable unit you can copy out whole.</td></tr>
+<tr><td>Presets/</td><td>One JSON file per sound preset, plus the preset audio library (Samples/, Wavetables/).</td></tr>
+<tr><td>Factory/</td><td>The shared factory library (Samples/ by folder, Wavetables/). An exact mirror of what ships in the app, kept on the device outside iCloud, never copied into projects, and put right automatically if a file goes missing. Anything else left in here is removed on the next launch.</td></tr>
+<tr><td>Bindings/</td><td>Exported MIDI binding files.</td></tr>
 <tr><td>Bounces/</td><td>Exported songs and patterns, as WAV.</td></tr>
 </table></div>
 <ul>
-<li>Sample references inside a project are folder-relative, so renames and
-copies never break them.</li>
-<li>Imports (samples, wavetables) copy into the project folder - deleting a
-pool slot leaves the file on disk for other projects.</li>
+<li>Sample references inside a project are relative to its folder, so
+renaming or copying a project never breaks them.</li>
+<li>Imports, samples and wavetables alike, are copied into the project folder.
+Deleting a pool slot leaves the file on disk for other projects.</li>
 </ul>
 
 <div class="pagenav">

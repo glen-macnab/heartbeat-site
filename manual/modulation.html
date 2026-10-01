@@ -36,86 +36,86 @@
 
 <article>
 <h1>Modulation</h1>
-<p class="lede">Three ways to put parameters in motion: two LFOs per track,
-recorded automation lanes on any knob, and morphs - whole-board snapshots you
-can crossfade between.</p>
+<p class="lede">Three ways to get things moving: two LFOs on every track,
+knob moves you record as you play, and morphs, which are snapshots of the
+whole board that you can fade between.</p>
 
 <h2 id="lfos">LFOs</h2>
-<p>Every track carries <strong>two LFOs</strong>, edited on the LFO page  - 
-each a row of WAVE · RATE · MULT · DEPTH with a live lane in the visualizer
-above.</p>
+<p>Every track has two LFOs, on the LFO page. Each one is a row of WAVE,
+RATE, MULT and DEPTH, with a live lane in the display above showing what it's
+doing.</p>
 <div class="tablewrap"><table>
 <tr><th>Knob</th><th>Options</th></tr>
-<tr><td>WAVE</td><td>SIN, TRI, SAW, SQR, RND.</td></tr>
-<tr><td>RATE</td><td>Period in steps - the full sweep of 1 to 128, no fixed stops - or free-running 0.05–8 Hz when MULT is on its HZ stop.</td></tr>
-<tr><td>MULT</td><td>×1, ×2, ×4, ×8, ×16, or HZ (untethered from tempo).</td></tr>
-<tr><td>DEPTH</td><td>Bipolar ±64 - negative flips the shape.</td></tr>
+<tr><td>WAVE</td><td>SIN, TRI, SAW, SQR or RND.</td></tr>
+<tr><td>RATE</td><td>The period in steps, anywhere from 1 to 128 with no fixed stops, or 0.05 to 8 Hz when MULT is on HZ.</td></tr>
+<tr><td>MULT</td><td>×1, ×2, ×4, ×8, ×16, or HZ to come off the tempo altogether.</td></tr>
+<tr><td>DEPTH</td><td>±64 either way. Negative flips the shape.</td></tr>
 </table></div>
 <ul>
-<li><strong>Trigger modes</strong> (chip on the LFO lane): FREE runs
-continuously; TRIG restarts on every trig; HOLD samples and freezes;
-ONE plays a single cycle; HALF plays half a cycle.</li>
-<li><strong>Assigning</strong>: long-press any knob (or tap its label) to open
-the modulation drawer - Off / LFO 1 / LFO 2 plus a per-knob depth scale.
-A knob riding an LFO wears a small wave badge. Up to <strong>8 modulation
-slots</strong> per track.</li>
-<li>The RANDOM lane draws the true sample-and-hold output, so what you see is
-what it plays.</li>
+<li>The chip on the LFO lane sets the trigger mode. FREE runs all the time,
+TRIG restarts on every trig, HOLD samples a value and freezes it, ONE plays a
+single cycle and HALF plays half of one.</li>
+<li>To put an LFO on a knob, hold the knob (or tap its label) to open the
+modulation drawer: Off, LFO 1 or LFO 2, plus a depth scale for that knob. A
+knob with an LFO on it wears a small wave badge. A track has eight
+modulation slots, so that's eight knobs with LFOs at once. On the AU device
+the slot knobs take LFOs the same way.</li>
+<li>The RND lane draws the real sample-and-hold output, so what you see is
+what you'll hear.</li>
 </ul>
 
 <h2 id="lanes">Recorded automation (CC lanes)</h2>
 <ul>
-<li>With <span class="key red">REC</span> armed and the transport running, turn
-any knob - the movement records at full tick resolution and replays with the
-pattern. A knob carrying a lane wears a curve badge.</li>
-<li><strong>Recording over a lane replaces it</strong>: while your new sweep is
-in flight, everything the playhead crosses is erased - no interleaved mess
-from layered takes.</li>
-<li>Lanes send economically to hardware (decimated to 1/64-note events with
-repeats dropped). Clear a track's lanes from its track sheet: Clear Recorded
-CC Automation.</li>
-<li>On playback the knob follows the lane on screen; at a latched step the
-knob shows the lane's value at that step, dimmed, to distinguish it from a
-true p-lock.</li>
+<li>Arm <span class="key red">REC</span>, press play and turn any knob. The
+movement is recorded at full tick resolution and plays back with the pattern.
+A knob with a lane on it wears a curve badge.</li>
+<li>Recording over a lane replaces it. While your new sweep is going,
+everything the playhead passes over is erased, so you don't end up with two
+takes fighting.</li>
+<li>Lanes are sent to hardware economically, thinned to 1/64-note events
+with repeats dropped. You can clear a track's lanes from its track sheet with
+Clear Recorded CC Automation.</li>
+<li>On playback the knob follows its lane on screen. With a step latched,
+the knob shows the lane's value at that step, dimmed so you can tell it from a
+real p-lock.</li>
 </ul>
 
 <h2 id="morphs">Morphs</h2>
-<p>A morph is a snapshot of the whole board's <em>sound</em>: every internal
-device's full parameter set, every MIDI track's 24 knob values, both LFOs
-per track, and the global mute set. Patterns don't change - morphs are how
-one pattern wears eight different outfits.</p>
+<p>A morph is a snapshot of the whole board's sound: every internal device's
+full parameter set, every MIDI track's 24 knob values, both LFOs on each
+track, and the global mutes. Patterns aren't involved. Morphs are how one
+pattern wears eight different outfits.</p>
 <ul>
-<li><strong>8 slots per pattern</strong>, on the MORPH strip (it replaces the
-step grid, so the pads stay in reach). Tap an empty pad to save; tap a filled
-pad to recall; hold to overwrite. Context menu: Rename…, Save Current Here,
-Set as Morph A / B, Clear.</li>
-<li><strong>ORIGINAL</strong> - the tall pad on the strip's left is the working
-state's safety net. Tweak with no morph selected and the sound auto-captures
-into it; recalling a morph never touches it. The
-state you perfected before tapping a morph is always one tap away, and tapping
-the selected morph again deselects it and brings ORIGINAL back. It maintains
-itself - no save, rename or clear - and it deliberately can't sit on the
-crossfader or in a song row: nothing is allowed to overwrite it.</li>
-<li><strong>The A/B crossfader</strong>: pick a morph for each end and ride the
-fader - parameters interpolate continuously. LFO depth and
-rate sweep too; discrete choices (shape, mode) switch at the midpoint; mutes
-snap in when the fader lands on an end.</li>
-<li><strong>Morphs update live</strong>: while a morph is governing the sound,
-your live edits re-capture into it, so the ringed morph always is what you
-hear. Crossfader sweeps and recalls never count as edits.</li>
-<li><a href="sequencer.html#song">Song rows</a> can recall a morph as they take
-over - pattern P03 with morph "chorus lift", then P03 again with "strip it
-back".</li>
-<li>The morph pads and crossfader are all
-<a href="midi-link.html">MIDI-learnable</a>, so a hardware fader can ride the
-morph live.</li>
+<li>There are eight slots per pattern on the MORPH strip, which replaces the
+step grid so the pads stay in reach. Tap an empty pad to save, tap a filled
+one to recall it, hold to overwrite. The menu has Rename, Save Current Here,
+Set as Morph A or B, and Clear.</li>
+<li>ORIGINAL, the tall pad on the left of the strip, is your safety net.
+Tweak the sound with no morph selected and it's captured there as you go, and
+recalling a morph never touches it. So the sound you had before you started
+tapping morphs is always one tap away, and tapping the selected morph again
+brings ORIGINAL back. It looks after itself. There's no save, rename or clear
+for it, and it can't be put on the crossfader or in a song row, because
+nothing is allowed to overwrite it.</li>
+<li>The A/B crossfader takes a morph at each end and lets you fade between
+them. Parameters move continuously, LFO depth and rate too. Discrete things
+like a wave shape or a mode switch at the halfway point, and the mutes snap
+in when the fader reaches an end.</li>
+<li>Morphs update live. While a morph is governing the sound, your edits are
+captured back into it, so the ringed morph is always what you're hearing.
+Crossfader moves and recalls don't count as edits.</li>
+<li><a href="sequencer.html#song">Song rows</a> can recall a morph as they
+come in. Pattern P03 with the "chorus lift" morph, then P03 again with "strip
+it back".</li>
+<li>The morph pads and the crossfader can all be
+<a href="midi-link.html">MIDI-learned</a>, so a real fader can ride the morph.</li>
 </ul>
 <img class="shot" src="../assets/shot-morph.png" alt="The morph strip and A/B crossfader" width="860" height="1864">
 
 <div class="tip"><strong>Tip</strong>
-Layer the three: a slow LFO breathing the filter, a recorded lane pumping a
-send, and the morph fader pulling the whole kit between two moods - all at
-once, all non-destructive.</div>
+Stack all three. A slow LFO breathing the filter, a recorded lane pumping a
+send, and the morph fader pulling the whole kit between two moods, all at
+once, and none of it touches the sound underneath.</div>
 
 <div class="pagenav">
   <a href="sampling.html"><small>Previous</small>Sampling</a>

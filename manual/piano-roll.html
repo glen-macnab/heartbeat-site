@@ -36,142 +36,154 @@
 
 <article>
 <h1>Piano roll</h1>
-<p class="lede">A full-screen note editor over the <em>same trigs</em> the step
-grid edits - nothing is duplicated. A "note" here is one chord voice of a
-trig: the trig owns the step position, and every voice can carry its own gate
-and nudge.</p>
+<p class="lede">A full-screen note editor over the same trigs the step grid
+edits. Nothing is copied or duplicated; it's another view of the same
+pattern. A "note" here is one voice of a trig's chord. The trig owns the
+step, and each voice can have its own gate and nudge.</p>
 
-<p>Open it from the roll button in the step grid's clipboard row. The header
-carries the track name with <strong>◀ ▶</strong> to step to the previous or
-next track (wrapping 16 → 1), an <strong>S</strong> solo (the mixer's solo),
-its own undo/redo, and <strong>✕</strong> to close. The transport row underneath
-has play, record, <span class="key">Q</span>, the headphones toggle, trash,
-COPY and PASTE. Along the bottom, the edit bar and a row of captioned faces:
-<span class="key">STEPS</span> (track length), <span class="key">SPEED</span>
-(pattern speed), <span class="key">GRID</span>, <span class="key">DOUBLE</span>
-(the grid's 2×→) and <span class="key">LOOP</span>.</p>
-<p>Every note wears its name (C3, F♯4) on the note itself when there's room
-clear of the gate handle: dark ink on loud notes, light on quiet ones. The
-grid and ruler count <em>musical</em> time: on a 2× track a step is a 1/32 and
-a bar is 32 steps, and the readout in the corner where the ruler meets the
-pitch gutter says so.</p>
+<p>Open it from the roll button in the clipboard row above the step grid.
+The header has the track name with chevrons to go to the previous or next
+track (16 wraps round to 1), an S for solo, the roll's own undo and redo, and
+✕ to close. The row under that is the transport: play, record,
+<span class="key">Q</span>, the headphones toggle, trash, COPY and PASTE.
+Along the bottom are the scale chips (the root letter, ♭ ♮ ♯, and the scale
+name), the loop settings and the selection tools. On a wide screen they all
+fit on one row; on a phone held upright they take two.</p>
+<p>Each note wears its name (C3, F♯4) when there's room beside the gate
+handle, dark on loud notes and light on quiet ones. The grid and the ruler
+count musical time, so on a 2× track a step is a 1/32 and a bar is 32 steps,
+and the readout in the corner where the ruler meets the pitch gutter tells
+you the current grid.</p>
 <img class="shot" src="../assets/shot-roll.png" alt="The piano roll editing a kick pattern" width="860" height="1864">
 
 <h2 id="gestures">Gestures</h2>
 <div class="tablewrap"><table>
 <tr><th>Gesture</th><th>Result</th></tr>
-<tr><td>Tap empty square</td><td>Parks the paste cursor there.</td></tr>
-<tr><td>Tap the same square again</td><td>Adds a note at that snapped position.</td></tr>
-<tr><td>Hold 0.3 s on a note (no movement needed)</td><td>Opens the retrig menu: OFF or a rate from 1/16 to 1/64T, plus a RAMP - the run fades UP, holds FLAT, or fades DOWN across the burst. The rate plays until the gate ends - stretch the note for a longer roll - and the divider lines redraw live as you pick. Per-trig, like the hardware: a chord's voices retrig together. A trig can't hold the same pitch twice - sub-hits ARE retrigs.</td></tr>
-<tr><td>Tap a note</td><td>Selects it and latches its step - the TRG panel, p-locks and hardware mappings all target it. Auditions if headphones are on.</td></tr>
-<tr><td>Tap a selected note</td><td>Deselects it (deleting lives on the trash chip).</td></tr>
-<tr><td>Tap the pitch gutter</td><td>Selects every note on that row - and plays the pitch, notes or not: the gutter doubles as a keyboard.</td></tr>
-<tr><td>Hold 0.3 s on empty space, drag</td><td>Marquee select (cyan dashes); the selection latches and auditions on release.</td></tr>
-<tr><td>Drag a note</td><td>Moves it. Grabbing a member of a selection moves the whole group together.</td></tr>
-<tr><td>Drag a note's right edge</td><td>Stretches the gate, snapped to the grid; a group stretches by the same delta.</td></tr>
-<tr><td>Drag empty space</td><td>Pans. Pinch over the grid zooms time (anchored under your fingers).</td></tr>
-<tr><td>Pinch in the pitch gutter</td><td>Zooms the row height, 14 to 60 points, holding the pitch under your fingers still. Note names scale with the rows.</td></tr>
-<tr><td>Drag along the ruler</td><td>Braces a loop region (below). Drag a bracket to move that end alone; drag between the brackets to slide the whole region.</td></tr>
+<tr><td>Tap an empty square</td><td>Parks the paste cursor there.</td></tr>
+<tr><td>Tap the same square again</td><td>Adds a note there, snapped to the grid.</td></tr>
+<tr><td>Hold a note for a third of a second, without moving</td><td>Opens the retrig menu: OFF or a rate from 1/16 to 1/64T, plus a RAMP that fades the run UP, holds it FLAT or fades it DOWN. The rate plays until the gate ends, so stretch the note for a longer roll. The divider lines redraw as you pick. It's per trig, so a chord's voices roll together. A trig can't hold the same pitch twice, because the sub-hits are the retrigs.</td></tr>
+<tr><td>Tap a note</td><td>Selects it and latches its step, so the TRG panel, p-locks and any hardware mappings now point at it. Plays it if headphones are on.</td></tr>
+<tr><td>Tap a selected note</td><td>Deselects it. Deleting is on the trash chip.</td></tr>
+<tr><td>Tap the pitch gutter</td><td>Selects every note on that row and plays the pitch, whether there are notes or not. The gutter is a keyboard too.</td></tr>
+<tr><td>Hold on empty space, then drag</td><td>Marquee select, in cyan dashes. The selection latches and plays when you let go.</td></tr>
+<tr><td>Drag a note</td><td>Moves it. Grab a member of a selection and the whole group comes along.</td></tr>
+<tr><td>Drag a note's right edge</td><td>Stretches the gate to the grid. A group stretches by the same amount.</td></tr>
+<tr><td>Drag empty space</td><td>Pans. Pinch over the grid to zoom time, anchored under your fingers.</td></tr>
+<tr><td>Pinch in the pitch gutter</td><td>Zooms the row height between 14 and 60 points, keeping the pitch under your fingers where it is. Note names scale with the rows.</td></tr>
+<tr><td>Drag along the ruler</td><td>Draws a loop brace (below). Drag a bracket to move one end, or drag between the brackets to slide the whole region.</td></tr>
 </table></div>
 
 <h2 id="loop">Loop braces</h2>
-<p>A drag along the ruler draws a pair of brackets - a
-<a href="sequencer.html#loop">section loop</a>, in musical time, so every other
-track replays the same bars. Amber while the loop is on, at half strength
-until the bar line lands; grey while it is off. The braces stay put when you
-switch the loop off, so switching it back on needs no redraw. Each bracket
-moves on its own; the span between them slides the region whole; everything
-snaps to the current grid.</p>
+<p>Dragging along the ruler draws a pair of brackets, which is a
+<a href="sequencer.html#loop">section loop</a> in musical time, so every other
+track replays the same bars. They're amber while the loop is on (half
+strength until the bar line arrives) and grey while it's off. The braces stay
+where they are when you switch the loop off, so switching it back on doesn't
+need a redraw. Each bracket moves on its own, the span between them slides
+the region, and everything snaps to the current grid.</p>
 <ul>
-<li><span class="key">LOOP</span> reads ON or OFF and toggles the loop over the
-braced span. With nothing braced yet, a tap braces the selected notes; a long
-press re-braces the selection at any time.</li>
-<li>A fresh brace switches the loop on; adjusting existing braces keeps the
-loop's on/off state.</li>
-<li>Outside the region the grid dims while the loop is on.</li>
+<li><span class="key">LOOP</span> reads ON or OFF and toggles the loop over
+the braced span. If nothing is braced yet, a tap braces the selected notes,
+and a long press re-braces the selection whenever you like.</li>
+<li>Drawing a fresh brace switches the loop on. Adjusting an existing one
+leaves it as it was.</li>
+<li>While the loop is on, the grid outside the region dims.</li>
 </ul>
 <img class="shot" src="../assets/shot-rollloop.png" alt="The piano roll with an amber loop brace over the first beat, the grid dimmed beyond it, and LOOP reading ON" width="860" height="1864">
 
 <h2 id="velocity">The velocity lane</h2>
-<p>Tap <span class="key">VEL</span> in the bottom bar and a lane opens under the
-grid - one stem per trig, on the same timeline (it pans and zooms with the
-grid). Notes also wear their velocity in the grid itself: loud hits draw
-solid, quiet ones translucent, and ghosts draw hollow with a dashed edge.</p>
+<p>Tap <span class="key">VEL</span> in the bottom bar and a lane opens under
+the grid with one stem per trig on the same timeline, panning and zooming
+with the grid. Notes show their velocity in the grid too: loud ones are
+solid, quiet ones translucent, and ghosts are hollow with a dashed edge.</p>
 <ul>
-<li><strong>Drag a stem</strong> up or down to set that trig's velocity; the
-value reads out in the lane's gutter.</li>
-<li><strong>Sweep across</strong> to paint a curve over many trigs in one
-gesture - crescendos in a single pass.</li>
-<li><strong>With a selection</strong>, only selected stems respond, and
-dragging any one of them moves the whole selection together, preserving the
-relative dynamics between notes.</li>
-<li><strong>Drag to the floor</strong> for a GHOST (velocity 0): silent until
-the live velocity offset lifts it. Ghost stems draw as hollow nubs on the
+<li>Drag a stem up or down to set that trig's velocity. The value shows in
+the lane's gutter.</li>
+<li>Sweep across stems to paint a curve over many trigs in one go. A
+crescendo is one pass.</li>
+<li>With a selection, only the selected stems respond, and dragging any one
+of them moves the whole selection together so the dynamics between notes are
+kept.</li>
+<li>Drag a stem to the floor for a GHOST (velocity 0), which is silent until
+the live velocity offset lifts it. Ghost stems are hollow nubs on the
 baseline.</li>
-<li><strong>Velocity is per note</strong>: a chord's voices stack their stems on
-the same tick, and the handle nearest your finger is the one you grab - quiet
-inner voices under a loud top note. A voice without its own value rides the
-trig's, which rides the track default. Painting a sweep writes every voice it
-crosses.</li>
-<li>Lane edits ride the roll's own UNDO.</li>
+<li>Velocity is per note. A chord's voices stack their stems on the same
+tick and you grab whichever handle is nearest your finger, so you can have
+quiet inner voices under a loud top note. A voice without its own value
+follows the trig's, which follows the track default. Painting a sweep writes
+every voice it crosses.</li>
+<li>Lane edits go through the roll's own UNDO.</li>
 </ul>
 
 <h2 id="snap">Grid, snap and the Q button</h2>
 <ul>
-<li><span class="key">GRID</span> on AUTO gets finer as you zoom: 1/16 → 1/32
-→ 1/64. Or pin a division: 1/8, 1/16, 1/32, 1/64, or the triplets 1/8T, 1/16T
-and 1/32T. The corner readout shows the division in musical time.</li>
-<li><span class="key">SPEED</span> changes the pattern's speed for this track
-from the roll; the grid, ruler and readout follow.</li>
-<li><span class="key">Q</span> governs single-note drops: lit, they snap to
-the grid; unlit, notes land <em>exactly</em> where your finger leaves them,
-the offset written as the note's nudge. <strong>Group drags never snap</strong> -
-a selection keeps its internal feel and lands exactly where you drop it,
-regardless of Q.</li>
+<li><span class="key">GRID</span> on AUTO gets finer as you zoom in: 1/16,
+then 1/32, then 1/64. Or pin a division: 1/8, 1/16, 1/32, 1/64, or the
+triplets 1/8T, 1/16T and 1/32T. The corner readout shows the division in
+musical time.</li>
+<li><span class="key">SPEED</span> changes the track's speed for this pattern
+from inside the roll, and the grid, ruler and readout follow.</li>
+<li><span class="key">Q</span> is about dropping single notes. Lit, a note
+you drag snaps to the grid. Unlit, it lands exactly where your finger leaves
+it and the offset is written as the note's nudge. Group drags never snap,
+whatever Q says: a selection keeps its internal feel and lands exactly where
+you drop it.</li>
 </ul>
+
+<h2 id="scale">Scales and note names</h2>
+<p>The three scale chips in the bottom bar set the pattern's key: the root
+letter, an accidental (♭, ♮ or ♯) and the scale itself, from Major and Minor
+through the modes to things like Hungarian Minor and Minor Bebop, or
+Chromatic for no scale at all. With a scale set, every row in the pitch
+gutter gets a little LED on its left edge, green if the pitch is in the scale
+and red if it isn't, and the live keyboard shows the same LEDs on its keys.</p>
+<p>The note names follow the key, the way a musician would write them. F
+minor shows A♭, B♭, D♭ and E♭; G major shows F♯. If you pick a root with an
+accidental, say B♭, the names keep the spelling you gave the root. With no
+scale, or in a key that could go either way, the ♭ and ♯ chips decide how
+accidentals are written everywhere in the app.</p>
+<img class="shot" src="../assets/shot-rollscale.png" alt="The piano roll in F minor: flats in the pitch gutter, green LEDs beside the notes in the scale and red beside the rest, with the F ♮ Minor chips in the bottom bar" width="860" height="1864">
 
 <h2 id="overlap">Chords and the no-overlap rule</h2>
 <ul>
-<li>Notes on the same step stack into a chord - up to <strong>6 voices</strong>
-per trig. Each voice can have its own gate and nudge; voice 1's values are the
-step's own.</li>
-<li>Same-pitch notes never overlap: a moved, pasted or stretched note
-<strong>takes its lane</strong>: any same-pitch note whose span it touches is
-deleted. Group members never eat each other.</li>
-<li>Moving a fully-selected trig carries everything it owns - locks, velocity,
-condition, per-voice offsets. Dragging just one voice out of a chord takes
-only that voice; landing on an occupied step joins its chord.</li>
+<li>Notes on the same step make a chord, up to 6 voices per trig. Each voice
+can have its own gate and nudge, and voice 1's values are the step's own.</li>
+<li>Two notes of the same pitch never overlap. A note you move, paste or
+stretch takes its lane, and any same-pitch note whose span it touches is
+deleted. Members of a group never eat each other.</li>
+<li>Moving a trig you've fully selected carries everything it owns: locks,
+velocity, condition, per-voice offsets. Dragging one voice out of a chord
+takes only that voice, and landing on an occupied step joins its chord.</li>
 </ul>
 
 <h2 id="tools">Selection tools</h2>
 <ul>
-<li><strong>Undo / redo</strong>: the roll keeps its own stack (64 snapshots),
-completely separate from the app's. DONE hands you back with the app stack
+<li>Undo and redo. The roll keeps its own stack of 64 snapshots, separate
+from the app's. Closing the roll hands you back with the app's stack
 untouched.</li>
-<li><strong>COPY / PASTE</strong>: the app-wide step clipboard, so notes
-round-trip with the step grid. Paste lands at the cursor if one is parked -
-in pitch as well as time: the copied notes transpose so their lowest lands on
-the cursor's row - otherwise just after the selection. Pasting onto occupied
-steps <strong>merges</strong>: new pitches join the chord up to the six-voice
-limit, matching pitches take the pasted gate and velocity, nothing already
-there is lost. The pasted notes come back selected, ready to drag as a
-group.</li>
-<li><strong>Trash</strong>: deletes the whole selection as one undoable event.</li>
-<li><strong>Headphones</strong>: audition on selection: selected or added notes
-play through the track's own voice at their velocities (never recorded).
-Persisted per device.</li>
+<li>COPY and PASTE use the app-wide step clipboard, so notes round-trip with
+the step grid. Paste lands at the cursor if you've parked one, in pitch as
+well as time (the copied notes transpose so the lowest sits on the cursor's
+row), otherwise just after the selection. Pasting onto occupied steps merges:
+new pitches join the chord up to the six-voice limit, matching pitches take
+the pasted gate and velocity, and nothing that was there is lost. The pasted
+notes come back selected, ready to drag.</li>
+<li>Trash deletes the whole selection as one undo step.</li>
+<li>Headphones plays notes as you select or add them, through the track's
+own voice at their velocities, without recording anything. The setting is
+remembered per device.</li>
 </ul>
 
-<h2 id="range">Range and naming</h2>
-<p>Rows run <strong>C-2 up to C8</strong>, with middle C named C3.
-C rows are bold, row stripes mark the keyboard, and out-of-scale rows dim when
-the pattern has a scale. The ruler counts bar.beat; everything past the loop
-end is darkened. Amber dots on notes mark trigs carrying p-locks.</p>
+<h2 id="range">Range</h2>
+<p>Rows run from C-2 up to C8, with middle C called C3. C rows are bold and
+the row stripes follow the keyboard's black and white keys. The ruler counts
+bar.beat, and everything past the loop end is darkened. An amber dot on a
+note means the trig has p-locks.</p>
 
 <div class="tip"><strong>Tip</strong>
-Because a roll note latches its step, you can tap a note and immediately turn
-any knob to p-lock it - the roll is a selection surface for the whole
-device, not just pitches.</div>
+Because a roll note latches its step, you can tap a note and then turn any
+knob on the device to p-lock it. The roll is a way of selecting steps for the
+whole device, not just a place to edit pitches.</div>
 
 <div class="pagenav">
   <a href="devices.html"><small>Previous</small>Devices</a>
