@@ -68,8 +68,8 @@ target for a controller output you want silenced.</li>
 <li>After a mapping, the app watches whether your control sends a release
 to work out if it's a button or a toggle. If it guesses wrong, the MOM/TOG
 chip in Settings → MIDI Setup → MIDI Learn Bindings puts it right.</li>
-<li>Relative encoders, the endless Push-style kind, work through imported
-binding files.</li>
+<li>Relative encoders, the endless kind, work through imported binding
+files.</li>
 <li>Bindings can be exported and imported as a JSON file from Settings →
 MIDI Setup → MIDI Learn Bindings → •••, so you can share a rig. Imports merge,
 with the incoming bindings winning. Bindings live in the project and undo
@@ -79,8 +79,8 @@ covers them.</li>
 <div class="tip"><strong>Tip</strong>
 If you set a Control Surface in Settings → MIDI Setup, HeartBeat sends state
 back to it: motorised knobs and LEDs follow the app, flipping a page re-seats
-the visible-page bank, and a Push gets set up for you when it connects.
-Turning a mapped knob also brings its page onto the screen.</div>
+the visible-page bank, and a supported surface is set up for you the moment
+it connects. Turning a mapped knob also brings its page onto the screen.</div>
 
 <h2 id="tracks">Sequencing hardware</h2>
 <ul>
@@ -114,8 +114,9 @@ plays, and records onto, the selected track, through whatever device that
 track is running. You don't need a router app. Connections follow plugging
 and unplugging, and if the app hears its own recent output echoed back it
 ignores it.</p>
-<p>Where a note lands works the Elektron way. In Settings → MIDI Setup, Auto
-Channel is the channel that always plays the selected track, either Any (the
+<p>Where a note lands works the way it does on a hardware groovebox. In
+Settings → MIDI Setup, Auto Channel is the channel that always plays the
+selected track, either Any (the
 default) or one specific channel, and Auto Channel Source can narrow that to
 one input. In the track sheet, each track's MIDI In card gives it an Input
 Channel (Off unless you set one) and an Input Device (Any, or one source), so
@@ -168,15 +169,16 @@ running session drops you in on the next bar line, in phase.</li>
 "Master" that streams the master mix to Link peers. It costs nothing until a
 peer actually subscribes.</li>
 <li>Stream to Link, in a track's Audio Out card, announces a channel per
-track named after the track, so Ableton Live can take the kick, the bass and
-the lead on their own channels while the master keeps streaming too.</li>
+track named after the track, so a DAW at the other end can take the kick, the
+bass and the lead on their own channels while the master keeps streaming
+too.</li>
 </ul>
 
 <h2 id="settings">Settings reference</h2>
 <div class="tablewrap"><table>
 <tr><th>Section</th><th>Rows</th></tr>
 <tr><td>Audio</td><td>Output Device (the system route picker) and Master to Channels on multi-output interfaces. Tracks can also take their own outputs in the track sheet.</td></tr>
-<tr><td>MIDI Setup</td><td>Its own page, in four cards. <em>Control Surface</em>: MIDI Learn Bindings, the Control Surface picker, Push Pad Feel (Push Default, Light, Lightest or Heavy). <em>MIDI Input</em>: Other apps (HeartBeat In), a tick box per connected source, Network MIDI (RTP), Bluetooth MIDI Devices…, Auto Channel Source and Auto Channel. <em>Sync Out</em>: the Clock and Start / Stop grid. <em>External Sync</em>: Follow Start / Stop and Sync to external clock.</td></tr>
+<tr><td>MIDI Setup</td><td>Its own page, in four cards. <em>Control Surface</em>: MIDI Learn Bindings, the Control Surface picker, Pad Feel for pad controllers (Default, Light, Lightest or Heavy). <em>MIDI Input</em>: Other apps (HeartBeat In), a tick box per connected source, Network MIDI (RTP), Bluetooth MIDI Devices…, Auto Channel Source and Auto Channel. <em>Sync Out</em>: the Clock and Start / Stop grid. <em>External Sync</em>: Follow Start / Stop and Sync to external clock.</td></tr>
 <tr><td>Projects</td><td>New projects start with random sounds. Off by default; on, every track of a new project loads a random preset.</td></tr>
 <tr><td>Ableton Link</td><td>The Link settings sheet.</td></tr>
 <tr><td>Background</td><td>Run in background, on by default, so the app keeps playing under the lock screen.</td></tr>

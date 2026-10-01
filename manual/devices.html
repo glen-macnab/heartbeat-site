@@ -49,7 +49,7 @@ sequence stays put; only the sound changes.</p>
 <tr><td>FM</td><td>8</td><td>Four sine operators, eight algorithms and feedback. Classic four-op FM.</td></tr>
 <tr><td>WT</td><td>8</td><td>Wavetable scanning with up to seven-voice unison, reading standard 2048-sample-frame tables from a pool of 128.</td></tr>
 <tr><td>ACID</td><td>mono</td><td>One oscillator into a zero-delay-feedback ladder filter. Slides and accents included.</td></tr>
-<tr><td>DRUM</td><td>mono</td><td>Eight drum models built from scratch: 808-style kick and snare, clap, hats, tom, rim and cowbell, with punch, sweep, tone and noise macros. Each new hit chokes the last.</td></tr>
+<tr><td>DRUM</td><td>mono</td><td>Eight drum models built from scratch in the classic analogue style: kick, snare, clap, hats, tom, rim and cowbell, with punch, sweep, tone and noise macros. Each new hit chokes the last.</td></tr>
 <tr><td>PLUCK</td><td>8</td><td>A Karplus-Strong string: a burst into a delay line with damping, pick position and a detuned stereo double.</td></tr>
 <tr><td>MIDI</td><td> - </td><td>No sound of its own. Notes and knob moves go out the MIDI wire to hardware or other apps, and the synth's audio can come back in through the same track.</td></tr>
 <tr><td>AU</td><td>plugin's</td><td>Hosts any Audio Unit instrument (AUv3) installed on the device. The plugin's audio comes back through the track's own mixer stage, and 24 knob slots turn its parameters. See <a href="#au">AU Synth</a>.</td></tr>
@@ -229,12 +229,13 @@ knobs alone to begin with and just write overlapping notes.</div>
 <p>Eight one-shot models on the MODEL knob: KICK, SNARE, CLAP, CHAT (closed
 hat), OHAT (open hat), TOM, RIM and BELL, which is the cowbell. There are no
 samples in here; each one is synthesised, with structures borrowed from the
-well-studied 808 circuits. The kick's attack is an FM glide and a click into a
+well-studied circuits of the classic analogue drum machines. The kick's attack
+is an FM glide and a click into a
 saturator, with a second stage for chest. The snare is a two-mode shell over
 two bands of noise, one for the shell and one for the wires. The clap is three
 sawtooth pre-echoes into a reverb-tail envelope. The hats are a cluster of six
-squares at Plaits' measured ratios through a band-pass and the asymmetric
-swing VCA, and the cowbell is the 540 and 800 Hz pulse pair. DEC is each
+square waves at carefully measured ratios through a band-pass and the
+asymmetric swing VCA, and the cowbell is the 540 and 800 Hz pulse pair. DEC is each
 model's length knob and scales its body, pitch and noise envelopes together,
 so a kick can boom and an open hat can ring. Velocity shapes the hit as well
 as the level: a soft hit has less punch, less sweep, less noise and a duller
