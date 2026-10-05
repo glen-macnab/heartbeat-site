@@ -89,8 +89,9 @@ it connects. Turning a mapped knob also brings its page onto the screen.</div>
 <h2 id="tracks">Sequencing hardware</h2>
 <ul>
 <li>Set a track's device to MIDI, then in its MIDI Out card pick an Output
-(any CoreMIDI destination: USB, Bluetooth, network, or a virtual port) and a
-Channel. If you unplug the device it stays in the list as "(offline)" and
+Device (any CoreMIDI destination: USB, Bluetooth, network, or a virtual port)
+and a Channel. All, the default, plays every connected destination, so a
+synth hears the track before you've chosen anything. If you unplug the device it stays in the list as "(offline)" and
 picks up again when it comes back.</li>
 <li>The MIDI device's pages are SRC, with the CHANNEL, BANK, SUB and PROG
 setup knobs over BEND, MOD, AT and BREATH, plus three pages of 24 assignable
@@ -123,7 +124,7 @@ Settings → MIDI Setup, Auto Channel is the channel that always plays the
 selected track, either Any (the
 default) or one specific channel, and Auto Channel Source can narrow that to
 one input. In the track sheet, each track's MIDI In card gives it an Input
-Channel (Off unless you set one) and an Input Device (Any, or one source), so
+Device (Any, or one source) and an Input Channel (Off unless you set one), so
 a keyboard on channel 5 can always play track 5 whatever's selected. The order
 is: a specific auto channel wins on its own channel; then a track whose input
 channel and device match takes the note; then, if Auto Channel is Any, the
