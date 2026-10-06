@@ -200,8 +200,12 @@ jump straight away with every track keeping its place. While stopped, a tap
 just selects. Hold for the menu: Restart Now, Play Once Then Return, Name,
 Copy Current Here, Copy Pattern, Paste Pattern, and Clear. Copy Pattern and
 Paste Pattern work across projects: copy a pattern here, open another
-project, hold a slot there and paste. The whole pattern comes along: trigs,
-per-pattern sounds and devices, mutes, morphs and scale.</p>
+project, hold a slot there and paste. Everything the pattern needs to sound
+the same comes along: trigs, each track's device and settings, sounds,
+mutes, morphs and scale, the MIDI channels and mixer levels, plugins with
+their state, and the samples and wavetables it plays, which are copied into
+the new project's pool and re-pointed (a file the pool already holds is
+reused). Audio and MIDI routing stay the destination project's own.</p>
 <p>The SCALE row sets a root and scale for the pattern. The live keyboard
 and the piano roll then light a green LED on the notes that are in the scale
 and a red one on the notes that aren't, and QUANTIZE TRIGS folds any notes
