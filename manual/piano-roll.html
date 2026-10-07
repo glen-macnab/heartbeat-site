@@ -149,8 +149,11 @@ accidentals are written everywhere in the app.</p>
 <li>Notes on the same step make a chord, up to 6 voices per trig. Each voice
 can have its own gate and nudge, and voice 1's values are the step's own.</li>
 <li>Two notes of the same pitch never overlap. A note you move, paste or
-stretch takes its lane, and any same-pitch note whose span it touches is
-deleted. Members of a group never eat each other.</li>
+stretch takes its lane, and any same-pitch note whose span it touches gives
+way. Those notes are only deleted once you drop the selection: while it's
+still selected, moving it on again puts back everything it no longer covers,
+so you can walk a group over other notes with the arrows without eating
+them. Members of a group never eat each other.</li>
 <li>Moving a trig you've fully selected carries everything it owns: locks,
 velocity, condition, per-voice offsets. Dragging one voice out of a chord
 takes only that voice, and landing on an occupied step joins its chord.</li>
