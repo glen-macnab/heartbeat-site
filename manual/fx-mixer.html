@@ -68,8 +68,11 @@ REVERB send knobs.</p>
 <p>Sixteen faders with live meters, each in its track's colour. On an
 internal track the fader is the track's VOL parameter, so it can be p-locked,
 LFO'd and morphed like any other sound value. On a MIDI track it sends CC 7
-on the track's channel. Muted tracks dim, and tapping a fader's label selects
-its track. Pan is on each track's AMP page.</p>
+on the track's channel, unless the track's audio comes back through an
+Audio In: then the fader is the return's GAIN, the MIX page's first knob,
+and the meter shows the returned audio like any other track. Muted tracks
+dim, and tapping a fader's label selects its track. Pan is on each track's
+AMP page.</p>
 <div class="shot-row">
 <img class="shot" src="../assets/shot-mixer.png" alt="The 16-fader mixer" width="860" height="1864">
 <img class="shot" src="../assets/shot-mfx.png" alt="The DJ FX page" width="860" height="1864">
