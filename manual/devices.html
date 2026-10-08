@@ -325,7 +325,9 @@ sheet's Audio In card, pick the interface input the synth is plugged into:
 one channel as mono (it plays on both sides) or a pair as stereo. Every track
 you switch to the MIDI device starts with this set to Off, and HeartBeat will
 never pick an input for you, because the built-in microphone through the
-speaker is a feedback loop waiting to happen. While any MIDI track in the
+speaker is a feedback loop waiting to happen. The return never uses the
+phone's own microphone at all: unplug the interface and the return goes
+silent until an interface input is back, rather than switching to the mic. While any MIDI track in the
 pattern has a return, the interface's inputs stay open.</p>
 <ul>
 <li>Once a return is chosen a MIX page appears before LFO: GAIN · PAN ·
